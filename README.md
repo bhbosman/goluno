@@ -30,5 +30,5 @@ A Text Listener port will be opened on 127.0.0.1:3000. This port will publish up
 ### Protobuf derived protocol
 This port, on 127.0.0.1:3001, is a protobuf derived stack stack implementation, I am currently working on. More on this later
 
-
-
+### View connection data
+This port, on http://localhost:8080/connections, you can view the connection made to the application, and track bytes and messages received and send
