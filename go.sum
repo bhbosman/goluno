@@ -18,6 +18,8 @@ github.com/bhbosman/gocommon v0.0.0-20200918070943-3f5d7a805cce h1:fxyOVocHRisjp
 github.com/bhbosman/gocommon v0.0.0-20200918070943-3f5d7a805cce/go.mod h1:8IMf6PDpa7ZKIdtLrQjluoFaI7bf3JEcCSbfp08VQc0=
 github.com/bhbosman/gocommon v0.0.0-20200918074356-423e1afb66fb h1:+FoPzVsoOVvLeUNbw29NAlTZT4eCjD+y88Io3m4WB3M=
 github.com/bhbosman/gocommon v0.0.0-20200918074356-423e1afb66fb/go.mod h1:krVJswqyL+vUcyv/qnCvYQNoxr3HEQXMjzXQOiaqD+4=
+github.com/bhbosman/gocommon v0.0.0-20200918200208-fb0eff68078e h1:VlMSGin53Bk0nxfCYyyiJ1N69m0/vRhGdn5jSYhl+Kc=
+github.com/bhbosman/gocommon v0.0.0-20200918200208-fb0eff68078e/go.mod h1:krVJswqyL+vUcyv/qnCvYQNoxr3HEQXMjzXQOiaqD+4=
 github.com/bhbosman/goerrors v0.0.0-20200918064252-e47717b09c4f h1:tn+HxggOxuewICKQ+p4mLoRyfE503xgIhWDo+2Z3dWk=
 github.com/bhbosman/goerrors v0.0.0-20200918064252-e47717b09c4f/go.mod h1:Otn1qS556wnQOL+lAkheIV/UxgKITTmY3KDYAXkQbfQ=
 github.com/bhbosman/goprotoextra v0.0.1 h1:CoIa6MSq9A3CMqrpStgpgh/Q731HSDyGoa0bzVFUbSQ=

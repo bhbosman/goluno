@@ -1,6 +1,5 @@
 # goluno
 
-
 This repo will connect to the Luno streaming service, using the Luno streaming protocol https://www.luno.com/en/developers/api#tag/Streaming-API-(beta)
 
 For the application to connect, you need a valid luno streaming service account. the information must be stored in  ~/.luno/keys.json. 
@@ -32,3 +31,17 @@ This port, on 127.0.0.1:3001, is a protobuf derived stack stack implementation, 
 
 ### View connection data
 This port, on http://localhost:8080/connections, you can view the connection made to the application, and track bytes and messages received and send
+
+
+
+
+
+# Change Log
+
+## Version 0.1.1
+* Add time out on web socket if ping is not returned in a reasonable time
+* Fix luno stream api sequence rule
+
+## Version 0.1.0
+* Initial version
+

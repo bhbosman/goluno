@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9dae991f-530c-4073-8307-bd14712a54c8" name="Default Changelist" comment="WIP">
+    <list default="true" id="9dae991f-530c-4073-8307-bd14712a54c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/luno-stream-service/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/luno-stream-service/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +38,15 @@
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.15.2/libexec" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1henPj7a3bC788G6kdZk2Y5avkc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -25,32 +57,17 @@
     <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Makefile.install">
-    <configuration name="go build github.com/bhbosman/goLuno/app" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="goLuno" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/app/main.go" />
-      <package value="github.com/bhbosman/goLuno/app" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build github.com/bhbosman/goLuno/luno-stream-service" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="goLuno" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/luno-stream-service/main.go" />
-      <package value="github.com/bhbosman/goLuno/luno-stream-service" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Build.goLuno">
     <configuration name="build" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/luno-stream-service/Makefile" target="build" workingDirectory="" arguments="">
         <envs />
@@ -63,18 +80,53 @@
       </makefile>
       <method v="2" />
     </configuration>
+    <configuration name="webSocketProtoBuf" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/../gocommon/stacks/websocket/Makefile" target="webSocketProtoBuf" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.goLuno" />
+      <item itemvalue="Makefile.build" />
+      <item itemvalue="Makefile.install" />
+      <item itemvalue="Makefile.webSocketProtoBuf" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile.webSocketProtoBuf" />
+        <item itemvalue="Go Build.goLuno" />
         <item itemvalue="Makefile.install" />
         <item itemvalue="Makefile.build" />
-        <item itemvalue="Go Build.go build github.com/bhbosman/goLuno/luno-stream-service" />
-        <item itemvalue="Go Build.go build github.com/bhbosman/goLuno/app" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="WIP" />
@@ -84,49 +136,132 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600404625978">
+    <state x="354" y="135" key="#Inspections" timestamp="1600460263971">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="354" y="135" key="#Inspections/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600460263971" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600458349846">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600458349846" />
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1600404625978" />
-    <state x="265" y="24" key="CommitChangelistDialog2" timestamp="1600415753837">
+    <state x="265" y="24" key="CommitChangelistDialog2" timestamp="1600461724703">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="265" y="24" key="CommitChangelistDialog2/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461724703" />
+    <state x="265" y="24" key="CommitChangelistDialog2/0.0.1440.900/1440.23.1600.877@0.0.1440.900" timestamp="1600456462460" />
     <state x="265" y="24" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1600415753837" />
+    <state width="822" height="466" key="DebuggerActiveHint" timestamp="1600459173007">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="822" height="466" key="DebuggerActiveHint/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600459173007" />
     <state x="125" y="79" key="DiffContextDialog" timestamp="1600404584126">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="125" y="79" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1600404584126" />
-    <state width="1398" height="283" key="GridCell.Tab.0.bottom" timestamp="1600415892181">
+    <state width="1398" height="263" key="GridCell.Tab.0.bottom" timestamp="1600461735549">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="283" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600415892181" />
-    <state width="1398" height="283" key="GridCell.Tab.0.center" timestamp="1600415892174">
+    <state width="1398" height="263" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461735549" />
+    <state width="1398" height="304" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.23.1600.877@0.0.1440.900" timestamp="1600457615595" />
+    <state width="1398" height="73" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600418209910" />
+    <state width="1398" height="263" key="GridCell.Tab.0.center" timestamp="1600461735548">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="283" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600415892174" />
-    <state width="1398" height="283" key="GridCell.Tab.0.left" timestamp="1600415892172">
+    <state width="1398" height="263" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461735548" />
+    <state width="1398" height="304" key="GridCell.Tab.0.center/0.0.1440.900/1440.23.1600.877@0.0.1440.900" timestamp="1600457615594" />
+    <state width="1398" height="73" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600418209909" />
+    <state width="1398" height="263" key="GridCell.Tab.0.left" timestamp="1600461735547">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="283" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600415892172" />
-    <state width="1398" height="283" key="GridCell.Tab.0.right" timestamp="1600415892177">
+    <state width="1398" height="263" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461735547" />
+    <state width="1398" height="304" key="GridCell.Tab.0.left/0.0.1440.900/1440.23.1600.877@0.0.1440.900" timestamp="1600457615592" />
+    <state width="1398" height="73" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600418209909" />
+    <state width="1398" height="263" key="GridCell.Tab.0.right" timestamp="1600461735549">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="283" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600415892177" />
-    <state x="221" y="89" key="SettingsEditor" timestamp="1600380458290">
+    <state width="1398" height="263" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461735549" />
+    <state width="1398" height="304" key="GridCell.Tab.0.right/0.0.1440.900/1440.23.1600.877@0.0.1440.900" timestamp="1600457615595" />
+    <state width="1398" height="73" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600418209910" />
+    <state width="1398" height="204" key="GridCell.Tab.1.bottom" timestamp="1600461583509">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state width="1398" height="204" key="GridCell.Tab.1.bottom/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461583509" />
+    <state width="1398" height="204" key="GridCell.Tab.1.bottom/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1600459222486" />
+    <state width="1398" height="204" key="GridCell.Tab.1.center" timestamp="1600461583507">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="204" key="GridCell.Tab.1.center/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461583507" />
+    <state width="1398" height="204" key="GridCell.Tab.1.center/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1600459222484" />
+    <state width="1398" height="204" key="GridCell.Tab.1.left" timestamp="1600461583506">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="204" key="GridCell.Tab.1.left/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461583506" />
+    <state width="1398" height="204" key="GridCell.Tab.1.left/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1600459222484" />
+    <state width="1398" height="204" key="GridCell.Tab.1.right" timestamp="1600461583508">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="204" key="GridCell.Tab.1.right/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600461583508" />
+    <state width="1398" height="204" key="GridCell.Tab.1.right/0.23.1440.877/1440.23.1600.877@0.23.1440.877" timestamp="1600459222485" />
+    <state x="435" y="159" key="RollbackChangesDialog" timestamp="1600458076333">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="435" y="159" key="RollbackChangesDialog/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600458076333" />
+    <state x="221" y="89" key="SettingsEditor" timestamp="1600458045274">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600458045274" />
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900/1440.23.1600.877@0.0.1440.900" timestamp="1600456289270" />
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1600380458290" />
-    <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600415506135">
+    <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600456373497">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900/1440.23.1600.877@0.0.1440.900" timestamp="1600456373497" />
     <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1600415506135" />
-    <state x="421" y="205" width="598" height="490" key="find.popup" timestamp="1600415251390">
+    <state x="421" y="205" width="598" height="490" key="find.popup" timestamp="1600460345414">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="421" y="205" width="598" height="490" key="find.popup/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600460345414" />
     <state x="421" y="205" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1600415251390" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1600460556699">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/1440.0.1600.900@0.0.1440.900" timestamp="1600460556699" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/1440.23.1600.877@0.0.1440.900" timestamp="1600456521461" />
     <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1600404611331">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1600404611331" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../gocommon/stacks/websocket/WebSocket.go</url>
+          <line>74</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/lunoWS/connectionReactor.go</url>
+          <line>203</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/lunoWS/connectionReactor.go</url>
+          <line>212</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/lunoWS/connectionReactor.go</url>
+          <line>220</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/lunoWS/connectionReactor.go</url>
+          <line>227</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -37,6 +37,7 @@ type ConnectionReactor struct {
 	republishChannelName string
 	publishChannelName   string
 	UpdateCount          int64
+	sequence             int64
 }
 
 func (self *ConnectionReactor) SendMessage(message proto.Message) error {
@@ -200,6 +201,7 @@ func (self *ConnectionReactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamDat
 	self.FullMarketOrderBook.UpdateMessageReceivedCount()
 	switch {
 	case msg.Bids != nil || msg.Asks != nil:
+		self.sequence = msg.Sequence
 		self.FullMarketOrderBook.Clear()
 		for _, order := range msg.Bids {
 			self.FullMarketOrderBook.AddOrder(fullMarketData.BuySide, order)
@@ -208,13 +210,25 @@ func (self *ConnectionReactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamDat
 			self.FullMarketOrderBook.AddOrder(fullMarketData.AskSide, order)
 		}
 	case msg.TradeUpdates != nil:
+		if self.sequence+1 != msg.Sequence {
+			self.CancelFunc()
+		}
+		self.sequence = msg.Sequence
 		for _, order := range msg.TradeUpdates {
 			self.FullMarketOrderBook.TradeUpdate(order)
 		}
 	case msg.DeleteUpdate != nil:
+		if self.sequence+1 != msg.Sequence {
+			self.CancelFunc()
+		}
+		self.sequence = msg.Sequence
 		self.FullMarketOrderBook.DeleteUpdate(msg.DeleteUpdate)
 
 	case msg.CreateUpdate != nil:
+		if self.sequence+1 != msg.Sequence {
+			self.CancelFunc()
+		}
+		self.sequence = msg.Sequence
 		self.FullMarketOrderBook.CreateUpdate(msg.CreateUpdate)
 	}
 	return nil

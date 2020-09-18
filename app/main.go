@@ -16,7 +16,8 @@ func main() {
 		internal.AddCurrencyPair(common.NewPairInformation("XBTUGX")),
 		internal.AddCurrencyPair(common.NewPairInformation("XBTZMW")),
 		internal.AddCurrencyPair(common.NewPairInformation("ETHXBT")),
-		internal.AddCurrencyPair(common.NewPairInformation("BCHXBT")))
+		internal.AddCurrencyPair(common.NewPairInformation("BCHXBT")),
+	)
 	if app.Err() != nil {
 		return
 	}
