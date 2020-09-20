@@ -25,4 +25,4 @@ replace github.com/reactivex/rxgo/v2 v2.1.0 => github.com/bhbosman/rxgo/v2 v2.1.
 
 
 //for DEV
-//replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbosman/gocommon
+replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbosman/gocommon

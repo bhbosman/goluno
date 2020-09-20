@@ -1,4 +1,4 @@
-package provide
+package lunoStream
 
 import (
 	"encoding/json"

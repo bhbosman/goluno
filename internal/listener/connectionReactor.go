@@ -2,6 +2,7 @@ package listener
 
 import (
 	"context"
+	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/goLuno/internal/common"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/comms/commsImpl"
@@ -23,6 +24,7 @@ type ConnectionReactor struct {
 	PubSub        *pubsub.PubSub
 	Pairs         []*common.PairInformation
 	SerializeData SerializeData
+	ConsumerCounter *ConsumerCounter.ConsumerCounter
 }
 
 func NewConnectionReactor(
@@ -32,14 +34,16 @@ func NewConnectionReactor(
 	cancelFunc context.CancelFunc,
 	userContext interface{},
 	PubSub *pubsub.PubSub,
-	SerializeData SerializeData) *ConnectionReactor {
+	SerializeData SerializeData,
+	ConsumerCounter *ConsumerCounter.ConsumerCounter) *ConnectionReactor {
 	Pairs, _ := userContext.([]*common.PairInformation)
 	result := &ConnectionReactor{
 		BaseConnectionReactor: commsImpl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc, userContext),
+		messageRouter:         messageRouter.NewMessageRouter(),
 		PubSub:                PubSub,
 		Pairs:                 Pairs,
-		messageRouter:         messageRouter.NewMessageRouter(),
 		SerializeData:         SerializeData,
+		ConsumerCounter:       ConsumerCounter,
 	}
 	return result
 }
@@ -95,7 +99,14 @@ func (self *ConnectionReactor) HandleTop5(top5 *marketDataStream.PublishTop5) er
 	return nil
 }
 
+
+func (self *ConnectionReactor) Open() error {
+	self.ConsumerCounter.AddConsumer()
+	return self.BaseConnectionReactor.Open()
+}
+
+
 func (self *ConnectionReactor) Close() error {
-	err := self.BaseConnectionReactor.Close()
-	return err
+	self.ConsumerCounter.RemoveConsumer()
+	return self.BaseConnectionReactor.Close()
 }

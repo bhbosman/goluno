@@ -2,6 +2,7 @@ package listener
 
 import (
 	"context"
+	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/gocommon/comms/commsImpl"
 	"github.com/bhbosman/gocommon/log"
 	"github.com/cskr/pubsub"
@@ -11,6 +12,7 @@ type ConnectionReactorFactory struct {
 	name          string
 	PubSub        *pubsub.PubSub
 	SerializeData SerializeData
+	ConsumerCounter *ConsumerCounter.ConsumerCounter
 }
 
 func (self *ConnectionReactorFactory) Create(
@@ -26,7 +28,8 @@ func (self *ConnectionReactorFactory) Create(
 		cancelFunc,
 		userContext,
 		self.PubSub,
-		self.SerializeData)
+		self.SerializeData,
+		self.ConsumerCounter)
 	return result
 }
 
@@ -37,10 +40,12 @@ func (self *ConnectionReactorFactory) Name() string {
 func NewConnectionReactorFactory(
 	name string,
 	pubSub *pubsub.PubSub,
-	SerializeData SerializeData) *ConnectionReactorFactory {
+	SerializeData SerializeData,
+	ConsumerCounter *ConsumerCounter.ConsumerCounter) *ConnectionReactorFactory {
 	return &ConnectionReactorFactory{
-		name:          name,
-		PubSub:        pubSub,
-		SerializeData: SerializeData,
+		name:            name,
+		PubSub:          pubSub,
+		SerializeData:   SerializeData,
+		ConsumerCounter: ConsumerCounter,
 	}
 }

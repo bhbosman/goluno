@@ -1,8 +1,8 @@
 package internal
 
 import (
-	lunoInternal "github.com/bhbosman/goLuno/internal"
 	"github.com/bhbosman/goLuno/internal/common"
+	"github.com/bhbosman/goLuno/internal/lunoStream"
 	"github.com/kardianos/service"
 	"go.uber.org/fx"
 )
@@ -20,16 +20,16 @@ func NewProgram() *Program {
 }
 
 func (self *Program) Start(s service.Service) error {
-	self.app, self.shutDowner = lunoInternal.LunoStreamApp(
-		lunoInternal.HttpListenerUrl("http://127.0.0.1:8080"),
-		lunoInternal.TextListenerUrl("tcp4://127.0.0.1:3000"),
-		lunoInternal.CompressedListenerUrl("tcp4://127.0.0.1:3001"),
-		lunoInternal.AddCurrencyPair(common.NewPairInformation("XBTZAR")),
-		lunoInternal.AddCurrencyPair(common.NewPairInformation("XBTEUR")),
-		lunoInternal.AddCurrencyPair(common.NewPairInformation("XBTUGX")),
-		lunoInternal.AddCurrencyPair(common.NewPairInformation("XBTZMW")),
-		lunoInternal.AddCurrencyPair(common.NewPairInformation("ETHXBT")),
-		lunoInternal.AddCurrencyPair(common.NewPairInformation("BCHXBT")))
+	self.app, self.shutDowner = lunoStream.App(
+		lunoStream.HttpListenerUrl("http://127.0.0.1:8080"),
+		lunoStream.TextListenerUrl("tcp4://127.0.0.1:3000"),
+		lunoStream.CompressedListenerUrl("tcp4://127.0.0.1:3001"),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTZAR")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTEUR")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTUGX")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTZMW")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("ETHXBT")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("BCHXBT")))
 	if self.app.Err() != nil {
 		return self.app.Err()
 	}

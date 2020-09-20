@@ -1,22 +1,22 @@
 package main
 
 import (
-	"github.com/bhbosman/goLuno/internal"
 	"github.com/bhbosman/goLuno/internal/common"
+	"github.com/bhbosman/goLuno/internal/lunoStream"
 	"time"
 )
 
 func main() {
-	app, _ := internal.LunoStreamApp(
-		internal.HttpListenerUrl("http://127.0.0.1:8080"),
-		internal.TextListenerUrl("tcp4://127.0.0.1:3000"),
-		internal.CompressedListenerUrl("tcp4://127.0.0.1:3001"),
-		internal.AddCurrencyPair(common.NewPairInformation("XBTZAR")),
-		internal.AddCurrencyPair(common.NewPairInformation("XBTEUR")),
-		internal.AddCurrencyPair(common.NewPairInformation("XBTUGX")),
-		internal.AddCurrencyPair(common.NewPairInformation("XBTZMW")),
-		internal.AddCurrencyPair(common.NewPairInformation("ETHXBT")),
-		internal.AddCurrencyPair(common.NewPairInformation("BCHXBT")),
+	app, _ := lunoStream.App(
+		lunoStream.HttpListenerUrl("http://127.0.0.1:8080"),
+		lunoStream.TextListenerUrl("tcp4://127.0.0.1:3000"),
+		lunoStream.CompressedListenerUrl("tcp4://127.0.0.1:3001"),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTZAR")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTEUR")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTUGX")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTZMW")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("ETHXBT")),
+		lunoStream.AddCurrencyPair(common.NewPairInformation("BCHXBT")),
 	)
 	if app.Err() != nil {
 		return

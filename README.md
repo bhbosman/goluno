@@ -38,6 +38,10 @@ This port, on http://localhost:8080/connections, you can view the connection mad
 
 # Change Log
 
+
+## Version 0.1.2
+Only connect to Luno, if there is a consumer of data
+
 ## Version 0.1.1
 * Add time out on web socket if ping is not returned in a reasonable time
 * Fix luno stream api sequence rule
