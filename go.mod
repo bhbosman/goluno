@@ -11,7 +11,6 @@ require (
 	github.com/bhbosman/goprotoextra v0.0.1
 	github.com/cskr/pubsub v1.0.2
 	github.com/emirpasic/gods v1.12.0
-	github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/golang/protobuf v1.4.2
 	github.com/kardianos/service v1.1.0
@@ -23,6 +22,8 @@ require (
 replace github.com/reactivex/rxgo/v2 v2.1.0 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20200918045653-8f289de0d2ff
 
 //for DEV
-//replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbosman/gocommon
+replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbosman/gocommon
 
-//replace github.com/bhbosman/gocomms => /Users/brendanbosman/src/github.com/bhbosman/gocomms
+replace github.com/bhbosman/gocomms => /Users/brendanbosman/src/github.com/bhbosman/gocomms
+
+replace github.com/bhbosman/goMessages => /Users/brendanbosman/src/github.com/bhbosman/goMessages

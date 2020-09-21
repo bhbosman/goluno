@@ -45,6 +45,7 @@ func Dialers(options ...DialersApply) fx.Option {
 				fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
 				impl.WebSocketName,
 				LunoStreamConnectionReactorFactory,
+				netDial.MaxConnectionsSetting(settings.maxConnections),
 				netDial.UserContextValue(option),
 				netDial.CanDial(settings.canDial...)),
 		}))
@@ -55,6 +56,8 @@ func Dialers(options ...DialersApply) fx.Option {
 type lunoStreamDialersSettings struct {
 	pairs   []*common.PairInformation
 	canDial []netDial.ICanDial
+	maxConnections int
+
 }
 type DialersApply interface {
 	apply(*lunoStreamDialersSettings)
@@ -85,4 +88,19 @@ func (self canDialSetting) apply(settings *lunoStreamDialersSettings) {
 	for _, cd := range self.canDial {
 		settings.canDial = append(settings.canDial, cd)
 	}
+}
+
+
+
+
+type maxConnectionsDialersApply struct {
+	maxConnections int
+}
+
+func MaxConnections(maxConnections int) *maxConnectionsDialersApply {
+	return &maxConnectionsDialersApply{maxConnections: maxConnections}
+}
+
+func (self maxConnectionsDialersApply) apply(settings *lunoStreamDialersSettings) {
+	settings.maxConnections = self.maxConnections
 }

@@ -18,7 +18,7 @@ import (
 
 
 const CompressedListenerConnection = "CompressedListenerConnection"
-func CompressedListener(url string, pairInformation ...*common.PairInformation) fx.Option {
+func CompressedListener(maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
 	return fx.Options(
 		fx.Provide(
 			fx.Annotated{
@@ -45,7 +45,8 @@ func CompressedListener(url string, pairInformation ...*common.PairInformation) 
 					url,
 					impl.TransportFactoryCompressedName,
 					CompressedListenerConnection,
-					netListener.UserContextValue(pairInformation)),
+					netListener.UserContextValue(pairInformation),
+					netListener.MaxConnectionsSetting(maxConnections)),
 			}),
 	)
 }

@@ -15,7 +15,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func TextListener(url string, pairInformation ...*common.PairInformation) fx.Option {
+func TextListener(maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
 	const TextListenerConnection = "TextListenerConnection"
 	return fx.Options(
 		fx.Provide(
@@ -47,7 +47,8 @@ func TextListener(url string, pairInformation ...*common.PairInformation) fx.Opt
 					url,
 					impl.TransportFactoryEmptyName,
 					TextListenerConnection,
-					netListener.UserContextValue(pairInformation)),
+					netListener.UserContextValue(pairInformation),
+					netListener.MaxConnectionsSetting(maxConnections)),
 			}),
 	)
 }

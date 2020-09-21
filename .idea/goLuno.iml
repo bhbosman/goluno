@@ -4,6 +4,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
     <content url="file://$MODULE_DIR$/../goMarketData" />
+    <content url="file://$MODULE_DIR$/../goMessages" />
     <content url="file://$MODULE_DIR$/../gocommon" />
     <content url="file://$MODULE_DIR$/../gocomms" />
     <content url="file://$MODULE_DIR$/../gologging" />

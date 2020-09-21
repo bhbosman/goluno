@@ -13,6 +13,7 @@ type AppSettings struct {
 	compressedListenerUrl string
 	httpListenerUrl       string
 	canDial               []netDial.ICanDial
+	macConnections        int
 }
 
 type ILunoStreamAppApplySettings interface {

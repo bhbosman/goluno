@@ -20,10 +20,10 @@ import (
 type SerializeData func(m proto.Message) (goprotoextra.IReadWriterSize, error)
 type ConnectionReactor struct {
 	impl.BaseConnectionReactor
-	messageRouter *messageRouter.MessageRouter
-	PubSub        *pubsub.PubSub
-	Pairs         []*common.PairInformation
-	SerializeData SerializeData
+	messageRouter   *messageRouter.MessageRouter
+	PubSub          *pubsub.PubSub
+	Pairs           []*common.PairInformation
+	SerializeData   SerializeData
 	ConsumerCounter *ConsumerCounter.ConsumerCounter
 }
 
@@ -67,16 +67,17 @@ func (self *ConnectionReactor) Init(
 		republishTopics = append(republishTopics, common.RepublishName(pair.Pair))
 		publishTopics = append(publishTopics, common.PublishName(pair.Pair))
 	}
+
 	ch := self.PubSub.Sub(publishTopics...)
 	go func(ch chan interface{}, topics ...string) {
 		defer self.PubSub.Unsub(ch, topics...)
-		for {
-			select {
-			case <-self.CancelCtx.Done():
-				return
-			case v := <-ch:
+		<-self.CancelCtx.Done()
+	}(ch, publishTopics...)
 
-				self.ToReactor(false, v)
+	go func(ch chan interface{}, topics ...string) {
+		for v := range ch {
+			if self.CancelCtx.Err() == nil {
+				_ = self.ToReactor(false, v)
 			}
 		}
 	}(ch, publishTopics...)
@@ -91,6 +92,9 @@ func (self *ConnectionReactor) doNext(external bool, i interface{}) {
 }
 
 func (self *ConnectionReactor) HandleTop5(top5 *marketDataStream.PublishTop5) error {
+	if self.CancelCtx.Err() != nil {
+		return self.CancelCtx.Err()
+	}
 	marshal, err := self.SerializeData(top5)
 	if err != nil {
 		return err
@@ -99,12 +103,10 @@ func (self *ConnectionReactor) HandleTop5(top5 *marketDataStream.PublishTop5) er
 	return nil
 }
 
-
 func (self *ConnectionReactor) Open() error {
 	self.ConsumerCounter.AddConsumer()
 	return self.BaseConnectionReactor.Open()
 }
-
 
 func (self *ConnectionReactor) Close() error {
 	self.ConsumerCounter.RemoveConsumer()

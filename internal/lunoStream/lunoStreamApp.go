@@ -4,6 +4,7 @@ import (
 	"github.com/bhbosman/goLuno/internal"
 	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	app2 "github.com/bhbosman/gocommon/app"
+	"github.com/bhbosman/gocommon/stream"
 	"github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
@@ -12,12 +13,11 @@ import (
 	"github.com/bhbosman/gologging"
 	"go.uber.org/fx"
 	"log"
-	"os"
 )
 
 func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 	settings := &AppSettings{
-		logger:                log.New(os.Stdout, "", log.LstdFlags),
+		logger:                log.New(&stream.NullWriter{}, "", log.LstdFlags),
 		pairs:                 nil,
 		textListenerUrl:       "tcp4://127.0.0.1:3000",
 		compressedListenerUrl: "tcp4://127.0.0.1:3001",
@@ -39,9 +39,12 @@ func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 		endpoints.RegisterConnectionManagerEndpoint(),
 		view.RegisterConnectionsHtmlTemplate(),
 		impl.RegisterAllConnectionRelatedServices(),
-		TextListener(settings.textListenerUrl, settings.pairs...),
-		CompressedListener(settings.compressedListenerUrl, settings.pairs...),
-		Dialers(CanDial(ConsumerCounter), AddPairsInformation(settings.pairs)),
+		TextListener(1024, settings.textListenerUrl, settings.pairs...),
+		CompressedListener(1024, settings.compressedListenerUrl, settings.pairs...),
+		Dialers(
+			CanDial(ConsumerCounter),
+			AddPairsInformation(settings.pairs),
+			MaxConnections(1)),
 		ProvideReadLunoKeys(),
 		internal.InvokeApps(),
 	)
