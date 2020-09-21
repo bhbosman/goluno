@@ -5,8 +5,9 @@ import (
 	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/listener"
-	"github.com/bhbosman/gocommon/comms/commsImpl"
-	"github.com/bhbosman/gocommon/comms/netListener"
+	"github.com/bhbosman/gocomms/impl"
+	"github.com/bhbosman/gocomms/intf"
+	"github.com/bhbosman/gocomms/netListener"
 	"github.com/bhbosman/gomessageblock"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
@@ -19,12 +20,12 @@ func TextListener(url string, pairInformation ...*common.PairInformation) fx.Opt
 	return fx.Options(
 		fx.Provide(
 			fx.Annotated{
-				Group: commsImpl.ConnectionReactorFactoryConst,
+				Group: impl.ConnectionReactorFactoryConst,
 				Target: func(params struct {
 					fx.In
 					PubSub          *pubsub.PubSub `name:"Application"`
 					ConsumerCounter *ConsumerCounter.ConsumerCounter
-				}) (commsImpl.IConnectionReactorFactory, error) {
+				}) (intf.IConnectionReactorFactory, error) {
 					return listener.NewConnectionReactorFactory(
 						TextListenerConnection,
 						params.PubSub,
@@ -44,7 +45,7 @@ func TextListener(url string, pairInformation ...*common.PairInformation) fx.Opt
 				Target: netListener.NewNetListenApp(
 					TextListenerConnection,
 					url,
-					commsImpl.TransportFactoryEmptyName,
+					impl.TransportFactoryEmptyName,
 					TextListenerConnection,
 					netListener.UserContextValue(pairInformation)),
 			}),

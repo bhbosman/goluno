@@ -2,7 +2,7 @@ package lunoStream
 
 import (
 	"github.com/bhbosman/goLuno/internal/common"
-	"github.com/bhbosman/gocommon/comms/netDial"
+	"github.com/bhbosman/gocomms/netDial"
 	"log"
 )
 

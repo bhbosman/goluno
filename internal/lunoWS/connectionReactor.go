@@ -4,20 +4,20 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/bhbosman/gologging"
-	"github.com/bhbosman/gomessageblock"
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/fullMarketData"
 	"github.com/bhbosman/goLuno/internal/lunoWS/internal"
 	lunaRawDataFeed "github.com/bhbosman/goMessages/luno/stream"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
-	"github.com/bhbosman/gocommon/comms/commsImpl"
-	"github.com/bhbosman/gocommon/comms/connectionManager"
+	"github.com/bhbosman/gocomms/impl"
+	"github.com/bhbosman/gocomms/connectionManager"
+	"github.com/bhbosman/gologging"
+	"github.com/bhbosman/gomessageblock"
 
 	"github.com/bhbosman/gocommon/messageRouter"
 
-	"github.com/bhbosman/gocommon/stacks/websocket/wsmsg"
 	"github.com/bhbosman/gocommon/stream"
+	"github.com/bhbosman/gocomms/stacks/websocket/wsmsg"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"github.com/golang/protobuf/jsonpb"
@@ -29,7 +29,7 @@ import (
 )
 
 type ConnectionReactor struct {
-	commsImpl.BaseConnectionReactor
+	impl.BaseConnectionReactor
 	messageRouter        *messageRouter.MessageRouter
 	APIKeyID             string
 	APIKeySecret         string
@@ -276,7 +276,7 @@ func NewConnectionReactor(
 	userContext interface{}) *ConnectionReactor {
 	LunoPairInformation, _ := userContext.(*common.PairInformation)
 	return &ConnectionReactor{
-		BaseConnectionReactor: commsImpl.NewBaseConnectionReactor(
+		BaseConnectionReactor: impl.NewBaseConnectionReactor(
 			logger, name, cancelCtx, cancelFunc, userContext),
 		messageRouter:       messageRouter.NewMessageRouter(),
 		APIKeyID:            APIKeyID,

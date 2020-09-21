@@ -3,7 +3,7 @@ package lunoStream
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/bhbosman/gocommon/comms/commsImpl"
+	"github.com/bhbosman/gocomms/impl"
 	"go.uber.org/fx"
 	"os"
 	"os/user"
@@ -34,7 +34,7 @@ func ProvideReadLunoKeys() fx.Option {
 		return nil
 	}
 	return fx.Options(
-		fx.Provide(fx.Annotated{Name: "LunoAPIKeyID", Target: commsImpl.CreateStringContext(data.Key)}),
-		fx.Provide(fx.Annotated{Name: "LunoAPIKeySecret", Target: commsImpl.CreateStringContext(data.Secret)}),
+		fx.Provide(fx.Annotated{Name: "LunoAPIKeyID", Target: impl.CreateStringContext(data.Key)}),
+		fx.Provide(fx.Annotated{Name: "LunoAPIKeySecret", Target: impl.CreateStringContext(data.Secret)}),
 	)
 }

@@ -5,9 +5,9 @@ import (
 	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/goLuno/internal/common"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
-	"github.com/bhbosman/gocommon/comms/commsImpl"
-	"github.com/bhbosman/gocommon/comms/connectionManager"
 	"github.com/bhbosman/gocommon/messageRouter"
+	"github.com/bhbosman/gocomms/connectionManager"
+	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gologging"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
@@ -19,7 +19,7 @@ import (
 
 type SerializeData func(m proto.Message) (goprotoextra.IReadWriterSize, error)
 type ConnectionReactor struct {
-	commsImpl.BaseConnectionReactor
+	impl.BaseConnectionReactor
 	messageRouter *messageRouter.MessageRouter
 	PubSub        *pubsub.PubSub
 	Pairs         []*common.PairInformation
@@ -38,7 +38,7 @@ func NewConnectionReactor(
 	ConsumerCounter *ConsumerCounter.ConsumerCounter) *ConnectionReactor {
 	Pairs, _ := userContext.([]*common.PairInformation)
 	result := &ConnectionReactor{
-		BaseConnectionReactor: commsImpl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc, userContext),
+		BaseConnectionReactor: impl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc, userContext),
 		messageRouter:         messageRouter.NewMessageRouter(),
 		PubSub:                PubSub,
 		Pairs:                 Pairs,
