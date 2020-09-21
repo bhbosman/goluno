@@ -4,5 +4,8 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMarketData" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocommon" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../gocomms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../gologging" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../gomessageblock" vcs="Git" />
   </component>
 </project>
