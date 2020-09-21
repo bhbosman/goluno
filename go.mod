@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/ReactiveX/RxGo v1.0.0 // indirect
 	github.com/bhbosman/goMessages v0.0.0-20200918071950-29c6c3c09ea4
-	github.com/bhbosman/gocommon v0.0.0-20200921150520-cc621deede70
+	github.com/bhbosman/gocommon v0.0.0-20200921152036-2cd07a0b818b
 	github.com/bhbosman/goprotoextra v0.0.1
 	github.com/cskr/pubsub v1.0.2
 	github.com/emirpasic/gods v1.12.0
