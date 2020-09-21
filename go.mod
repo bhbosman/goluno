@@ -3,8 +3,9 @@ module github.com/bhbosman/goLuno
 go 1.15
 
 require (
+	github.com/ReactiveX/RxGo v1.0.0 // indirect
 	github.com/bhbosman/goMessages v0.0.0-20200918071950-29c6c3c09ea4
-	github.com/bhbosman/gocommon v0.0.0-20200918200208-fb0eff68078e
+	github.com/bhbosman/gocommon v0.0.0-20200921150520-cc621deede70
 	github.com/bhbosman/goprotoextra v0.0.1
 	github.com/cskr/pubsub v1.0.2
 	github.com/emirpasic/gods v1.12.0
@@ -22,7 +23,6 @@ require (
 )
 
 replace github.com/reactivex/rxgo/v2 v2.1.0 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20200918045653-8f289de0d2ff
-
 
 //for DEV
 replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbosman/gocommon
