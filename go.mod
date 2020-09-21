@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	github.com/bhbosman/goMessages v0.0.0-20200918071950-29c6c3c09ea4
-	github.com/bhbosman/gocommon v0.0.0-20200921180949-96804bbac1f1
+	github.com/bhbosman/gocommon v0.0.0-20200921215456-bfddd9bb050e
 	github.com/bhbosman/gocomms v0.0.0-20200921215103-85dd2b219cf0
 	github.com/bhbosman/gologging v0.0.0-20200921180328-d29fc55c00bc
 	github.com/bhbosman/gomessageblock v0.0.0-20200921180725-7cd29a998aa3
@@ -23,6 +23,6 @@ require (
 replace github.com/reactivex/rxgo/v2 v2.1.0 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20200918045653-8f289de0d2ff
 
 //for DEV
-replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbosman/gocommon
+//replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbosman/gocommon
 
-replace github.com/bhbosman/gocomms => /Users/brendanbosman/src/github.com/bhbosman/gocomms
+//replace github.com/bhbosman/gocomms => /Users/brendanbosman/src/github.com/bhbosman/gocomms
