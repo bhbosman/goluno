@@ -3,7 +3,7 @@ package internal
 import (
 	"context"
 	app2 "github.com/bhbosman/gocommon/app"
-	"github.com/bhbosman/gocommon/log"
+	"github.com/bhbosman/gologging"
 	"go.uber.org/fx"
 )
 
@@ -13,7 +13,7 @@ func InvokeApps() fx.Option {
 			fx.In
 			Lifecycle      fx.Lifecycle
 			Apps           []*fx.App `group:"Apps"`
-			Logger         *log.Factory
+			Logger         *gologging.Factory
 			RunTimeManager *app2.RunTimeManager
 		}) {
 			params.Lifecycle.Append(fx.Hook{

@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/bhbosman/gologging"
+	"github.com/bhbosman/gomessageblock"
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/fullMarketData"
 	"github.com/bhbosman/goLuno/internal/lunoWS/internal"
@@ -11,9 +13,9 @@ import (
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/comms/commsImpl"
 	"github.com/bhbosman/gocommon/comms/connectionManager"
-	"github.com/bhbosman/gocommon/log"
+
 	"github.com/bhbosman/gocommon/messageRouter"
-	"github.com/bhbosman/gocommon/multiBlock"
+
 	"github.com/bhbosman/gocommon/stacks/websocket/wsmsg"
 	"github.com/bhbosman/gocommon/stream"
 	"github.com/bhbosman/goprotoextra"
@@ -41,7 +43,7 @@ type ConnectionReactor struct {
 }
 
 func (self *ConnectionReactor) SendMessage(message proto.Message) error {
-	rws := multiBlock.NewReaderWriter()
+	rws := gomessageblock.NewReaderWriter()
 	m := jsonpb.Marshaler{}
 	err := m.Marshal(rws, message)
 	if err != nil {
@@ -120,7 +122,7 @@ func (self *ConnectionReactor) doNext(external bool, i interface{}) {
 	}
 }
 
-func (self *ConnectionReactor) HandleReaderWriter(msg *multiBlock.ReaderWriter) error {
+func (self *ConnectionReactor) HandleReaderWriter(msg *gomessageblock.ReaderWriter) error {
 	marshal, err := stream.UnMarshal(msg, self.CancelCtx, self.CancelFunc, self.ToReactor, self.ToConnection)
 	if err != nil {
 		return err
@@ -264,7 +266,7 @@ func (self *ConnectionReactor) HandleWebSocketMessageWrapper(msg *wsmsg.WebSocke
 }
 
 func NewConnectionReactor(
-	logger *log.SubSystemLogger,
+	logger *gologging.SubSystemLogger,
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,

@@ -9,7 +9,7 @@ import (
 	"github.com/bhbosman/gocommon/comms/connectionManager/endpoints"
 	"github.com/bhbosman/gocommon/comms/connectionManager/view"
 	"github.com/bhbosman/gocommon/comms/http"
-	log2 "github.com/bhbosman/gocommon/log"
+	"github.com/bhbosman/gologging"
 	"go.uber.org/fx"
 	"log"
 	"os"
@@ -31,7 +31,7 @@ func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 	fxApp := fx.New(
 		fx.Supply(settings, ConsumerCounter),
 		fx.Logger(settings.logger),
-		log2.ProvideLogFactory(settings.logger, nil),
+		gologging.ProvideLogFactory(settings.logger, nil),
 		fx.Populate(&shutDowner),
 		app2.RegisterRootContext(),
 		connectionManager.RegisterDefaultConnectionManager(),

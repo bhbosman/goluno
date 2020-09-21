@@ -7,7 +7,7 @@ import (
 	"github.com/bhbosman/goLuno/internal/listener"
 	"github.com/bhbosman/gocommon/comms/commsImpl"
 	"github.com/bhbosman/gocommon/comms/netListener"
-	"github.com/bhbosman/gocommon/multiBlock"
+	"github.com/bhbosman/gomessageblock"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
@@ -33,7 +33,7 @@ func TextListener(url string, pairInformation ...*common.PairInformation) fx.Opt
 							if err != nil {
 								return nil, err
 							}
-							return multiBlock.NewReaderWriterBlock(bytes), nil
+							return gomessageblock.NewReaderWriterBlock(bytes), nil
 						},
 						params.ConsumerCounter), nil
 				},

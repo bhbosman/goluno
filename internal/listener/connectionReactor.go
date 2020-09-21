@@ -7,8 +7,8 @@ import (
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/comms/commsImpl"
 	"github.com/bhbosman/gocommon/comms/connectionManager"
-	"github.com/bhbosman/gocommon/log"
 	"github.com/bhbosman/gocommon/messageRouter"
+	"github.com/bhbosman/gologging"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"github.com/reactivex/rxgo/v2"
@@ -28,7 +28,7 @@ type ConnectionReactor struct {
 }
 
 func NewConnectionReactor(
-	logger *log.SubSystemLogger,
+	logger *gologging.SubSystemLogger,
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,

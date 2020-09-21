@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/gocommon/comms/commsImpl"
-	"github.com/bhbosman/gocommon/log"
+	"github.com/bhbosman/gologging"
 	"github.com/cskr/pubsub"
 )
 
@@ -19,7 +19,7 @@ func (self *ConnectionReactorFactory) Create(
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
-	logger *log.SubSystemLogger,
+	logger *gologging.SubSystemLogger,
 	userContext interface{}) commsImpl.IConnectionReactor {
 	result := NewConnectionReactor(
 		logger,
