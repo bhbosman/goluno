@@ -7,9 +7,6 @@
     <content url="file://$MODULE_DIR$/../goMessages" />
     <content url="file://$MODULE_DIR$/../gocommon" />
     <content url="file://$MODULE_DIR$/../gocomms" />
-    <content url="file://$MODULE_DIR$/../gologging" />
-    <content url="file://$MODULE_DIR$/../gomessageblock" />
-    <content url="file://$MODULE_DIR$/../goprotoextra" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

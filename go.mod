@@ -19,7 +19,7 @@ require (
 	google.golang.org/protobuf v1.25.0
 )
 
-replace github.com/reactivex/rxgo/v2 v2.1.0 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20200918045653-8f289de0d2ff
+replace github.com/reactivex/rxgo/v2 v2.1.0 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20200922152528-6aef42e76e00
 
 //for DEV
 replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbosman/gocommon
@@ -27,3 +27,5 @@ replace github.com/bhbosman/gocommon => /Users/brendanbosman/src/github.com/bhbo
 replace github.com/bhbosman/gocomms => /Users/brendanbosman/src/github.com/bhbosman/gocomms
 
 replace github.com/bhbosman/goMessages => /Users/brendanbosman/src/github.com/bhbosman/goMessages
+
+//replace github.com/reactivex/rxgo/v2 v2.1.0 => /Users/brendanbosman/src/github.com/ReactiveX/RxGo
