@@ -1,14 +1,11 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/bhbosman/goMessages v0.0.0-20200918071950-29c6c3c09ea4 h1:MGftkaZ8Pnxw4PRebu+2AaU1OsUrFVZX0rfjWN/foPM=
-github.com/bhbosman/goMessages v0.0.0-20200918071950-29c6c3c09ea4/go.mod h1:JCSgytcx9RSaAJN+fbg7fcKtd4t7T8uKrnM7ccRT9JU=
-github.com/bhbosman/gocommon v0.0.0-20200921180949-96804bbac1f1 h1:cxR+9dM0+ooNbfVqrbUNlngoTNJwUELaEWHShisYsZw=
-github.com/bhbosman/gocommon v0.0.0-20200921180949-96804bbac1f1/go.mod h1:Gsu+JpPMPeZmOsNVs+VbEWxm7dqh0/lIX5Vnfk5l+pM=
+github.com/bhbosman/goMessages v0.0.0-20200922081308-8c8f88094624 h1:0Iz4oHdkL/HUXAoREAje5lURhjXBaWlu/G7PcRjh7h0=
+github.com/bhbosman/goMessages v0.0.0-20200922081308-8c8f88094624/go.mod h1:iBUstMHvgPQ3Aa06jh/jmC9fxYpJk8fPjM89qEorO/A=
 github.com/bhbosman/gocommon v0.0.0-20200921215456-bfddd9bb050e h1:4o6OzhytoIFiDaOv1+c+I6+xGXWtr6AYWU8wzD/twA8=
 github.com/bhbosman/gocommon v0.0.0-20200921215456-bfddd9bb050e/go.mod h1:bl0WcS0qhk3nzfVrnXxZj1c+JwHwpjw2iTIOU5CQZ+8=
-github.com/bhbosman/gocomms v0.0.0-20200921185245-87f324c21c64 h1:tRuSmlSFrsjSedp8JnxGcb9UwFWAC5b+RKkyBbb9bJk=
-github.com/bhbosman/gocomms v0.0.0-20200921215103-85dd2b219cf0 h1:VDDbbUO4YutTDJEBZi1pcGW2JNGq76eTG+cTOgZgo+I=
-github.com/bhbosman/gocomms v0.0.0-20200921215103-85dd2b219cf0/go.mod h1:P1aGOL+MTx5FxMOSZGVCJ7r0FwnRw1fYbtxOtka0N8U=
+github.com/bhbosman/gocomms v0.0.0-20200922180846-e1a99ac26663 h1:n7yZ0cvNf9/uq4AvjFQ9e0OviblgLo5zGQ7xKW3SKV0=
+github.com/bhbosman/gocomms v0.0.0-20200922180846-e1a99ac26663/go.mod h1:Xj2clJ6T+zbkmbFC0+Zwm/FBfJ8DvKlsQrbvNcmNyKk=
 github.com/bhbosman/goerrors v0.0.0-20200918064252-e47717b09c4f h1:tn+HxggOxuewICKQ+p4mLoRyfE503xgIhWDo+2Z3dWk=
 github.com/bhbosman/goerrors v0.0.0-20200918064252-e47717b09c4f/go.mod h1:Otn1qS556wnQOL+lAkheIV/UxgKITTmY3KDYAXkQbfQ=
 github.com/bhbosman/gologging v0.0.0-20200921180328-d29fc55c00bc h1:W2SGlAixV5+dBq5da/dVJDYcUxEItIA5IdqdLTjnaLQ=
@@ -19,8 +16,6 @@ github.com/bhbosman/goprotoextra v0.0.1 h1:CoIa6MSq9A3CMqrpStgpgh/Q731HSDyGoa0bz
 github.com/bhbosman/goprotoextra v0.0.1/go.mod h1:8KtYuUDuRrZU4VOpB9r2YKWJtuThaB2ep3OtJdsF+zU=
 github.com/bhbosman/gorxextra v0.0.0-20200918070301-48dbd8b934dc h1:NMbD4FomqA6P9U2AM2+2hU7J4abIadK5mGgD3I5sijI=
 github.com/bhbosman/gorxextra v0.0.0-20200918070301-48dbd8b934dc/go.mod h1:tEwpbgFFydqczSq55t29rLrK9dz4+9ShWsBdKk3WTnU=
-github.com/bhbosman/rxgo/v2 v2.1.1-0.20200918045653-8f289de0d2ff h1:8gDq0iAqbViUX6EhVDuCsKwjgIhEBrgSB9twUptZ8NU=
-github.com/bhbosman/rxgo/v2 v2.1.1-0.20200918045653-8f289de0d2ff/go.mod h1:qpxLDy6Si15bBNnGrAYOHPj0Dgx75Qs82hUp4ZSMj98=
 github.com/bhbosman/rxgo/v2 v2.1.1-0.20200922152528-6aef42e76e00 h1:QJDRQLoBtUCe+NUKX5UT3H88tBMNXnnVT6J8L0JjjIg=
 github.com/bhbosman/rxgo/v2 v2.1.1-0.20200922152528-6aef42e76e00/go.mod h1:jzCqxCtjqmZLvMdKneicaw4aKB+1iRtvd9etRY4gDNI=
 github.com/cenkalti/backoff/v4 v4.0.2 h1:JIufpQLbh4DkbQoii76ItQIUFzevQSqOLZca4eamEDs=
@@ -36,8 +31,6 @@ github.com/emirpasic/gods v1.12.0 h1:QAUIPSaCu4G+POclxeqb3F+WPpdKqFGlw36+yOzGlrg
 github.com/emirpasic/gods v1.12.0/go.mod h1:YfzfFFoVP/catgzJb4IKIqXjX78Ha8FMSDh3ymbK86o=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7+kN2VEUnK/pcBlmesArF7c=
-github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee h1:s+21KNqlpePfkah2I+gwHF8xmJWRjooY+5248k6m4A0=
-github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee/go.mod h1:L0fX3K22YWvt/FAX9NnzrNzcI4wNYi9Yku4O0LKYflo=
 github.com/gobwas/httphead v0.0.0-20200921212729-da3d93bc3c58 h1:YyrUZvJaU8Q0QsoVo+xLFBgWDTam29PKea6GYmwvSiQ=
 github.com/gobwas/httphead v0.0.0-20200921212729-da3d93bc3c58/go.mod h1:L0fX3K22YWvt/FAX9NnzrNzcI4wNYi9Yku4O0LKYflo=
 github.com/gobwas/pool v0.2.1 h1:xfeeEhW7pwmX8nuLVlqbzVc7udMDrwetjEv+TZIz1og=
