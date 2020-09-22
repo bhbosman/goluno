@@ -9,8 +9,8 @@ import (
 	"github.com/bhbosman/goLuno/internal/lunoWS/internal"
 	lunaRawDataFeed "github.com/bhbosman/goMessages/luno/stream"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
-	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/connectionManager"
+	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gologging"
 	"github.com/bhbosman/gomessageblock"
 
@@ -86,12 +86,13 @@ func (self *ConnectionReactor) Init(
 
 	republishChannel := self.PubSub.Sub(self.republishChannelName)
 	go func(ch chan interface{}, topics ...string) {
-		defer self.PubSub.Unsub(ch, topics...)
-		for {
-			select {
-			case <-self.CancelCtx.Done():
-				return
-			case <-ch:
+		<-self.CancelCtx.Done()
+		self.PubSub.Unsub(ch, topics...)
+	}(republishChannel, self.republishChannelName)
+
+	go func(ch chan interface{}, topics ...string) {
+		for range ch {
+			if self.CancelCtx.Err() == nil {
 				_ = self.ToReactor(false, &internal.PublishMessage{})
 			}
 		}
