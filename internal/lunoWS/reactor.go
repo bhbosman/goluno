@@ -28,7 +28,7 @@ import (
 	"net/url"
 )
 
-type ConnectionReactor struct {
+type Reactor struct {
 	impl.BaseConnectionReactor
 	messageRouter        *messageRouter.MessageRouter
 	APIKeyID             string
@@ -42,7 +42,7 @@ type ConnectionReactor struct {
 	sequence             int64
 }
 
-func (self *ConnectionReactor) SendMessage(message proto.Message) error {
+func (self *Reactor) SendMessage(message proto.Message) error {
 	rws := gomessageblock.NewReaderWriter()
 	m := jsonpb.Marshaler{}
 	err := m.Marshal(rws, message)
@@ -65,7 +65,7 @@ func (self *ConnectionReactor) SendMessage(message proto.Message) error {
 	return self.ToConnection(readWriterSize)
 }
 
-func (self *ConnectionReactor) Init(
+func (self *Reactor) Init(
 	conn net.Conn,
 	url *url.URL,
 	connectionId string,
@@ -101,7 +101,7 @@ func (self *ConnectionReactor) Init(
 	return self.doNext, nil
 }
 
-func (self *ConnectionReactor) Close() error {
+func (self *Reactor) Close() error {
 	top5 := &marketDataStream.PublishTop5{
 		Instrument: self.LunoPairInformation.Pair,
 	}
@@ -111,19 +111,19 @@ func (self *ConnectionReactor) Close() error {
 	return err
 }
 
-func (self *ConnectionReactor) Open() error {
+func (self *Reactor) Open() error {
 	err := self.BaseConnectionReactor.Open()
 	return err
 }
 
-func (self *ConnectionReactor) doNext(external bool, i interface{}) {
+func (self *Reactor) doNext(external bool, i interface{}) {
 	_, err := self.messageRouter.Route(i)
 	if err != nil {
 		return
 	}
 }
 
-func (self *ConnectionReactor) HandleReaderWriter(msg *gomessageblock.ReaderWriter) error {
+func (self *Reactor) HandleReaderWriter(msg *gomessageblock.ReaderWriter) error {
 	marshal, err := stream.UnMarshal(msg, self.CancelCtx, self.CancelFunc, self.ToReactor, self.ToConnection)
 	if err != nil {
 		return err
@@ -132,16 +132,16 @@ func (self *ConnectionReactor) HandleReaderWriter(msg *gomessageblock.ReaderWrit
 	return err
 }
 
-func (self *ConnectionReactor) HandlePublishMessage(msg *internal.PublishMessage) error {
+func (self *Reactor) HandlePublishMessage(msg *internal.PublishMessage) error {
 	return self.publishData(true)
 }
 
-func (self *ConnectionReactor) HandleEmptyQueue(msg *rxgo.EmptyQueue) error {
+func (self *Reactor) HandleEmptyQueue(msg *rxgo.EmptyQueue) error {
 	self.Logger.LogWithLevel(0, func(logger *log2.Logger) {
 	})
 	return self.publishData(false)
 }
-func (self *ConnectionReactor) publishData(forcePublish bool) error {
+func (self *Reactor) publishData(forcePublish bool) error {
 	thereWasAChange := forcePublish
 	maxDepth := 2
 	var bids []*marketDataStream.Point
@@ -199,7 +199,7 @@ func (self *ConnectionReactor) publishData(forcePublish bool) error {
 	return nil
 }
 
-func (self *ConnectionReactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamData) error {
+func (self *Reactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamData) error {
 	self.FullMarketOrderBook.SetTimeStamp(msg.Timestamp)
 	self.FullMarketOrderBook.UpdateMessageReceivedCount()
 	switch {
@@ -237,7 +237,7 @@ func (self *ConnectionReactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamDat
 	return nil
 }
 
-func (self *ConnectionReactor) HandleWebSocketMessageWrapper(msg *wsmsg.WebSocketMessageWrapper) error {
+func (self *Reactor) HandleWebSocketMessageWrapper(msg *wsmsg.WebSocketMessageWrapper) error {
 	switch msg.Data.OpCode {
 	case wsmsg.WebSocketMessage_OpText:
 		unMarshaler := jsonpb.Unmarshaler{
@@ -274,9 +274,9 @@ func NewConnectionReactor(
 	APIKeyID string,
 	APIKeySecret string,
 	PubSub *pubsub.PubSub,
-	userContext interface{}) *ConnectionReactor {
+	userContext interface{}) *Reactor {
 	LunoPairInformation, _ := userContext.(*common.PairInformation)
-	return &ConnectionReactor{
+	return &Reactor{
 		BaseConnectionReactor: impl.NewBaseConnectionReactor(
 			logger, name, cancelCtx, cancelFunc, userContext),
 		messageRouter:       messageRouter.NewMessageRouter(),

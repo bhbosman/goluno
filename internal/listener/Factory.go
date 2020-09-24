@@ -8,14 +8,14 @@ import (
 	"github.com/cskr/pubsub"
 )
 
-type ConnectionReactorFactory struct {
+type Factory struct {
 	name          string
 	PubSub        *pubsub.PubSub
 	SerializeData SerializeData
 	ConsumerCounter *ConsumerCounter.ConsumerCounter
 }
 
-func (self *ConnectionReactorFactory) Create(
+func (self *Factory) Create(
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
@@ -33,7 +33,7 @@ func (self *ConnectionReactorFactory) Create(
 	return result
 }
 
-func (self *ConnectionReactorFactory) Name() string {
+func (self *Factory) Name() string {
 	return self.name
 }
 
@@ -41,8 +41,8 @@ func NewConnectionReactorFactory(
 	name string,
 	pubSub *pubsub.PubSub,
 	SerializeData SerializeData,
-	ConsumerCounter *ConsumerCounter.ConsumerCounter) *ConnectionReactorFactory {
-	return &ConnectionReactorFactory{
+	ConsumerCounter *ConsumerCounter.ConsumerCounter) *Factory {
+	return &Factory{
 		name:            name,
 		PubSub:          pubSub,
 		SerializeData:   SerializeData,

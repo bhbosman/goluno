@@ -10,10 +10,6 @@ func (self *ConsumerCounter) CanDial() bool {
 	return self.count > 0
 }
 
-func (self *ConsumerCounter) DialSuccess() {
-	panic("implement me")
-}
-
 func (self *ConsumerCounter) RemoveConsumer() {
 	atomic.AddInt64(&self.count, -1)
 }
@@ -21,5 +17,3 @@ func (self *ConsumerCounter) RemoveConsumer() {
 func (self *ConsumerCounter) AddConsumer() {
 	atomic.AddInt64(&self.count, 1)
 }
-
-

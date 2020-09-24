@@ -18,7 +18,7 @@ import (
 )
 
 type SerializeData func(m proto.Message) (goprotoextra.IReadWriterSize, error)
-type ConnectionReactor struct {
+type Reactor struct {
 	impl.BaseConnectionReactor
 	messageRouter   *messageRouter.MessageRouter
 	PubSub          *pubsub.PubSub
@@ -27,28 +27,7 @@ type ConnectionReactor struct {
 	ConsumerCounter *ConsumerCounter.ConsumerCounter
 }
 
-func NewConnectionReactor(
-	logger *gologging.SubSystemLogger,
-	name string,
-	cancelCtx context.Context,
-	cancelFunc context.CancelFunc,
-	userContext interface{},
-	PubSub *pubsub.PubSub,
-	SerializeData SerializeData,
-	ConsumerCounter *ConsumerCounter.ConsumerCounter) *ConnectionReactor {
-	Pairs, _ := userContext.([]*common.PairInformation)
-	result := &ConnectionReactor{
-		BaseConnectionReactor: impl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc, userContext),
-		messageRouter:         messageRouter.NewMessageRouter(),
-		PubSub:                PubSub,
-		Pairs:                 Pairs,
-		SerializeData:         SerializeData,
-		ConsumerCounter:       ConsumerCounter,
-	}
-	return result
-}
-
-func (self *ConnectionReactor) Init(
+func (self *Reactor) Init(
 	conn net.Conn,
 	url *url.URL,
 	connectionId string,
@@ -87,11 +66,11 @@ func (self *ConnectionReactor) Init(
 	return self.doNext, nil
 }
 
-func (self *ConnectionReactor) doNext(external bool, i interface{}) {
+func (self *Reactor) doNext(external bool, i interface{}) {
 	_, _ = self.messageRouter.Route(i)
 }
 
-func (self *ConnectionReactor) HandleTop5(top5 *marketDataStream.PublishTop5) error {
+func (self *Reactor) HandleTop5(top5 *marketDataStream.PublishTop5) error {
 	if self.CancelCtx.Err() != nil {
 		return self.CancelCtx.Err()
 	}
@@ -103,12 +82,33 @@ func (self *ConnectionReactor) HandleTop5(top5 *marketDataStream.PublishTop5) er
 	return nil
 }
 
-func (self *ConnectionReactor) Open() error {
+func (self *Reactor) Open() error {
 	self.ConsumerCounter.AddConsumer()
 	return self.BaseConnectionReactor.Open()
 }
 
-func (self *ConnectionReactor) Close() error {
+func (self *Reactor) Close() error {
 	self.ConsumerCounter.RemoveConsumer()
 	return self.BaseConnectionReactor.Close()
+}
+
+func NewConnectionReactor(
+	logger *gologging.SubSystemLogger,
+	name string,
+	cancelCtx context.Context,
+	cancelFunc context.CancelFunc,
+	userContext interface{},
+	PubSub *pubsub.PubSub,
+	SerializeData SerializeData,
+	ConsumerCounter *ConsumerCounter.ConsumerCounter) *Reactor {
+	Pairs, _ := userContext.([]*common.PairInformation)
+	result := &Reactor{
+		BaseConnectionReactor: impl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc, userContext),
+		messageRouter:         messageRouter.NewMessageRouter(),
+		PubSub:                PubSub,
+		Pairs:                 Pairs,
+		SerializeData:         SerializeData,
+		ConsumerCounter:       ConsumerCounter,
+	}
+	return result
 }

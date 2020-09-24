@@ -15,17 +15,15 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-
-
-const CompressedListenerConnection = "CompressedListenerConnection"
 func CompressedListener(maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
+	const CompressedListenerConnection = "CompressedListenerConnection"
 	return fx.Options(
 		fx.Provide(
 			fx.Annotated{
 				Group: impl.ConnectionReactorFactoryConst,
 				Target: func(params struct {
 					fx.In
-					PubSub *pubsub.PubSub `name:"Application"`
+					PubSub          *pubsub.PubSub `name:"Application"`
 					ConsumerCounter *ConsumerCounter.ConsumerCounter
 				}) (intf.IConnectionReactorFactory, error) {
 					return listener.NewConnectionReactorFactory(

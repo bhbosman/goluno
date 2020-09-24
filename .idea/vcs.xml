@@ -3,8 +3,10 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMarketData" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../goMarketStructures" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMessages" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocommon" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocomms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../gokraken" vcs="Git" />
   </component>
 </project>

@@ -2,11 +2,16 @@
 <module type="WEB_MODULE" version="4">
   <component name="Go" enabled="true" />
   <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../goConnect" />
+    <content url="file://$MODULE_DIR$/../goEchoClient" />
+    <content url="file://$MODULE_DIR$/../goEchoServer" />
     <content url="file://$MODULE_DIR$" />
     <content url="file://$MODULE_DIR$/../goMarketData" />
+    <content url="file://$MODULE_DIR$/../goMarketStructures" />
     <content url="file://$MODULE_DIR$/../goMessages" />
     <content url="file://$MODULE_DIR$/../gocommon" />
     <content url="file://$MODULE_DIR$/../gocomms" />
+    <content url="file://$MODULE_DIR$/../gokraken" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
