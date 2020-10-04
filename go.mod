@@ -3,7 +3,7 @@ module github.com/bhbosman/goLuno
 go 1.15
 
 require (
-	github.com/bhbosman/goMessages v0.0.0-20200922081308-8c8f88094624
+	github.com/bhbosman/goMessages v0.0.0-20201004192822-66d168b4b744
 	github.com/bhbosman/gocommon v0.0.0-20200921215456-bfddd9bb050e
 	github.com/bhbosman/gocomms v0.0.0-20201004142558-41c4e9c3302c
 	github.com/bhbosman/gologging v0.0.0-20200921180328-d29fc55c00bc

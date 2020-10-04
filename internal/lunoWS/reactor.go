@@ -143,11 +143,10 @@ func (self *Reactor) HandleEmptyQueue(msg *rxgo.EmptyQueue) error {
 }
 func (self *Reactor) publishData(forcePublish bool) error {
 	thereWasAChange := forcePublish
-	maxDepth := 2
 	var bids []*marketDataStream.Point
 	if highBidNode := self.FullMarketOrderBook.OrderSide[fullMarketData.BuySide].Right(); highBidNode != nil {
 		count := 0
-		for node := highBidNode; node != nil && count < maxDepth; node = node.Prev() {
+		for node := highBidNode; node != nil; node = node.Prev() {
 			bidPrice := node.Key.(float64)
 			if pp, ok := node.Value.(*fullMarketData.PricePoint); ok {
 				thereWasAChange = thereWasAChange || pp.Touched
@@ -163,7 +162,7 @@ func (self *Reactor) publishData(forcePublish bool) error {
 	var asks []*marketDataStream.Point
 	if lowAskNode := self.FullMarketOrderBook.OrderSide[fullMarketData.AskSide].Left(); lowAskNode != nil {
 		count := 0
-		for node := lowAskNode; node != nil && count < maxDepth; node = node.Next() {
+		for node := lowAskNode; node != nil; node = node.Next() {
 			askPrice := node.Key.(float64)
 			if pp, ok := node.Value.(*fullMarketData.PricePoint); ok {
 				thereWasAChange = thereWasAChange || pp.Touched

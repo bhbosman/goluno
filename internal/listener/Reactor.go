@@ -2,6 +2,7 @@ package listener
 
 import (
 	"context"
+	"fmt"
 	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/goLuno/internal/common"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
@@ -15,6 +16,7 @@ import (
 	"google.golang.org/protobuf/proto"
 	"net"
 	"net/url"
+	"strings"
 )
 
 type SerializeData func(m proto.Message) (goprotoextra.IReadWriterSize, error)
@@ -74,6 +76,9 @@ func (self *Reactor) HandleTop5(top5 *marketDataStream.PublishTop5) error {
 	if self.CancelCtx.Err() != nil {
 		return self.CancelCtx.Err()
 	}
+	top5.Source = "LunoWS"
+	s := strings.Replace(fmt.Sprintf("%v.%v", top5.Source, top5.Instrument), "/", ".", -1)
+	top5.UniqueName = s
 	marshal, err := self.SerializeData(top5)
 	if err != nil {
 		return err
