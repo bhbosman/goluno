@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../goEchoServer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMarketData" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMarketStructures" vcs="Git" />
@@ -8,5 +9,6 @@
     <mapping directory="$PROJECT_DIR$/../gocommon" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocomms" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gokraken" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../reactivex/rxgo" vcs="Git" />
   </component>
 </project>
