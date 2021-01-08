@@ -3,12 +3,12 @@ package listener
 import (
 	"context"
 	"fmt"
-	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/goLuno/internal/common"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/messageRouter"
 	"github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/impl"
+	"github.com/bhbosman/gocomms/netDial"
 	"github.com/bhbosman/gologging"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
@@ -26,7 +26,7 @@ type Reactor struct {
 	PubSub          *pubsub.PubSub
 	Pairs           []*common.PairInformation
 	SerializeData   SerializeData
-	ConsumerCounter *ConsumerCounter.ConsumerCounter
+	ConsumerCounter *netDial.CanDialDefaultImpl
 }
 
 func (self *Reactor) Init(
@@ -105,7 +105,7 @@ func NewConnectionReactor(
 	userContext interface{},
 	PubSub *pubsub.PubSub,
 	SerializeData SerializeData,
-	ConsumerCounter *ConsumerCounter.ConsumerCounter) *Reactor {
+	ConsumerCounter *netDial.CanDialDefaultImpl) *Reactor {
 	Pairs, _ := userContext.([]*common.PairInformation)
 	result := &Reactor{
 		BaseConnectionReactor: impl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc, userContext),

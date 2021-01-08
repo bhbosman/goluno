@@ -2,13 +2,13 @@ package lunoStream
 
 import (
 	"github.com/bhbosman/goLuno/internal"
-	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	app2 "github.com/bhbosman/gocommon/app"
 	"github.com/bhbosman/gocommon/stream"
 	"github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
 	"github.com/bhbosman/gocomms/impl"
+	"github.com/bhbosman/gocomms/netDial"
 	"github.com/bhbosman/gocomms/provide"
 	"github.com/bhbosman/gologging"
 	"go.uber.org/fx"
@@ -26,7 +26,7 @@ func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 	for _, apply := range pairs {
 		apply.apply(settings)
 	}
-	ConsumerCounter := &ConsumerCounter.ConsumerCounter{}
+	ConsumerCounter := netDial.NewCanDialDefaultImpl()
 	var shutDowner fx.Shutdowner
 	fxApp := fx.New(
 		fx.Supply(settings, ConsumerCounter),

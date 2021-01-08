@@ -2,11 +2,11 @@ package lunoStream
 
 import (
 	"encoding/json"
-	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/listener"
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
+	"github.com/bhbosman/gocomms/netDial"
 	"github.com/bhbosman/gocomms/netListener"
 	"github.com/bhbosman/gomessageblock"
 	"github.com/bhbosman/goprotoextra"
@@ -24,7 +24,7 @@ func TextListener(maxConnections int, url string, pairInformation ...*common.Pai
 				Target: func(params struct {
 					fx.In
 					PubSub          *pubsub.PubSub `name:"Application"`
-					ConsumerCounter *ConsumerCounter.ConsumerCounter
+					ConsumerCounter *netDial.CanDialDefaultImpl
 				}) (intf.IConnectionReactorFactory, error) {
 					return listener.NewConnectionReactorFactory(
 						TextListenerConnection,

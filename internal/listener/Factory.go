@@ -2,8 +2,8 @@ package listener
 
 import (
 	"context"
-	"github.com/bhbosman/goLuno/internal/ConsumerCounter"
 	"github.com/bhbosman/gocomms/intf"
+	"github.com/bhbosman/gocomms/netDial"
 	"github.com/bhbosman/gologging"
 	"github.com/cskr/pubsub"
 )
@@ -12,7 +12,7 @@ type Factory struct {
 	name          string
 	PubSub        *pubsub.PubSub
 	SerializeData SerializeData
-	ConsumerCounter *ConsumerCounter.ConsumerCounter
+	ConsumerCounter *netDial.CanDialDefaultImpl
 }
 
 func (self *Factory) Create(
@@ -41,7 +41,7 @@ func NewConnectionReactorFactory(
 	name string,
 	pubSub *pubsub.PubSub,
 	SerializeData SerializeData,
-	ConsumerCounter *ConsumerCounter.ConsumerCounter) *Factory {
+	ConsumerCounter *netDial.CanDialDefaultImpl) *Factory {
 	return &Factory{
 		name:            name,
 		PubSub:          pubSub,
