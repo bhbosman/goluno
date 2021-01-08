@@ -18,11 +18,11 @@ func ProvideReadLunoKeys() fx.Option {
 	data := &lunoKeys{}
 	current, err := user.Current()
 	if err != nil {
-		return nil
+		return fx.Error(err)
 	}
 	f, err := os.Open(fmt.Sprintf("%v/.luno/keys.json", current.HomeDir))
 	if err != nil {
-		return nil
+		return fx.Error(err)
 	}
 
 	defer func() {
@@ -31,7 +31,7 @@ func ProvideReadLunoKeys() fx.Option {
 	decoder := json.NewDecoder(f)
 	err = decoder.Decode(data)
 	if err != nil {
-		return nil
+		return fx.Error(err)
 	}
 	return fx.Options(
 		fx.Provide(fx.Annotated{Name: "LunoAPIKeyID", Target: impl.CreateStringContext(data.Key)}),
