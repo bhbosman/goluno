@@ -9,9 +9,9 @@ import (
 )
 
 type Factory struct {
-	name          string
-	PubSub        *pubsub.PubSub
-	SerializeData SerializeData
+	name            string
+	PubSub          *pubsub.PubSub
+	SerializeData   SerializeData
 	ConsumerCounter *netDial.CanDialDefaultImpl
 }
 

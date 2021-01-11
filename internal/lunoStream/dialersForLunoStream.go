@@ -19,24 +19,26 @@ func Dialers(options ...DialersApply) fx.Option {
 
 	const LunoStreamConnectionReactorFactory = "LunoStreamConnectionReactorFactory"
 	var opt []fx.Option
-	opt = append(opt, fx.Provide(fx.Annotated{
-		Group: impl.ConnectionReactorFactoryConst,
-		Target: func(
-			params struct {
-				fx.In
-				PubSub *pubsub.PubSub `name:"Application"`
-				APIKeyID        string `name:"LunoAPIKeyID"`
-				APIKeySecret    string `name:"LunoAPIKeySecret"`
-			}) (intf.IConnectionReactorFactory, error) {
+	opt = append(
+		opt,
+		fx.Provide(fx.Annotated{
+			Group: impl.ConnectionReactorFactoryConst,
+			Target: func(
+				params struct {
+					fx.In
+					PubSub       *pubsub.PubSub `name:"Application"`
+					APIKeyID     string         `name:"LunoAPIKeyID"`
+					APIKeySecret string         `name:"LunoAPIKeySecret"`
+				}) (intf.IConnectionReactorFactory, error) {
 
-			return lunoWS.NewConnectionReactorFactory(
-				LunoStreamConnectionReactorFactory,
-				params.APIKeyID,
-				params.APIKeySecret,
-				params.PubSub), nil
+				return lunoWS.NewConnectionReactorFactory(
+					LunoStreamConnectionReactorFactory,
+					params.APIKeyID,
+					params.APIKeySecret,
+					params.PubSub), nil
 
-		},
-	}))
+			},
+		}))
 	for _, option := range settings.pairs {
 		opt = append(opt, fx.Provide(fx.Annotated{
 			Group: "Apps",
@@ -54,10 +56,9 @@ func Dialers(options ...DialersApply) fx.Option {
 }
 
 type lunoStreamDialersSettings struct {
-	pairs   []*common.PairInformation
-	canDial []netDial.ICanDial
+	pairs          []*common.PairInformation
+	canDial        []netDial.ICanDial
 	maxConnections int
-
 }
 type DialersApply interface {
 	apply(*lunoStreamDialersSettings)
@@ -89,9 +90,6 @@ func (self canDialSetting) apply(settings *lunoStreamDialersSettings) {
 		settings.canDial = append(settings.canDial, cd)
 	}
 }
-
-
-
 
 type maxConnectionsDialersApply struct {
 	maxConnections int
