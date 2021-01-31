@@ -18,6 +18,7 @@ func main() {
 		lunoStream.AddCurrencyPair(common.NewPairInformation("ETHXBT")),
 		lunoStream.AddCurrencyPair(common.NewPairInformation("BCHXBT")))
 	if app.Err() != nil {
+		println(app.Err().Error())
 		return
 	}
 	app.Run()
