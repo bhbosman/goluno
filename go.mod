@@ -19,4 +19,11 @@ require (
 )
 
 replace github.com/reactivex/rxgo/v2 v2.1.0 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20200922152528-6aef42e76e00
-replace github.com/bhbosman/gocomms => ../gocomms
+replace (
+	github.com/bhbosman/goMessages => ..\goMessages
+	github.com/bhbosman/gocommon => ..\gocommon
+	github.com/bhbosman/gocomms => ..\gocomms
+	github.com/bhbosman/gologging => ..\gologging
+	github.com/bhbosman/gomessageblock => ..\gomessageblock
+	github.com/bhbosman/goprotoextra => ..\goprotoextra
+)

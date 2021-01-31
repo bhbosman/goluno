@@ -10,8 +10,10 @@
     <content url="file://$MODULE_DIR$/../goMessages" />
     <content url="file://$MODULE_DIR$/../gocommon" />
     <content url="file://$MODULE_DIR$/../gocomms" />
+    <content url="file://$MODULE_DIR$/../goerrors" />
     <content url="file://$MODULE_DIR$/../gokraken" />
     <content url="file://$MODULE_DIR$/../goprotoextra" />
+    <content url="file://$MODULE_DIR$/../gorxextra" />
     <content url="file://$MODULE_DIR$/../govalr" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
