@@ -64,5 +64,3 @@ func (self setlogger) apply(settings *AppSettings) {
 func Logger(logger *log.Logger) *setlogger {
 	return &setlogger{logger: logger}
 }
-
-
