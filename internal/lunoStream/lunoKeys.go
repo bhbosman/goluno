@@ -14,6 +14,17 @@ type lunoKeys = struct {
 	Secret string `json:"secret"`
 }
 
+
+/*
+Example of the keys.json file
+{
+  "key": "(some key)",
+  "secret": "(some secret)"
+}
+*/
+
+
+
 func ProvideReadLunoKeys() fx.Option {
 	data := &lunoKeys{}
 	current, err := user.Current()
