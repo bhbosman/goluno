@@ -14,6 +14,11 @@ type ConnectionReactorFactory struct {
 	PubSub       *pubsub.PubSub
 }
 
+func (self *ConnectionReactorFactory) Values(inputValues map[string]interface{}) (map[string]interface{}, error) {
+	result := make(map[string]interface{})
+	return result, nil
+}
+
 func (self *ConnectionReactorFactory) Create(
 	name string,
 	cancelCtx context.Context,

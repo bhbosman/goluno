@@ -27,12 +27,13 @@ func CompressedListener(maxConnections int, url string, pairInformation ...*comm
 					ConsumerCounter *netDial.CanDialDefaultImpl
 				}) (intf.IConnectionReactorFactory, error) {
 					return listener.NewConnectionReactorFactory(
-						CompressedListenerConnection,
-						params.PubSub,
-						func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
-							return stream.Marshall(data)
-						},
-						params.ConsumerCounter), nil
+							CompressedListenerConnection,
+							params.PubSub,
+							func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
+								return stream.Marshall(data)
+							},
+							params.ConsumerCounter),
+						nil
 				},
 			}),
 		fx.Provide(
