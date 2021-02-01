@@ -10,6 +10,7 @@
     <mapping directory="$PROJECT_DIR$/../goMessages" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocommon" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocomms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../goerrors" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gokraken" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goprotoextra" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../govalr" vcs="Git" />
