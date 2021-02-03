@@ -12,10 +12,12 @@
     <content url="file://$MODULE_DIR$/../gocomms" />
     <content url="file://$MODULE_DIR$/../goerrors" />
     <content url="file://$MODULE_DIR$/../gokraken" />
+    <content url="file://$MODULE_DIR$/../gomessageblock" />
     <content url="file://$MODULE_DIR$/../goprotoextra" />
     <content url="file://$MODULE_DIR$/../gorxextra" />
     <content url="file://$MODULE_DIR$/../govalr" />
     <content url="file://$MODULE_DIR$/../../reactivex/rxgo" />
+    <content url="file://$MODULE_DIR$/../../../google.golang.org/protobuf" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

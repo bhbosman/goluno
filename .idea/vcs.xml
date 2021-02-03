@@ -12,9 +12,11 @@
     <mapping directory="$PROJECT_DIR$/../gocomms" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goerrors" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gokraken" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../gomessageblock" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goprotoextra" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gorxextra" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../govalr" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../reactivex/rxgo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../google.golang.org/protobuf" vcs="Git" />
   </component>
 </project>
