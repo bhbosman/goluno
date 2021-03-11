@@ -15,8 +15,23 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func TextListener(maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
+func TextListener(
+	pubSub *pubsub.PubSub,
+	ConsumerCounter *netDial.CanDialDefaultImpl,
+	maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
 	const TextListenerConnection = "TextListenerConnection"
+	cfr := listener.NewConnectionReactorFactory(
+		TextListenerConnection,
+		pubSub,
+		func(m proto.Message) (goprotoextra.IReadWriterSize, error) {
+			bytes, err := json.MarshalIndent(m, "", "\t")
+			if err != nil {
+				return nil, err
+			}
+			return gomessageblock.NewReaderWriterBlock(bytes), nil
+		},
+		ConsumerCounter)
+
 	return fx.Options(
 		fx.Provide(
 			fx.Annotated{
@@ -26,17 +41,7 @@ func TextListener(maxConnections int, url string, pairInformation ...*common.Pai
 					PubSub          *pubsub.PubSub `name:"Application"`
 					ConsumerCounter *netDial.CanDialDefaultImpl
 				}) (intf.IConnectionReactorFactory, error) {
-					return listener.NewConnectionReactorFactory(
-						TextListenerConnection,
-						params.PubSub,
-						func(m proto.Message) (goprotoextra.IReadWriterSize, error) {
-							bytes, err := json.MarshalIndent(m, "", "\t")
-							if err != nil {
-								return nil, err
-							}
-							return gomessageblock.NewReaderWriterBlock(bytes), nil
-						},
-						params.ConsumerCounter), nil
+					return cfr, nil
 				},
 			}),
 		fx.Provide(
@@ -45,8 +50,9 @@ func TextListener(maxConnections int, url string, pairInformation ...*common.Pai
 				Target: netListener.NewNetListenApp(
 					TextListenerConnection,
 					url,
-					impl.TransportFactoryEmptyName,
+					impl.CreateEmptyStack,
 					TextListenerConnection,
+					cfr,
 					netListener.UserContextValue(pairInformation),
 					netListener.MaxConnectionsSetting(maxConnections)),
 			}),

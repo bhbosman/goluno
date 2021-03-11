@@ -15,8 +15,18 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func CompressedListener(maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
+func CompressedListener(
+	pubSub *pubsub.PubSub,
+	ConsumerCounter *netDial.CanDialDefaultImpl,
+	maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
 	const CompressedListenerConnection = "CompressedListenerConnection"
+	cfr := listener.NewConnectionReactorFactory(
+		CompressedListenerConnection,
+		pubSub,
+		func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
+			return stream.Marshall(data)
+		},
+		ConsumerCounter)
 	return fx.Options(
 		fx.Provide(
 			fx.Annotated{
@@ -26,14 +36,7 @@ func CompressedListener(maxConnections int, url string, pairInformation ...*comm
 					PubSub          *pubsub.PubSub `name:"Application"`
 					ConsumerCounter *netDial.CanDialDefaultImpl
 				}) (intf.IConnectionReactorFactory, error) {
-					return listener.NewConnectionReactorFactory(
-							CompressedListenerConnection,
-							params.PubSub,
-							func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
-								return stream.Marshall(data)
-							},
-							params.ConsumerCounter),
-						nil
+					return cfr, nil
 				},
 			}),
 		fx.Provide(
@@ -42,8 +45,9 @@ func CompressedListener(maxConnections int, url string, pairInformation ...*comm
 				Target: netListener.NewNetListenApp(
 					CompressedListenerConnection,
 					url,
-					impl.TransportFactoryCompressedName,
+					impl.CreateCompressedStack,
 					CompressedListenerConnection,
+					cfr,
 					netListener.UserContextValue(pairInformation),
 					netListener.MaxConnectionsSetting(maxConnections)),
 			}),

@@ -11,13 +11,24 @@ import (
 	"go.uber.org/fx"
 )
 
-func Dialers(options ...DialersApply) fx.Option {
+func Dialers(
+	APIKeyID string,
+	APIKeySecret string,
+	pubSub *pubsub.PubSub,
+	ConsumerCounter *netDial.CanDialDefaultImpl,
+	options ...DialersApply) fx.Option {
 	settings := &lunoStreamDialersSettings{}
 	for _, option := range options {
 		option.apply(settings)
 	}
 
 	const LunoStreamConnectionReactorFactory = "LunoStreamConnectionReactorFactory"
+	cfr := lunoWS.NewConnectionReactorFactory(
+		LunoStreamConnectionReactorFactory,
+		APIKeyID,
+		APIKeySecret,
+		pubSub)
+
 	var opt []fx.Option
 	opt = append(
 		opt,
@@ -31,11 +42,7 @@ func Dialers(options ...DialersApply) fx.Option {
 					APIKeySecret string         `name:"LunoAPIKeySecret"`
 				}) (intf.IConnectionReactorFactory, error) {
 
-				return lunoWS.NewConnectionReactorFactory(
-					LunoStreamConnectionReactorFactory,
-					params.APIKeyID,
-					params.APIKeySecret,
-					params.PubSub), nil
+				return cfr, nil
 
 			},
 		}))
@@ -45,8 +52,9 @@ func Dialers(options ...DialersApply) fx.Option {
 			Target: netDial.NewNetDialApp(
 				fmt.Sprintf("luno stream[%v]", option.Pair),
 				fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
-				impl.WebSocketName,
+				impl.CreateWebSocketStack,
 				LunoStreamConnectionReactorFactory,
+				cfr,
 				netDial.MaxConnectionsSetting(settings.maxConnections),
 				netDial.UserContextValue(option),
 				netDial.CanDial(settings.canDial...)),
