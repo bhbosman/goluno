@@ -4,7 +4,6 @@ import (
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/listener"
 	"github.com/bhbosman/gocomms/impl"
-	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gocomms/netDial"
 	"github.com/bhbosman/gocomms/netListener"
 
@@ -28,17 +27,6 @@ func CompressedListener(
 		},
 		ConsumerCounter)
 	return fx.Options(
-		fx.Provide(
-			fx.Annotated{
-				Group: impl.ConnectionReactorFactoryConst,
-				Target: func(params struct {
-					fx.In
-					PubSub          *pubsub.PubSub `name:"Application"`
-					ConsumerCounter *netDial.CanDialDefaultImpl
-				}) (intf.IConnectionReactorFactory, error) {
-					return cfr, nil
-				},
-			}),
 		fx.Provide(
 			fx.Annotated{
 				Group: "Apps",

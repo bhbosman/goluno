@@ -7,7 +7,6 @@ import (
 	"github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
-	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/netDial"
 	"github.com/bhbosman/gocomms/provide"
 	"github.com/bhbosman/gologging"
@@ -44,7 +43,6 @@ func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 		provide.RegisterHttpHandler(settings.httpListenerUrl),
 		endpoints.RegisterConnectionManagerEndpoint(),
 		view.RegisterConnectionsHtmlTemplate(),
-		impl.RegisterAllConnectionRelatedServices(),
 		TextListener(pubSub, ConsumerCounter, 1024, settings.textListenerUrl, settings.pairs...),
 		CompressedListener(pubSub, ConsumerCounter, 1024, settings.compressedListenerUrl, settings.pairs...),
 		Dialers(

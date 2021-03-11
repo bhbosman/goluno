@@ -5,7 +5,6 @@ import (
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/lunoWS"
 	"github.com/bhbosman/gocomms/impl"
-	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gocomms/netDial"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
@@ -30,22 +29,6 @@ func Dialers(
 		pubSub)
 
 	var opt []fx.Option
-	opt = append(
-		opt,
-		fx.Provide(fx.Annotated{
-			Group: impl.ConnectionReactorFactoryConst,
-			Target: func(
-				params struct {
-					fx.In
-					PubSub       *pubsub.PubSub `name:"Application"`
-					APIKeyID     string         `name:"LunoAPIKeyID"`
-					APIKeySecret string         `name:"LunoAPIKeySecret"`
-				}) (intf.IConnectionReactorFactory, error) {
-
-				return cfr, nil
-
-			},
-		}))
 	for _, option := range settings.pairs {
 		opt = append(opt, fx.Provide(fx.Annotated{
 			Group: "Apps",
