@@ -39,7 +39,6 @@ func TextListener(
 					TextListenerConnection,
 					url,
 					impl.CreateEmptyStack,
-					TextListenerConnection,
 					cfr,
 					netListener.UserContextValue(pairInformation),
 					netListener.MaxConnectionsSetting(maxConnections)),
