@@ -20,8 +20,5 @@ require (
 
 replace (
 	github.com/bhbosman/gocommon => ../gocommon
-	github.com/bhbosman/gocomms => ../gocomms
-	github.com/bhbosman/gologging => ../gologging
-	github.com/bhbosman/goprotoextra => ../goprotoextra
 	github.com/reactivex/rxgo/v2 => ../../reactivex/rxgo
 )
