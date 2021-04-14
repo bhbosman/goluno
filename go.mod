@@ -8,7 +8,7 @@ require (
 	github.com/bhbosman/gocomms v0.0.0-20210108094235-212b4e8c628c
 	github.com/bhbosman/gologging v0.0.0-20200921180328-d29fc55c00bc
 	github.com/bhbosman/gomessageblock v0.0.0-20200921180725-7cd29a998aa3
-	github.com/bhbosman/goprotoextra v0.0.1
+	github.com/bhbosman/goprotoextra v0.0.2-0.20210414124526-a342e2a9e82f
 	github.com/cskr/pubsub v1.0.2
 	github.com/emirpasic/gods v1.12.0
 	github.com/golang/protobuf v1.4.2
