@@ -20,6 +20,8 @@ github.com/bhbosman/goprotoextra v0.0.2-0.20210414124526-a342e2a9e82f h1:Qm5ax/B
 github.com/bhbosman/goprotoextra v0.0.2-0.20210414124526-a342e2a9e82f/go.mod h1:XW64igzX3ph2KXKGAzt11RK3oc6GvS7U8DoaY76jJ0Y=
 github.com/bhbosman/gorxextra v0.0.0-20210414134625-43435ac5bf2d h1:jx71K/44dpK4qhPtdF3/kMB70qPloF7lN/x1l+ylVFI=
 github.com/bhbosman/gorxextra v0.0.0-20210414134625-43435ac5bf2d/go.mod h1:0MAbmwG5UYXxenvlhfKukD7TdA8TMtajZ0BaLg4UbhA=
+github.com/bhbosman/rxgo/v2 v2.1.1-0.20210414130730-4bd8cc2b429e h1:fx8KoTPxrDTFWNwLW0Ompyz5mBBbb2OMkJtwEMj3++g=
+github.com/bhbosman/rxgo/v2 v2.1.1-0.20210414130730-4bd8cc2b429e/go.mod h1:dZoZkd9OTFo9prsiy7itQhm2x19z/om3mP1ATdGSOwM=
 github.com/cenkalti/backoff/v4 v4.0.2 h1:JIufpQLbh4DkbQoii76ItQIUFzevQSqOLZca4eamEDs=
 github.com/cenkalti/backoff/v4 v4.0.2/go.mod h1:eEew/i+1Q6OrCDZh3WiXYv3+nJwBASZ8Bog/87DQnVg=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=

@@ -18,4 +18,4 @@ require (
 	google.golang.org/protobuf v1.25.0
 )
 
-replace github.com/reactivex/rxgo/v2 => ../../reactivex/rxgo
+replace github.com/reactivex/rxgo/v2 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20210414130730-4bd8cc2b429e
