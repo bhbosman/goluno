@@ -23,6 +23,7 @@ func TextListener(
 		TextListenerConnection,
 		pubSub,
 		func(m proto.Message) (goprotoextra.IReadWriterSize, error) {
+			//bytes := []byte("d\n")
 			bytes, err := json.MarshalIndent(m, "", "\t")
 			if err != nil {
 				return nil, err
