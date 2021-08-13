@@ -1,0 +1,21 @@
+Index: ../gocomms/stacks/bvisMessageBreaker/internal/Inbound.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package internal\r\n\r\nimport (\r\n\t\"context\"\r\n\t\"fmt\"\r\n\t\"github.com/bhbosman/gocomms/internal\"\r\n\t\"github.com/bhbosman/goerrors\"\r\n\t\"github.com/bhbosman/gomessageblock\"\r\n\t\"github.com/bhbosman/goprotoextra\"\r\n\t\"github.com/google/uuid\"\r\n\t\"github.com/reactivex/rxgo/v2\"\r\n\t\"reflect\"\r\n)\r\n\r\nfunc Inbound(id uuid.UUID, marker [4]byte, connectionId string, stackCancelFunc internal.CancelFunc, stateFunc func(stateFrom BuildMessageState, stateTo BuildMessageState, length uint32), connectionManager rxgo.IPublishToConnectionManager, opts ...rxgo.Option) internal.BoundResult {\r\n\treturn func(inOutBoundParams internal.InOutBoundParams) (internal.IStackBoundDefinition, error) {\r\n\t\treturn &internal.StackBoundDefinition{\r\n\t\t\t\tPipeDefinition: func(stackData, pipeData interface{}, params internal.PipeDefinitionParams) (uuid.UUID, rxgo.Observable, error) {\r\n\t\t\t\t\tif stackCancelFunc == nil {\r\n\t\t\t\t\t\treturn uuid.Nil, nil, goerrors.InvalidParam\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinboundStateParams := InboundStateParams{\r\n\t\t\t\t\t\tRw:              gomessageblock.NewReaderWriter(),\r\n\t\t\t\t\t\tState:           BuildMessageStateReadMessageSignature,\r\n\t\t\t\t\t\tLength:          0,\r\n\t\t\t\t\t\tErrorState:      false,\r\n\t\t\t\t\t\tMarker:          marker,\r\n\t\t\t\t\t\tStackCancelFunc: stackCancelFunc,\r\n\t\t\t\t\t\tStateFunc:       stateFunc,\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tchannelManager := internal.NewChannelManager(\"Inbound MessageBreaker\", connectionId)\r\n\t\t\t\t\tdisposable := params.Obs.(rxgo.InOutBoundObservable).DoOnNextInOutBound(inOutBoundParams.Index, params.ConnectionId, StackName, rxgo.StreamDirectionInbound, connectionManager,\r\n\t\t\t\t\t\tfunc(ctx context.Context, i goprotoextra.ReadWriterSize) {\r\n\t\t\t\t\t\t\tif inboundStateParams.ErrorState {\r\n\t\t\t\t\t\t\t\tstackCancelFunc(\"In error state\", true, goerrors.InvalidState)\r\n\t\t\t\t\t\t\t\treturn\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tswitch v := i.(type) {\r\n\t\t\t\t\t\t\tcase *gomessageblock.ReaderWriter:\r\n\t\t\t\t\t\t\t\terr := inboundStateParams.Rw.SetNext(v)\r\n\t\t\t\t\t\t\t\tif err != nil {\r\n\t\t\t\t\t\t\t\t\tparams.StackCancelFunc(\"rw.SetNext()\", true, err)\r\n\t\t\t\t\t\t\t\t\treturn\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tinboundStateParams.InboundState(func(dataBlock []byte) {\r\n\t\t\t\t\t\t\t\t\tchannelManager.Send(ctx, gomessageblock.NewReaderWriterBlock(dataBlock))\r\n\t\t\t\t\t\t\t\t})\r\n\t\t\t\t\t\t\tdefault:\r\n\t\t\t\t\t\t\t\tstackCancelFunc(\r\n\t\t\t\t\t\t\t\t\tfmt.Sprintf(\"Invalid type(%v) received\", reflect.TypeOf(i).String()),\r\n\t\t\t\t\t\t\t\t\ttrue,\r\n\t\t\t\t\t\t\t\t\tgoerrors.InvalidType)\r\n\t\t\t\t\t\t\t\tinboundStateParams.ErrorState = true\r\n\t\t\t\t\t\t\t\treturn\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}, opts...)\r\n\t\t\t\t\tgo func() {\r\n\t\t\t\t\t\t<-disposable\r\n\t\t\t\t\t\t_ = channelManager.Close()\r\n\t\t\t\t\t}()\r\n\t\t\t\t\treturn id, rxgo.FromChannel(channelManager.Items, opts...), nil\r\n\t\t\t\t},\r\n\t\t\t},\r\n\t\t\tnil\r\n\t}\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../gocomms/stacks/bvisMessageBreaker/internal/Inbound.go b/../gocomms/stacks/bvisMessageBreaker/internal/Inbound.go
+--- a/../gocomms/stacks/bvisMessageBreaker/internal/Inbound.go	(revision d4822b65f6c8786a9d503d3055c5c6f5cb07e599)
++++ b/../gocomms/stacks/bvisMessageBreaker/internal/Inbound.go	(date 1629054867142)
+@@ -12,6 +12,10 @@
+ 	"reflect"
+ )
+ 
++
++
++
++
+ func Inbound(id uuid.UUID, marker [4]byte, connectionId string, stackCancelFunc internal.CancelFunc, stateFunc func(stateFrom BuildMessageState, stateTo BuildMessageState, length uint32), connectionManager rxgo.IPublishToConnectionManager, opts ...rxgo.Option) internal.BoundResult {
+ 	return func(inOutBoundParams internal.InOutBoundParams) (internal.IStackBoundDefinition, error) {
+ 		return &internal.StackBoundDefinition{

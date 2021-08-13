@@ -8,7 +8,7 @@ require (
 	github.com/bhbosman/gocomms v0.0.0-20210414144344-fb75f75793be
 	github.com/bhbosman/gologging v0.0.0-20200921180328-d29fc55c00bc
 	github.com/bhbosman/gomessageblock v0.0.0-20210414135653-cd754835d03b
-	github.com/bhbosman/goprotoextra v0.0.2-0.20210414124526-a342e2a9e82f
+	github.com/bhbosman/goprotoextra v0.0.2-0.20210817141206-117becbef7c7
 	github.com/cskr/pubsub v1.0.2
 	github.com/emirpasic/gods v1.12.0
 	github.com/golang/protobuf v1.4.2
@@ -19,10 +19,5 @@ require (
 )
 
 replace github.com/reactivex/rxgo/v2 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20210414130730-4bd8cc2b429e
-	replace (
-	github.com/bhbosman/gocomms => ../gocomms
-)
 
-
-
-
+replace github.com/bhbosman/gocomms => ../gocomms
