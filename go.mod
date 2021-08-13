@@ -19,10 +19,10 @@ require (
 )
 
 replace github.com/reactivex/rxgo/v2 => github.com/bhbosman/rxgo/v2 v2.1.1-0.20210414130730-4bd8cc2b429e
-//replace (
-//	github.com/bhbosman/gocomms => ../gocomms
-//)
-//
+	replace (
+	github.com/bhbosman/gocomms => ../gocomms
+)
+
 
 
 
