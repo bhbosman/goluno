@@ -3,8 +3,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/bhbosman/goMessages v0.0.0-20210414134625-4d7166d206a6 h1:yrftfkdEF3I9qnFQeXjBEN0HqtURkZ/jWj4MqKzu2no=
 github.com/bhbosman/goMessages v0.0.0-20210414134625-4d7166d206a6/go.mod h1:BQxxY7zjzeDkNhQolyMMSZX2i4I7uWfYLrKeC5j8uqY=
 github.com/bhbosman/gocommon v0.0.0-20201004145117-eae02ab42c9a/go.mod h1:bl0WcS0qhk3nzfVrnXxZj1c+JwHwpjw2iTIOU5CQZ+8=
-github.com/bhbosman/gocommon v0.0.0-20210414135919-fd7afceec0b0 h1:z81sbXmEz80gKiflbWZPRUFDmjv2vrYYJugmVtArSMI=
-github.com/bhbosman/gocommon v0.0.0-20210414135919-fd7afceec0b0/go.mod h1:OphYxlHdc1ZNDzvBSq+wZ7hTkfY0eGvfDd7ae9FDEIc=
+github.com/bhbosman/gocommon v0.0.0-20210817162338-4486f68fa3f4 h1:rxS4G0z/N18Sw/XpiuZ7/NbeC+rCdpYeEgQtEmQu+Rs=
+github.com/bhbosman/gocommon v0.0.0-20210817162338-4486f68fa3f4/go.mod h1:5iaq977++seh/RKLDfLbsNE+23iYF0/PKh3tv/zV4I0=
 github.com/bhbosman/goerrors v0.0.0-20200918064252-e47717b09c4f/go.mod h1:Otn1qS556wnQOL+lAkheIV/UxgKITTmY3KDYAXkQbfQ=
 github.com/bhbosman/goerrors v0.0.0-20210201065523-bb3e832fa9ab h1:1qs6BwooBLOSo2uR1hZ9IKYZxovU2Igof41HBiQdQII=
 github.com/bhbosman/goerrors v0.0.0-20210201065523-bb3e832fa9ab/go.mod h1:hLIshvVUdt9e2gaKn5qqe9F77t+7L/I+NXkuM1KkJEw=
