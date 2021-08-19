@@ -6,13 +6,13 @@ import (
 	"github.com/bhbosman/goLuno/internal/common"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/messageRouter"
-	"github.com/bhbosman/gocomms/connectionManager"
+	common2 "github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/impl"
+	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gocomms/netDial"
 	"github.com/bhbosman/gologging"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
-	"github.com/reactivex/rxgo/v2"
 	"google.golang.org/protobuf/proto"
 	"net"
 	"net/url"
@@ -33,9 +33,9 @@ func (self *Reactor) Init(
 	conn net.Conn,
 	url *url.URL,
 	connectionId string,
-	connectionManager connectionManager.IConnectionManager,
+	connectionManager common2.IConnectionManager__,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
-	toConnectionReactor goprotoextra.ToReactorFunc) (rxgo.NextExternalFunc, error) {
+	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
 	_, err := self.BaseConnectionReactor.Init(conn, url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
 	if err != nil {
 		return nil, err

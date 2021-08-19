@@ -9,20 +9,21 @@ import (
 	"github.com/bhbosman/goLuno/internal/lunoWS/internal"
 	lunaRawDataFeed "github.com/bhbosman/goMessages/luno/stream"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
-	"github.com/bhbosman/gocomms/connectionManager"
+	"github.com/bhbosman/gocomms/RxHandlers"
+	common2 "github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/impl"
+	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gologging"
 	"github.com/bhbosman/gomessageblock"
 
 	"github.com/bhbosman/gocommon/messageRouter"
 
 	"github.com/bhbosman/gocommon/stream"
-	"github.com/bhbosman/gocomms/StacksFixed/websocket/wsmsg"
+	"github.com/bhbosman/gocomms/stacks/websocket/wsmsg"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
-	"github.com/reactivex/rxgo/v2"
 	log2 "log"
 	"net"
 	"net/url"
@@ -69,9 +70,9 @@ func (self *Reactor) Init(
 	conn net.Conn,
 	url *url.URL,
 	connectionId string,
-	connectionManager connectionManager.IConnectionManager,
+	connectionManager common2.IConnectionManager__,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
-	toConnectionReactor goprotoextra.ToReactorFunc) (rxgo.NextExternalFunc, error) {
+	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
 	_, _ = self.BaseConnectionReactor.Init(conn, url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
 	self.Logger.NameChange(fmt.Sprintf("Luno: %v", self.LunoPairInformation.Pair))
 	self.ConnectionManager.NameConnection(self.ConnectionId, fmt.Sprintf("Luno: %v", self.LunoPairInformation.Pair))
@@ -136,7 +137,7 @@ func (self *Reactor) HandlePublishMessage(msg *internal.PublishMessage) error {
 	return self.publishData(true)
 }
 
-func (self *Reactor) HandleEmptyQueue(msg *rxgo.EmptyQueue) error {
+func (self *Reactor) HandleEmptyQueue(msg *RxHandlers.EmptyQueue) error {
 	self.Logger.LogWithLevel(0, func(logger *log2.Logger) {
 	})
 	return self.publishData(false)
