@@ -14,7 +14,6 @@ import (
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"google.golang.org/protobuf/proto"
-	"net"
 	"net/url"
 	"strings"
 )
@@ -30,13 +29,12 @@ type Reactor struct {
 }
 
 func (self *Reactor) Init(
-	conn net.Conn,
 	url *url.URL,
 	connectionId string,
 	connectionManager common2.IConnectionManager__,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
 	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
-	_, err := self.BaseConnectionReactor.Init(conn, url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
+	_, err := self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
 	if err != nil {
 		return nil, err
 	}

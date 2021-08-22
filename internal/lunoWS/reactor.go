@@ -25,7 +25,6 @@ import (
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
 	log2 "log"
-	"net"
 	"net/url"
 )
 
@@ -67,13 +66,12 @@ func (self *Reactor) SendMessage(message proto.Message) error {
 }
 
 func (self *Reactor) Init(
-	conn net.Conn,
 	url *url.URL,
 	connectionId string,
 	connectionManager common2.IConnectionManager__,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
 	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
-	_, _ = self.BaseConnectionReactor.Init(conn, url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
+	_, _ = self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
 	self.Logger.NameChange(fmt.Sprintf("Luno: %v", self.LunoPairInformation.Pair))
 	self.ConnectionManager.NameConnection(self.ConnectionId, fmt.Sprintf("Luno: %v", self.LunoPairInformation.Pair))
 	_ = self.messageRouter.Add(self.HandleWebSocketMessageWrapper)
