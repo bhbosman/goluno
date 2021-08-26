@@ -2,8 +2,8 @@ package lunoStream
 
 import (
 	"github.com/bhbosman/goLuno/internal"
+	"github.com/bhbosman/gocommon"
 	app2 "github.com/bhbosman/gocommon/app"
-	"github.com/bhbosman/gocommon/stream"
 	"github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
@@ -13,11 +13,13 @@ import (
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"log"
+	"os"
 )
 
 func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 	settings := &AppSettings{
-		logger:                log.New(&stream.NullWriter{}, "", log.LstdFlags),
+		//logger:                log.New(&stream.NullWriter{}, "", log.LstdFlags),
+		logger:                log.New(os.Stderr, "", log.LstdFlags),
 		pairs:                 nil,
 		textListenerUrl:       "tcp4://127.0.0.1:3000",
 		compressedListenerUrl: "tcp4://127.0.0.1:3001",
@@ -33,11 +35,13 @@ func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 		return fx.New(fx.Error(err)), nil
 	}
 	var shutDowner fx.Shutdowner
+	var dd *gocommon.RunTimeManager
 	fxApp := fx.New(
 		fx.Supply(settings, ConsumerCounter),
 		fx.Logger(settings.logger),
 		gologging.ProvideLogFactory(settings.logger, nil),
 		fx.Populate(&shutDowner),
+		fx.Populate(&dd),
 		app2.RegisterRootContext(pubSub),
 		connectionManager.RegisterDefaultConnectionManager(),
 		provide.RegisterHttpHandler(settings.httpListenerUrl),
