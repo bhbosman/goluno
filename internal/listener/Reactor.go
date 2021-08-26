@@ -46,22 +46,24 @@ func (self *Reactor) Init(
 		republishTopics = append(republishTopics, common.RepublishName(pair.Pair))
 		publishTopics = append(publishTopics, common.PublishName(pair.Pair))
 	}
+	if publishTopics != nil {
+		ch := self.PubSub.Sub(publishTopics...)
+		go func(ch chan interface{}, topics ...string) {
 
-	ch := self.PubSub.Sub(publishTopics...)
-	go func(ch chan interface{}, topics ...string) {
-		defer self.PubSub.Unsub(ch, topics...)
-		<-self.CancelCtx.Done()
-	}(ch, publishTopics...)
+			<-self.CancelCtx.Done()
+			self.PubSub.Unsub(ch, topics...)
+		}(ch, publishTopics...)
 
-	go func(ch chan interface{}, topics ...string) {
-		for v := range ch {
-			if self.CancelCtx.Err() == nil {
-				_ = self.ToReactor(false, v)
+		go func(ch chan interface{}, topics ...string) {
+			for v := range ch {
+				if self.CancelCtx.Err() == nil {
+					_ = self.ToReactor(false, v)
+				}
 			}
-		}
-	}(ch, publishTopics...)
+		}(ch, publishTopics...)
 
-	self.PubSub.Pub(&struct{}{}, republishTopics...)
+		self.PubSub.Pub(&struct{}{}, republishTopics...)
+	}
 
 	return self.doNext, nil
 }
