@@ -33,8 +33,8 @@ func CompressedListener(
 				Target: netListener.NewNetListenApp(
 					CompressedListenerConnection,
 					url,
-					//impl.CreateCompressedStack,
-					impl.CreateCompressedTlsStack,
+					impl.CreateCompressedStack,
+					//impl.CreateCompressedTlsStack,
 
 					cfr,
 					netListener.UserContextValue(pairInformation),
