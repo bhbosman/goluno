@@ -21,3 +21,4 @@ require (
 replace github.com/bhbosman/goMessages => ../goMessages
 
 replace github.com/bhbosman/gocomms => ../gocomms
+replace github.com/bhbosman/gomessageblock => ../gomessageblock
