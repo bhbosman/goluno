@@ -35,6 +35,7 @@ func Dialers(
 			Target: netDial.NewNetDialApp(
 				fmt.Sprintf("luno stream[%v]", option.Pair),
 				fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
+				impl.WebSocketName,
 				impl.CreateWebSocketStack,
 				cfr,
 				netDial.MaxConnectionsSetting(settings.maxConnections),
