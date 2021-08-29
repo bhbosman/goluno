@@ -39,7 +39,7 @@ func TextListener(
 					TextListenerConnection,
 					url,
 					impl.TransportFactoryEmptyName,
-					impl.CreateEmptyStack,
+					impl.GetNamedStack(impl.TransportFactoryEmptyName),
 					cfr,
 					netListener.UserContextValue(pairInformation),
 					netListener.MaxConnectionsSetting(maxConnections)),

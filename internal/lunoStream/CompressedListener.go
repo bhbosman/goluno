@@ -34,7 +34,7 @@ func CompressedListener(
 					CompressedListenerConnection,
 					url,
 					impl.TransportFactoryCompressedName,
-					impl.CreateCompressedStack,
+					impl.GetNamedStack(impl.TransportFactoryCompressedName),
 					cfr,
 					netListener.UserContextValue(pairInformation),
 					netListener.MaxConnectionsSetting(maxConnections)),
