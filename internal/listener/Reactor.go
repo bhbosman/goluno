@@ -6,6 +6,7 @@ import (
 	"github.com/bhbosman/goLuno/internal/common"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/messageRouter"
+	common3 "github.com/bhbosman/gocomms/common"
 	common2 "github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
@@ -102,18 +103,25 @@ func NewConnectionReactor(
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
+	connectionCancelFunc common3.ConnectionCancelFunc,
 	userContext interface{},
 	PubSub *pubsub.PubSub,
 	SerializeData SerializeData,
 	ConsumerCounter *netDial.CanDialDefaultImpl) *Reactor {
 	Pairs, _ := userContext.([]*common.PairInformation)
 	result := &Reactor{
-		BaseConnectionReactor: impl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc, userContext),
-		messageRouter:         messageRouter.NewMessageRouter(),
-		PubSub:                PubSub,
-		Pairs:                 Pairs,
-		SerializeData:         SerializeData,
-		ConsumerCounter:       ConsumerCounter,
+		BaseConnectionReactor: impl.NewBaseConnectionReactor(
+			logger,
+			name,
+			cancelCtx,
+			cancelFunc,
+			connectionCancelFunc,
+			userContext),
+		messageRouter:   messageRouter.NewMessageRouter(),
+		PubSub:          PubSub,
+		Pairs:           Pairs,
+		SerializeData:   SerializeData,
+		ConsumerCounter: ConsumerCounter,
 	}
 	return result
 }

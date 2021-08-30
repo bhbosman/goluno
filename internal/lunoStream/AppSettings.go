@@ -7,13 +7,15 @@ import (
 )
 
 type AppSettings struct {
-	logger                *log.Logger
-	pairs                 []*common.PairInformation
-	textListenerUrl       string
-	compressedListenerUrl string
-	httpListenerUrl       string
-	canDial               []netDial.ICanDial
-	macConnections        int
+	logger                    *log.Logger
+	pairs                     []*common.PairInformation
+	textListenerEnabled       bool
+	textListenerUrl           string
+	compressedListenerEnabled bool
+	compressedListenerUrl     string
+	httpListenerUrl           string
+	canDial                   []netDial.ICanDial
+	macConnections            int
 }
 
 type ILunoStreamAppApplySettings interface {

@@ -16,14 +16,34 @@ import (
 	"os"
 )
 
+func ProvideTextListener(settings *AppSettings, pubSub *pubsub.PubSub, ConsumerCounter *netDial.CanDialDefaultImpl) fx.Option {
+	var opts []fx.Option
+	if settings.textListenerEnabled {
+		opts = append(opts, TextListener(pubSub, ConsumerCounter, 1024, settings.textListenerUrl, settings.pairs...))
+	}
+	return fx.Options(opts...)
+}
+
+func ProvideCompressedListener(settings *AppSettings, pubSub *pubsub.PubSub, ConsumerCounter *netDial.CanDialDefaultImpl) fx.Option {
+	var opts []fx.Option
+	if settings.compressedListenerEnabled {
+		opts = append(opts, CompressedListener(pubSub, ConsumerCounter, 1024, settings.compressedListenerUrl, settings.pairs...))
+	}
+	return fx.Options(opts...)
+}
+
 func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 	settings := &AppSettings{
 		//logger:                log.New(&stream.NullWriter{}, "", log.LstdFlags),
-		logger:                log.New(os.Stderr, "", log.LstdFlags),
-		pairs:                 nil,
-		textListenerUrl:       "tcp4://127.0.0.1:3000",
-		compressedListenerUrl: "tcp4://127.0.0.1:3001",
-		httpListenerUrl:       "http://127.0.0.1:8080",
+		logger:                    log.New(os.Stderr, "", log.LstdFlags),
+		pairs:                     nil,
+		textListenerEnabled:       false,
+		textListenerUrl:           "tcp4://127.0.0.1:3000",
+		compressedListenerEnabled: false,
+		compressedListenerUrl:     "tcp4://127.0.0.1:3001",
+		httpListenerUrl:           "http://127.0.0.1:8080",
+		canDial:                   nil,
+		macConnections:            0,
 	}
 	for _, apply := range pairs {
 		apply.apply(settings)
@@ -36,6 +56,7 @@ func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 	}
 	var shutDowner fx.Shutdowner
 	var dd *gocommon.RunTimeManager
+
 	fxApp := fx.New(
 		fx.Supply(settings, ConsumerCounter),
 		fx.Logger(settings.logger),
@@ -47,8 +68,9 @@ func App(pairs ...ILunoStreamAppApplySettings) (*fx.App, fx.Shutdowner) {
 		provide.RegisterHttpHandler(settings.httpListenerUrl),
 		endpoints.RegisterConnectionManagerEndpoint(),
 		view.RegisterConnectionsHtmlTemplate(),
-		TextListener(pubSub, ConsumerCounter, 1024, settings.textListenerUrl, settings.pairs...),
-		CompressedListener(pubSub, ConsumerCounter, 1024, settings.compressedListenerUrl, settings.pairs...),
+		ProvideTextListener(settings, pubSub, ConsumerCounter),
+		ProvideCompressedListener(settings, pubSub, ConsumerCounter),
+
 		Dialers(
 			lunoKeys.Key,
 			lunoKeys.Secret,

@@ -2,6 +2,7 @@ package lunoWS
 
 import (
 	"context"
+	"github.com/bhbosman/gocomms/common"
 	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gologging"
 	"github.com/cskr/pubsub"
@@ -23,6 +24,7 @@ func (self *ConnectionReactorFactory) Create(
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
+	connectionCancelFunc common.ConnectionCancelFunc,
 	logger *gologging.SubSystemLogger,
 	userContext interface{}) intf.IConnectionReactor {
 	result := NewConnectionReactor(
@@ -30,6 +32,7 @@ func (self *ConnectionReactorFactory) Create(
 		name,
 		cancelCtx,
 		cancelFunc,
+		connectionCancelFunc,
 		self.APIKeyID,
 		self.APIKeySecret,
 		self.PubSub,

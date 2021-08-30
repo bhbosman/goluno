@@ -27,6 +27,7 @@ func TextListenerUrl(url string) *textListenerUrl {
 
 func (self textListenerUrl) apply(settings *AppSettings) {
 	settings.textListenerUrl = self.url
+	settings.textListenerEnabled = true
 }
 
 type compressedListenerUrl struct {
@@ -39,6 +40,7 @@ func CompressedListenerUrl(url string) *compressedListenerUrl {
 
 func (self compressedListenerUrl) apply(settings *AppSettings) {
 	settings.compressedListenerUrl = self.url
+	settings.compressedListenerEnabled = true
 }
 
 type httpListenerUrl struct {
