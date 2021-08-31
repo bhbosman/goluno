@@ -33,7 +33,7 @@ func CompressedListener(
 				Target: netListener.NewNetListenApp(
 					CompressedListenerConnection,
 					url,
-					impl.TransportFactoryCompressedName,
+					impl.TransportFactoryCompressedTlsName,
 					cfr,
 					netListener.UserContextValue(pairInformation),
 					netListener.MaxConnectionsSetting(maxConnections)),

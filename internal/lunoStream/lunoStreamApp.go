@@ -27,7 +27,13 @@ func ProvideTextListener(settings *AppSettings, pubSub *pubsub.PubSub, ConsumerC
 func ProvideCompressedListener(settings *AppSettings, pubSub *pubsub.PubSub, ConsumerCounter *netDial.CanDialDefaultImpl) fx.Option {
 	var opts []fx.Option
 	if settings.compressedListenerEnabled {
-		opts = append(opts, CompressedListener(pubSub, ConsumerCounter, 1024, settings.compressedListenerUrl, settings.pairs...))
+		opts = append(opts,
+			CompressedListener(
+				pubSub,
+				ConsumerCounter,
+				1024,
+				settings.compressedListenerUrl,
+				settings.pairs...))
 	}
 	return fx.Options(opts...)
 }
