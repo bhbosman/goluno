@@ -3,6 +3,8 @@ github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/bhbosman/gocommon v0.0.0-20210817162338-4486f68fa3f4 h1:rxS4G0z/N18Sw/XpiuZ7/NbeC+rCdpYeEgQtEmQu+Rs=
 github.com/bhbosman/gocommon v0.0.0-20210817162338-4486f68fa3f4/go.mod h1:5iaq977++seh/RKLDfLbsNE+23iYF0/PKh3tv/zV4I0=
+github.com/bhbosman/gocomms v0.0.0-20210901083025-a45dff1c542b h1:vZ4t4o7l18WJ/5HUq3XAq4DBpywYM7WNUWg59GKA1z8=
+github.com/bhbosman/gocomms v0.0.0-20210901083025-a45dff1c542b/go.mod h1:I2c8tHyihAhkaGoeGB4K2HzUFpmZXY8xTMGQkXW2nYQ=
 github.com/bhbosman/goerrors v0.0.0-20210201065523-bb3e832fa9ab h1:1qs6BwooBLOSo2uR1hZ9IKYZxovU2Igof41HBiQdQII=
 github.com/bhbosman/goerrors v0.0.0-20210201065523-bb3e832fa9ab/go.mod h1:hLIshvVUdt9e2gaKn5qqe9F77t+7L/I+NXkuM1KkJEw=
 github.com/bhbosman/gologging v0.0.0-20200921180328-d29fc55c00bc h1:W2SGlAixV5+dBq5da/dVJDYcUxEItIA5IdqdLTjnaLQ=
