@@ -4,23 +4,20 @@ import (
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/lunoStream"
 	"github.com/kardianos/service"
-	"go.uber.org/fx"
 )
 
 type Program struct {
-	app        *fx.App
-	shutDowner fx.Shutdowner
+	app *lunoStream.LunaApp
 }
 
 func NewProgram() *Program {
 	return &Program{
-		app:        nil,
-		shutDowner: nil,
+		app: nil,
 	}
 }
 
 func (self *Program) Start(s service.Service) error {
-	self.app, self.shutDowner = lunoStream.App(
+	self.app, _ = lunoStream.App(
 		lunoStream.HttpListenerUrl("http://127.0.0.1:8080"),
 		lunoStream.TextListenerUrl("tcp4://127.0.0.1:3000"),
 		lunoStream.CompressedListenerUrl("tcp4://127.0.0.1:3001"),
@@ -30,17 +27,16 @@ func (self *Program) Start(s service.Service) error {
 		lunoStream.AddCurrencyPair(common.NewPairInformation("XBTZMW")),
 		lunoStream.AddCurrencyPair(common.NewPairInformation("ETHXBT")),
 		lunoStream.AddCurrencyPair(common.NewPairInformation("BCHXBT")))
-	if self.app.Err() != nil {
-		return self.app.Err()
+	if self.app.FxApp.Err() != nil {
+		return self.app.FxApp.Err()
 	}
 
 	go func() {
-		self.app.Run()
+		self.app.FxApp.Run()
 	}()
 	return nil
-
 }
 
 func (self *Program) Stop(s service.Service) error {
-	return self.shutDowner.Shutdown()
+	return self.app.ShutDowner.Shutdown()
 }

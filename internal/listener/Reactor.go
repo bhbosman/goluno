@@ -11,9 +11,9 @@ import (
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gocomms/netDial"
-	"github.com/bhbosman/gologging"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
+	"go.uber.org/zap"
 	"google.golang.org/protobuf/proto"
 	"net/url"
 	"strings"
@@ -99,7 +99,7 @@ func (self *Reactor) Close() error {
 }
 
 func NewConnectionReactor(
-	logger *gologging.SubSystemLogger,
+	logger *zap.Logger,
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,

@@ -5,6 +5,7 @@ import (
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/lunoWS"
 	"github.com/bhbosman/gocomms/impl"
+	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gocomms/netDial"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
@@ -13,7 +14,6 @@ import (
 func Dialers(
 	APIKeyID string,
 	APIKeySecret string,
-	pubSub *pubsub.PubSub,
 	ConsumerCounter *netDial.CanDialDefaultImpl,
 	options ...DialersApply) fx.Option {
 	settings := &lunoStreamDialersSettings{}
@@ -22,11 +22,6 @@ func Dialers(
 	}
 
 	const LunoStreamConnectionReactorFactory = "LunoStreamConnectionReactorFactory"
-	cfr := lunoWS.NewConnectionReactorFactory(
-		LunoStreamConnectionReactorFactory,
-		APIKeyID,
-		APIKeySecret,
-		pubSub)
 
 	var opt []fx.Option
 	for _, option := range settings.pairs {
@@ -36,10 +31,21 @@ func Dialers(
 				fmt.Sprintf("luno stream[%v]", option.Pair),
 				fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
 				impl.WebSocketName,
-				cfr,
 				netDial.MaxConnectionsSetting(settings.maxConnections),
 				netDial.UserContextValue(option),
-				netDial.CanDial(settings.canDial...)),
+				netDial.CanDial(settings.canDial...),
+				netDial.FxOption(
+					fx.Provide(
+						fx.Annotated{
+							Target: func(pubSub *pubsub.PubSub) (intf.IConnectionReactorFactory, error) {
+								cfr := lunoWS.NewConnectionReactorFactory(
+									LunoStreamConnectionReactorFactory,
+									APIKeyID,
+									APIKeySecret,
+									pubSub)
+								return cfr, nil
+							},
+						}))),
 		}))
 	}
 	return fx.Options(opt...)

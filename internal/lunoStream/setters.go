@@ -2,7 +2,6 @@ package lunoStream
 
 import (
 	"github.com/bhbosman/goLuno/internal/common"
-	"log"
 )
 
 type addCurrencyPair struct {
@@ -13,8 +12,9 @@ func AddCurrencyPair(pair *common.PairInformation) *addCurrencyPair {
 	return &addCurrencyPair{pair: pair}
 }
 
-func (self addCurrencyPair) apply(settings *AppSettings) {
+func (self *addCurrencyPair) apply(settings *AppSettings) error {
 	settings.pairs = append(settings.pairs, self.pair)
+	return nil
 }
 
 type textListenerUrl struct {
@@ -25,9 +25,10 @@ func TextListenerUrl(url string) *textListenerUrl {
 	return &textListenerUrl{url: url}
 }
 
-func (self textListenerUrl) apply(settings *AppSettings) {
+func (self *textListenerUrl) apply(settings *AppSettings) error {
 	settings.textListenerUrl = self.url
 	settings.textListenerEnabled = true
+	return nil
 }
 
 type compressedListenerUrl struct {
@@ -38,9 +39,10 @@ func CompressedListenerUrl(url string) *compressedListenerUrl {
 	return &compressedListenerUrl{url: url}
 }
 
-func (self compressedListenerUrl) apply(settings *AppSettings) {
+func (self *compressedListenerUrl) apply(settings *AppSettings) error {
 	settings.compressedListenerUrl = self.url
 	settings.compressedListenerEnabled = true
+	return nil
 }
 
 type httpListenerUrl struct {
@@ -51,18 +53,8 @@ func HttpListenerUrl(url string) *httpListenerUrl {
 	return &httpListenerUrl{url: url}
 }
 
-func (self httpListenerUrl) apply(settings *AppSettings) {
+func (self *httpListenerUrl) apply(settings *AppSettings) error {
+	settings.httpListenerUrlEnabled = true
 	settings.httpListenerUrl = self.url
-}
-
-type setlogger struct {
-	logger *log.Logger
-}
-
-func (self setlogger) apply(settings *AppSettings) {
-	settings.logger = self.logger
-}
-
-func Logger(logger *log.Logger) *setlogger {
-	return &setlogger{logger: logger}
+	return nil
 }

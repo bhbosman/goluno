@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	app, _ := lunoStream.App(
+	app, err := lunoStream.App(
 		lunoStream.HttpListenerUrl("http://127.0.0.1:8080"),
 		lunoStream.TextListenerUrl("tcp4://127.0.0.1:3000"),
 		lunoStream.CompressedListenerUrl("tcp4://127.0.0.1:3001"),
@@ -18,11 +18,14 @@ func main() {
 		lunoStream.AddCurrencyPair(common.NewPairInformation("ETHXBT")),
 		lunoStream.AddCurrencyPair(common.NewPairInformation("BCHXBT")),
 	)
-	if app.Err() != nil {
-		println(app.Err().Error())
+	if err != nil {
+
+	}
+	if app.FxApp.Err() != nil {
+		println(app.FxApp.Err().Error())
 		return
 	}
-	app.Run()
+	app.FxApp.Run()
 	// allow shutdown to complete
 	time.Sleep(time.Second)
 }

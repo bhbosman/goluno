@@ -14,8 +14,8 @@ import (
 	common2 "github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
-	"github.com/bhbosman/gologging"
 	"github.com/bhbosman/gomessageblock"
+	"go.uber.org/zap"
 
 	"github.com/bhbosman/gocommon/messageRouter"
 
@@ -25,7 +25,6 @@ import (
 	"github.com/cskr/pubsub"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
-	log2 "log"
 	"net/url"
 )
 
@@ -73,7 +72,7 @@ func (self *Reactor) Init(
 	toConnectionFunc goprotoextra.ToConnectionFunc,
 	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
 	_, _ = self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
-	self.Logger.NameChange(fmt.Sprintf("Luno: %v", self.LunaPairInformation.Pair))
+	//self.Logger. NameChange(fmt.Sprintf("Luno: %v", self.LunaPairInformation.Pair))
 	_ = self.ConnectionManager.NameConnection(self.ConnectionId, fmt.Sprintf("Luno: %v", self.LunaPairInformation.Pair))
 	_ = self.messageRouter.Add(self.HandleWebSocketMessageWrapper)
 	_ = self.messageRouter.Add(self.HandleReaderWriter)
@@ -137,8 +136,6 @@ func (self *Reactor) HandlePublishMessage(_ *internal.PublishMessage) error {
 }
 
 func (self *Reactor) HandleEmptyQueue(_ *RxHandlers.EmptyQueue) error {
-	self.Logger.LogWithLevel(0, func(logger *log2.Logger) {
-	})
 	return self.publishData(false)
 }
 func (self *Reactor) publishData(forcePublish bool) error {
@@ -266,7 +263,7 @@ func (self *Reactor) HandleWebSocketMessageWrapper(msg *wsmsg.WebSocketMessageWr
 }
 
 func NewConnectionReactor(
-	logger *gologging.SubSystemLogger,
+	logger *zap.Logger,
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,

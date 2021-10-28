@@ -8,6 +8,7 @@
     <content url="file://$MODULE_DIR$/../goMarketData" />
     <content url="file://$MODULE_DIR$/../goMarketStructures" />
     <content url="file://$MODULE_DIR$/../goMessages" />
+    <content url="file://$MODULE_DIR$/../goPolygon-io" />
     <content url="file://$MODULE_DIR$/../gocommon" />
     <content url="file://$MODULE_DIR$/../gocomms" />
     <content url="file://$MODULE_DIR$/../goerrors" />
