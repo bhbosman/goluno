@@ -22,7 +22,6 @@ func (self *Factory) Values(inputValues map[string]interface{}) (map[string]inte
 }
 
 func (self *Factory) Create(
-	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
 	connectionCancelFunc common.ConnectionCancelFunc,
@@ -30,7 +29,6 @@ func (self *Factory) Create(
 	userContext interface{}) intf.IConnectionReactor {
 	result := NewConnectionReactor(
 		logger,
-		name,
 		cancelCtx,
 		cancelFunc,
 		connectionCancelFunc,

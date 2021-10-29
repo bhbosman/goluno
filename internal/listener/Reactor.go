@@ -100,7 +100,6 @@ func (self *Reactor) Close() error {
 
 func NewConnectionReactor(
 	logger *zap.Logger,
-	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
 	connectionCancelFunc common3.ConnectionCancelFunc,
@@ -112,7 +111,6 @@ func NewConnectionReactor(
 	result := &Reactor{
 		BaseConnectionReactor: impl.NewBaseConnectionReactor(
 			logger,
-			name,
 			cancelCtx,
 			cancelFunc,
 			connectionCancelFunc,

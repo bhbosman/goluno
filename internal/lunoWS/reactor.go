@@ -264,7 +264,6 @@ func (self *Reactor) HandleWebSocketMessageWrapper(msg *wsmsg.WebSocketMessageWr
 
 func NewConnectionReactor(
 	logger *zap.Logger,
-	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
 	connectionCancelFunc common3.ConnectionCancelFunc,
@@ -275,7 +274,7 @@ func NewConnectionReactor(
 	LunoPairInformation, _ := userContext.(*common.PairInformation)
 	return &Reactor{
 		BaseConnectionReactor: impl.NewBaseConnectionReactor(
-			logger, name, cancelCtx, cancelFunc, connectionCancelFunc, userContext),
+			logger, cancelCtx, cancelFunc, connectionCancelFunc, userContext),
 		messageRouter:       messageRouter.NewMessageRouter(),
 		APIKeyID:            APIKeyID,
 		APIKeySecret:        APIKeySecret,
