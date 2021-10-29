@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="goPolygon-io" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="goLuno" />
+    <working_directory value="$PROJECT_DIR$/../goPolygon-io" />
+    <kind value="PACKAGE" />
+    <package value="github.com/bhbosman/goPolygon-io/stream" />
+    <directory value="$PROJECT_DIR$/../RxGo" />
+    <filePath value="$PROJECT_DIR$/../goPolygon-io/stream/main.go" />
+    <method v="2" />
+  </configuration>
+</component>

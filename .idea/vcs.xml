@@ -8,6 +8,7 @@
     <mapping directory="$PROJECT_DIR$/../goMarketData" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMarketStructures" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMessages" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../goPolygon-io" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocommon" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocomms" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goerrors" vcs="Git" />

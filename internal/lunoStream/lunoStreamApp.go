@@ -1,6 +1,7 @@
 package lunoStream
 
 import (
+	"github.com/bhbosman/goLuno/internal/lunoWS"
 	"github.com/bhbosman/gocommon"
 	app2 "github.com/bhbosman/gocommon/app"
 	"github.com/bhbosman/gocomms/connectionManager"
@@ -56,13 +57,6 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 		return nil, errs
 	}
 	ConsumerCounter := netDial.NewCanDialDefaultImpl()
-	lunoKeys, err := ReadLunoKeys()
-	if err != nil {
-		return &LunaApp{
-			FxApp:      fx.New(fx.Error(err)),
-			ShutDowner: nil,
-		}, nil
-	}
 	var shutDowner fx.Shutdowner
 	var dd *gocommon.RunTimeManager
 
@@ -84,14 +78,11 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 		ProvideTextListener(settings, ConsumerCounter),
 		ProvideCompressedListener(settings, ConsumerCounter),
 
-		Dialers(
-			lunoKeys.Key,
-			lunoKeys.Secret,
-			ConsumerCounter,
-			CanDial(ConsumerCounter),
-			AddPairsInformation(settings.pairs),
-			MaxConnections(1)),
-		ProvideReadLunoKeys(lunoKeys),
+		lunoWS.ProvideDialers(
+			lunoWS.CanDial(ConsumerCounter),
+			lunoWS.AddPairsInformation(settings.pairs),
+			lunoWS.MaxConnections(1)),
+		ProvideReadLunoKeys(),
 		app2.InvokeApps(),
 	)
 	return &LunaApp{

@@ -19,8 +19,24 @@ func CompressedListener(
 	ConsumerCounter *netDial.CanDialDefaultImpl,
 	maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
 	const CompressedListenerConnection = "CompressedListenerConnection"
+	cfrName := "CompressedListenerConnection.CFR"
 
 	return fx.Options(
+		fx.Provide(
+			fx.Annotated{
+				Group: "CFR",
+				Target: func(params struct {
+					fx.In
+					PubSub *pubsub.PubSub `name:"Application"`
+				}) (intf.IConnectionReactorFactory, error) {
+					return listener.NewConnectionReactorFactory(
+						cfrName,
+						params.PubSub,
+						func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
+							return stream.Marshall(data)
+						},
+						ConsumerCounter), nil
+				}}),
 		fx.Provide(
 			fx.Annotated{
 				Group: "Apps",
@@ -28,20 +44,9 @@ func CompressedListener(
 					CompressedListenerConnection,
 					url,
 					impl.TransportFactoryCompressedTlsName,
+					cfrName,
 					netListener.UserContextValue(pairInformation),
-					netListener.MaxConnectionsSetting(maxConnections),
-					netListener.FxOption(
-						fx.Provide(
-							fx.Annotated{
-								Target: func(pubSub *pubsub.PubSub) (intf.IConnectionReactorFactory, error) {
-									return listener.NewConnectionReactorFactory(
-										CompressedListenerConnection,
-										pubSub,
-										func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
-											return stream.Marshall(data)
-										},
-										ConsumerCounter), nil
-								}}))),
+					netListener.MaxConnectionsSetting(maxConnections)),
 			}),
 	)
 }
