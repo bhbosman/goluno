@@ -25,28 +25,31 @@ func Dialers(
 
 	var opt []fx.Option
 	for _, option := range settings.pairs {
-		opt = append(opt, fx.Provide(fx.Annotated{
-			Group: "Apps",
-			Target: netDial.NewNetDialApp(
-				fmt.Sprintf("luno stream[%v]", option.Pair),
-				fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
-				impl.WebSocketName,
-				netDial.MaxConnectionsSetting(settings.maxConnections),
-				netDial.UserContextValue(option),
-				netDial.CanDial(settings.canDial...),
-				netDial.FxOption(
-					fx.Provide(
-						fx.Annotated{
-							Target: func(pubSub *pubsub.PubSub) (intf.IConnectionReactorFactory, error) {
-								cfr := lunoWS.NewConnectionReactorFactory(
-									LunoStreamConnectionReactorFactory,
-									APIKeyID,
-									APIKeySecret,
-									pubSub)
-								return cfr, nil
-							},
-						}))),
-		}))
+		opt = append(opt,
+			fx.Provide(
+				fx.Annotated{
+					Group: "Apps",
+					Target: netDial.NewNetDialApp(
+						fmt.Sprintf("luno stream[%v]", option.Pair),
+						fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
+						impl.WebSocketName,
+						netDial.MaxConnectionsSetting(settings.maxConnections),
+						netDial.UserContextValue(option),
+						netDial.CanDial(settings.canDial...),
+						netDial.FxOption(
+							fx.Provide(
+								fx.Annotated{
+									Target: func(pubSub *pubsub.PubSub) (intf.IConnectionReactorFactory, error) {
+										cfr := lunoWS.NewConnectionReactorFactory(
+											LunoStreamConnectionReactorFactory,
+											APIKeyID,
+											APIKeySecret,
+											pubSub)
+										return cfr, nil
+									},
+								},
+							))),
+				}))
 	}
 	return fx.Options(opt...)
 }
