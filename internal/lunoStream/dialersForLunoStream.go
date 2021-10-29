@@ -20,12 +20,10 @@ func Dialers(
 	for _, option := range options {
 		option.apply(settings)
 	}
-
-	const LunoStreamConnectionReactorFactory = "LunoStreamConnectionReactorFactory"
-
 	var opt []fx.Option
 	for _, option := range settings.pairs {
-		opt = append(opt,
+		opt = append(
+			opt,
 			fx.Provide(
 				fx.Annotated{
 					Group: "Apps",
@@ -41,7 +39,6 @@ func Dialers(
 								fx.Annotated{
 									Target: func(pubSub *pubsub.PubSub) (intf.IConnectionReactorFactory, error) {
 										cfr := lunoWS.NewConnectionReactorFactory(
-											LunoStreamConnectionReactorFactory,
 											APIKeyID,
 											APIKeySecret,
 											pubSub)
