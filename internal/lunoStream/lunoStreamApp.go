@@ -3,6 +3,7 @@ package lunoStream
 import (
 	"github.com/bhbosman/goLuno/internal/lunoWS"
 	"github.com/bhbosman/gocommon"
+	"github.com/bhbosman/gocommon/Services/implementations"
 	app2 "github.com/bhbosman/gocommon/app"
 	"github.com/bhbosman/gocommon/logSettings"
 	"github.com/bhbosman/gocomms/connectionManager"
@@ -69,6 +70,8 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 		connectionManager.RegisterDefaultConnectionManager(),
 		provide.RegisterHttpHandler(settings.httpListenerUrl),
 		endpoints.RegisterConnectionManagerEndpoint(),
+		implementations.ProvideNewUniqueReferenceService(),
+		implementations.ProvideUniqueSessionNumber(),
 		view.RegisterConnectionsHtmlTemplate(),
 		ProvideTextListener(settings, ConsumerCounter),
 		ProvideCompressedListener(settings, ConsumerCounter),
