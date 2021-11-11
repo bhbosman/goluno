@@ -4,15 +4,14 @@ import (
 	"github.com/bhbosman/goLuno/internal/lunoWS"
 	"github.com/bhbosman/gocommon"
 	app2 "github.com/bhbosman/gocommon/app"
+	"github.com/bhbosman/gocommon/logSettings"
 	"github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
 	"github.com/bhbosman/gocomms/netDial"
 	"github.com/bhbosman/gocomms/provide"
 	"go.uber.org/fx"
-	"go.uber.org/fx/fxevent"
 	"go.uber.org/multierr"
-	"go.uber.org/zap"
 )
 
 func ProvideTextListener(settings *AppSettings, ConsumerCounter *netDial.CanDialDefaultImpl) fx.Option {
@@ -62,12 +61,8 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 
 	fxApp := fx.New(
 		fx.Supply(settings, ConsumerCounter),
-		fx.Provide(func() (*zap.Logger, error) {
-			return zap.NewDevelopment() //Production()
-		}),
-		fx.WithLogger(func(logger *zap.Logger) fxevent.Logger {
-			return &fxevent.ZapLogger{Logger: logger}
-		}),
+		logSettings.ProvideZapConfig(),
+
 		fx.Populate(&shutDowner),
 		fx.Populate(&dd),
 		app2.RegisterRootContext(),
