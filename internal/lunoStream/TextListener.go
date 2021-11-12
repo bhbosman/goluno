@@ -52,7 +52,7 @@ func TextListener(
 					impl.TransportFactoryEmptyName,
 					cfrName,
 					netListener.UserContextValue(pairInformation),
-					netListener.MaxConnectionsSetting(maxConnections)),
+					netListener.MaxConnectionsSetting(2000)),
 			}),
 	)
 }
