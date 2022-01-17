@@ -63,7 +63,6 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 	fxApp := fx.New(
 		fx.Supply(settings, ConsumerCounter),
 		logSettings.ProvideZapConfig(),
-
 		fx.Populate(&shutDowner),
 		fx.Populate(&dd),
 		app2.RegisterRootContext(),

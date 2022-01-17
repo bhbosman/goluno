@@ -44,7 +44,6 @@ func ReadLunoKeys() (*lunoKeys, error) {
 }
 
 func ProvideReadLunoKeys() fx.Option {
-
 	return fx.Options(
 		fx.Provide(
 			fx.Annotated{
