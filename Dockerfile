@@ -4,7 +4,7 @@
 FROM golang:1.16-alpine AS build
 WORKDIR /app
 COPY . .
-RUN go build  -o /luno-stream   ./luno-stream/main.go
+RUN go build  -o /luno-stream ./luno-stream/main.go
 
 
 # Deploy app

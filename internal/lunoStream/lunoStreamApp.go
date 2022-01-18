@@ -5,7 +5,6 @@ import (
 	"github.com/bhbosman/gocommon"
 	"github.com/bhbosman/gocommon/Services/implementations"
 	app2 "github.com/bhbosman/gocommon/app"
-	"github.com/bhbosman/gocommon/logSettings"
 	"github.com/bhbosman/gocomms/connectionManager"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
@@ -62,10 +61,19 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 
 	fxApp := fx.New(
 		fx.Supply(settings, ConsumerCounter),
-		logSettings.ProvideZapConfig(),
 		fx.Populate(&shutDowner),
 		fx.Populate(&dd),
-		app2.RegisterRootContext(),
+
+		app2.ProvideZapCoreEncoderConfigForDev(),
+		app2.ProvideZapCoreEncoderConfigForProd(),
+		app2.ProvideZapConfigForDev(),
+		app2.ProvideZapConfigForProd(),
+		app2.ProvideZapLogger(),
+		app2.ProvideFxWithLogger(),
+		app2.RegisterRunTimeManager(),
+		app2.RegisterApplicationContext(),
+		app2.ProvidePubSub("Application"),
+
 		connectionManager.RegisterDefaultConnectionManager(),
 		provide.RegisterHttpHandler(settings.httpListenerUrl),
 		endpoints.RegisterConnectionManagerEndpoint(),
