@@ -87,7 +87,12 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 			lunoWS.CanDial(ConsumerCounter),
 			lunoWS.AddPairsInformation(settings.pairs),
 			lunoWS.MaxConnections(1)),
-		ProvideLunoKeys(true, nil),
+		ProvideLunoKeys(
+			false,
+			&lunoKeys{
+				Key:    "hzy4572ygxbb6",
+				Secret: "0LXalWARHJmhze3Yk0lUPrHF51lUn8XqX49E4D7vsW4",
+			}),
 		ProvideLunoAPIKeyID(),
 		ProvideLunoAPIKeySecret(),
 		app2.InvokeApps(),
