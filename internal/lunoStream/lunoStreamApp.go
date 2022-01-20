@@ -57,12 +57,12 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 	}
 	ConsumerCounter := netDial.NewCanDialDefaultImpl()
 	var shutDowner fx.Shutdowner
-	var dd *gocommon.RunTimeManager
+	var runTimeManager *gocommon.RunTimeManager
 
 	fxApp := fx.New(
 		fx.Supply(settings, ConsumerCounter),
 		fx.Populate(&shutDowner),
-		fx.Populate(&dd),
+		fx.Populate(&runTimeManager),
 
 		app2.ProvideZapCoreEncoderConfigForDev(),
 		app2.ProvideZapCoreEncoderConfigForProd(),
@@ -87,7 +87,9 @@ func App(pairs ...ILunoStreamAppApplySettings) (*LunaApp, error) {
 			lunoWS.CanDial(ConsumerCounter),
 			lunoWS.AddPairsInformation(settings.pairs),
 			lunoWS.MaxConnections(1)),
-		ProvideReadLunoKeys(),
+		ProvideLunoKeys(true, nil),
+		ProvideLunoAPIKeyID(),
+		ProvideLunoAPIKeySecret(),
 		app2.InvokeApps(),
 	)
 	return &LunaApp{
