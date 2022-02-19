@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1
+# syntax=Dockerfile/dockerfile:1
 
 # Build app
 FROM golang:1.16-alpine AS build

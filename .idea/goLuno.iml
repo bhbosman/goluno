@@ -2,8 +2,10 @@
 <module type="WEB_MODULE" version="4">
   <component name="Go" enabled="true" />
   <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../go.strava" />
     <content url="file://$MODULE_DIR$/../goEchoClient" />
     <content url="file://$MODULE_DIR$/../goEchoServer" />
+    <content url="file://$MODULE_DIR$/../goGenerate" />
     <content url="file://$MODULE_DIR$" />
     <content url="file://$MODULE_DIR$/../goMarketData" />
     <content url="file://$MODULE_DIR$/../goMarketStructures" />
@@ -16,11 +18,12 @@
     <content url="file://$MODULE_DIR$/../gokraken" />
     <content url="file://$MODULE_DIR$/../gologging" />
     <content url="file://$MODULE_DIR$/../gomessageblock" />
+    <content url="file://$MODULE_DIR$/../gomock" />
     <content url="file://$MODULE_DIR$/../goprotoextra" />
     <content url="file://$MODULE_DIR$/../govalr" />
-    <content url="file://$MODULE_DIR$/../../reactivex/rxgo" />
     <content url="file://$MODULE_DIR$/../../../google.golang.org/protobuf" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

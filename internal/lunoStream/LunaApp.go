@@ -1,8 +1,12 @@
 package lunoStream
 
-import "go.uber.org/fx"
+import (
+	"github.com/rivo/tview"
+	"go.uber.org/fx"
+)
 
 type LunaApp struct {
-	FxApp      *fx.App
-	ShutDowner fx.Shutdowner
+	FxApp         *fx.App
+	ShutDowner    fx.Shutdowner
+	UiApplication *tview.Application
 }

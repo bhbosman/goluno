@@ -32,14 +32,14 @@ type Reactor struct {
 func (self *Reactor) Init(
 	url *url.URL,
 	connectionId string,
-	connectionManager common2.IConnectionManager__,
+	connectionManager common2.IConnectionManagerService,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
 	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
 	_, err := self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
 	if err != nil {
 		return nil, err
 	}
-	self.messageRouter.Add(self.HandleTop5)
+	_ = self.messageRouter.Add(self.HandleTop5)
 
 	var republishTopics []string
 	var publishTopics []string
@@ -80,11 +80,13 @@ func (self *Reactor) HandleTop5(top5 *marketDataStream.PublishTop5) error {
 	top5.Source = "LunoWS"
 	s := strings.Replace(fmt.Sprintf("%v.%v", top5.Source, top5.Instrument), "/", ".", -1)
 	top5.UniqueName = s
-	marshal, err := self.SerializeData(top5)
-	if err != nil {
-		return err
+	if self.SerializeData != nil {
+		marshal, err := self.SerializeData(top5)
+		if err != nil {
+			return err
+		}
+		_ = self.ToConnection(marshal)
 	}
-	_ = self.ToConnection(marshal)
 	return nil
 }
 

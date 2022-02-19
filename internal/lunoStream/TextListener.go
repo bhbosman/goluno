@@ -47,6 +47,7 @@ func TextListener(
 			fx.Annotated{
 				Group: "Apps",
 				Target: netListener.NewNetListenApp(
+					fx.Options(),
 					TextListenerConnection,
 					url,
 					impl.TransportFactoryEmptyName,

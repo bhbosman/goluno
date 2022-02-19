@@ -68,7 +68,7 @@ func (self *Reactor) SendMessage(message proto.Message) error {
 func (self *Reactor) Init(
 	url *url.URL,
 	connectionId string,
-	connectionManager common2.IConnectionManager__,
+	connectionManager common2.IConnectionManagerService,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
 	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
 	_, _ = self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)

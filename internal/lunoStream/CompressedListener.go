@@ -41,6 +41,7 @@ func CompressedListener(
 			fx.Annotated{
 				Group: "Apps",
 				Target: netListener.NewNetListenApp(
+					fx.Options(),
 					CompressedListenerConnection,
 					url,
 					impl.TransportFactoryCompressedTlsName,

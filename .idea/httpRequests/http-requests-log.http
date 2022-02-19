@@ -1,0 +1,24 @@
+# @no-redirect
+GET http://httpbin.org/status/301
+
+###
+
+GET http://{{host}}/get?show_env={{show_env}}
+Accept: application/json
+
+###
+
+GET https://httpbin.org/get?show_env=1
+Accept: application/json
+
+<> 2022-05-15T200249.200.json
+
+###
+
+GET https://httpbin.org/ip
+Accept: application/json
+
+<> 2022-05-15T200245.200.json
+
+###
+

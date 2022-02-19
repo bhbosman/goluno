@@ -7,7 +7,7 @@ import (
 )
 
 type Program struct {
-	app *lunoStream.LunaApp
+	app *lunoStream.TerminalAppUsingFxApp
 }
 
 func NewProgram() *Program {
@@ -18,6 +18,7 @@ func NewProgram() *Program {
 
 func (self *Program) Start(s service.Service) error {
 	self.app, _ = lunoStream.App(
+		true,
 		lunoStream.HttpListenerUrl("http://127.0.0.1:8080"),
 		lunoStream.TextListenerUrl("tcp4://127.0.0.1:3000"),
 		lunoStream.CompressedListenerUrl("tcp4://127.0.0.1:3001"),
@@ -38,5 +39,5 @@ func (self *Program) Start(s service.Service) error {
 }
 
 func (self *Program) Stop(s service.Service) error {
-	return self.app.ShutDowner.Shutdown()
+	return self.app.Shutdown.Shutdown()
 }
