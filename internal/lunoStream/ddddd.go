@@ -1,11 +1,13 @@
 package lunoStream
 
 import (
+	"github.com/bhbosman/goLuno/internal/ui/uiImpl"
+	"github.com/bhbosman/goLuno/internal/ui/uiIntf"
 	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
+	"github.com/cskr/pubsub"
 	"github.com/rivo/tview"
 	"go.uber.org/fx"
 	"golang.org/x/net/context"
-	"time"
 )
 
 type ICommand interface {
@@ -113,7 +115,15 @@ func terminalApplicationOptionsss() []fx.Option {
 						})
 				},
 			}),
-
+		fx.Provide(fx.Annotated{
+			Target: func(params struct {
+				fx.In
+				ApplicationContext context.Context `name:"Application"`
+				PubSub             *pubsub.PubSub  `name:"Application"`
+			}) uiIntf.IUiService {
+				return uiImpl.NewService(params.ApplicationContext, params.PubSub)
+			},
+		}),
 		fx.Provide(
 			fx.Annotated{
 				Target: func(params struct {
@@ -121,28 +131,30 @@ func terminalApplicationOptionsss() []fx.Option {
 					TerminalApplicationBuilder *TerminalApplicationBuilder
 					MainPages                  *tview.Pages `name:"MainPages"`
 					MainPageCommandList        []ICommand   `group:"MainPageCommandList"`
+					UiApp                      uiIntf.IUiService
 				}) *tview.Application {
+					return params.UiApp.Build()()
 
-					app := tview.NewApplication()
+					//app := tview.NewService()
+					//
+					//commandList := params.TerminalApplicationBuilder.createCommandList()
+					//for _, command := range params.MainPageCommandList {
+					//	commandList.AddItem(command.MainText(), command.SecondaryText(), command.ShortCut(), command.Callback(app))
+					//}
+					//commandList.AddItem("Quit", "", 'q', func() {
+					//	app.Stop()
+					//})
+					//
+					//outputPanel := params.TerminalApplicationBuilder.createOutputPanel(app)
+					//
+					//timeText := tview.NewTextView().SetTextAlign(tview.AlignRight)
+					//timeText.SetText(time.Now().Format(time.Stamp))
+					//layout := params.TerminalApplicationBuilder.createMainLayout(commandList, outputPanel, timeText)
+					//params.MainPages.AddPage("main", layout, true, true)
+					//
+					//app.SetRoot(params.MainPages, true)
 
-					commandList := params.TerminalApplicationBuilder.createCommandList()
-					for _, command := range params.MainPageCommandList {
-						commandList.AddItem(command.MainText(), command.SecondaryText(), command.ShortCut(), command.Callback(app))
-					}
-					commandList.AddItem("Quit", "", 'q', func() {
-						app.Stop()
-					})
-
-					outputPanel := params.TerminalApplicationBuilder.createOutputPanel(app)
-
-					timeText := tview.NewTextView().SetTextAlign(tview.AlignRight)
-					timeText.SetText(time.Now().Format(time.Stamp))
-					layout := params.TerminalApplicationBuilder.createMainLayout(commandList, outputPanel, timeText)
-					params.MainPages.AddPage("main", layout, true, true)
-
-					app.SetRoot(params.MainPages, true)
-
-					return app
+					//return app
 				},
 			}),
 	}

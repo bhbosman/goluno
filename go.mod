@@ -11,6 +11,7 @@ require (
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
 	github.com/cskr/pubsub v1.0.2
 	github.com/emirpasic/gods v1.12.0
+	github.com/gdamore/tcell/v2 v2.5.1 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2
 	github.com/google/go-cmp v0.5.7 // indirect
@@ -28,7 +29,6 @@ require (
 	go.uber.org/zap v1.21.0
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616 // indirect
 	golang.org/x/net v0.0.0-20211015210444-4f30a5c0130f
-	golang.org/x/sys v0.0.0-20220209214540-3681064d5158 // indirect
 	golang.org/x/tools v0.1.9 // indirect
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
@@ -37,5 +37,7 @@ require (
 )
 
 replace github.com/bhbosman/gocomms => ../gocomms
+
 replace github.com/golang/mock => ../gomock
+
 replace github.com/bhbosman/gocommon => ../gocommon
