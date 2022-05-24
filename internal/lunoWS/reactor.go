@@ -9,11 +9,12 @@ import (
 	"github.com/bhbosman/goLuno/internal/lunoWS/internal"
 	lunaRawDataFeed "github.com/bhbosman/goMessages/luno/stream"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
-	"github.com/bhbosman/gocomms/RxHandlers"
 	common3 "github.com/bhbosman/gocomms/common"
-	common2 "github.com/bhbosman/gocomms/connectionManager"
+	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
+
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
+	"github.com/bhbosman/gocomms/messages"
 	"github.com/bhbosman/gomessageblock"
 	"go.uber.org/zap"
 
@@ -68,7 +69,7 @@ func (self *Reactor) SendMessage(message proto.Message) error {
 func (self *Reactor) Init(
 	url *url.URL,
 	connectionId string,
-	connectionManager common2.IConnectionManagerService,
+	connectionManager CMIntf.IConnectionManagerService,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
 	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
 	_, _ = self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
@@ -135,7 +136,7 @@ func (self *Reactor) HandlePublishMessage(_ *internal.PublishMessage) error {
 	return self.publishData(true)
 }
 
-func (self *Reactor) HandleEmptyQueue(_ *RxHandlers.EmptyQueue) error {
+func (self *Reactor) HandleEmptyQueue(_ *messages.EmptyQueue) error {
 	return self.publishData(false)
 }
 func (self *Reactor) publishData(forcePublish bool) error {

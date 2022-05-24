@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/../go.strava" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../goConnect" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goEchoClient" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goEchoServer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMarketData" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../goMarketStructures" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMessages" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goPolygon-io" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../goStrava" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocommon" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gocomms" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goerrors" vcs="Git" />
@@ -20,7 +16,6 @@
     <mapping directory="$PROJECT_DIR$/../gomock" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goprotoextra" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gorxextra" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../govalr" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../../google.golang.org/protobuf" vcs="Git" />
   </component>
 </project>

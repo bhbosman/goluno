@@ -1,7 +1,7 @@
 package lunoStream
 
 import (
-	"github.com/bhbosman/gocomms/connectionManager"
+	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
 	"github.com/rivo/tview"
 	"go.uber.org/fx"
 	"golang.org/x/net/context"
@@ -60,7 +60,7 @@ func terminalApplicationOptionsss() []fx.Option {
 				Group: "MainPageCommandList",
 				Target: func(params struct {
 					fx.In
-					Connections connectionManager.IConnectionManagerService
+					Connections CMIntf.IConnectionManagerService
 					MainPages   *tview.Pages `name:"MainPages"`
 				}) ICommand {
 					return NewCommand("Connections", "", 0,

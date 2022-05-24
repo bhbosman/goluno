@@ -6,7 +6,7 @@ import (
 	"github.com/bhbosman/gocommon/Services/implementations"
 	"github.com/bhbosman/gocommon/Services/multiLogger"
 	app2 "github.com/bhbosman/gocommon/app"
-	"github.com/bhbosman/gocomms/connectionManager"
+	"github.com/bhbosman/gocomms/connectionManager/CMImpl"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
 	"github.com/bhbosman/gocomms/netDial"
@@ -63,7 +63,7 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 		app2.RegisterRunTimeManager(),
 		app2.RegisterApplicationContext(),
 		app2.ProvidePubSub("Application"),
-		connectionManager.RegisterDefaultConnectionManager(),
+		CMImpl.RegisterDefaultConnectionManager(),
 		provide.RegisterHttpHandler(settings.httpListenerUrl),
 		endpoints.RegisterConnectionManagerEndpoint(),
 		implementations.ProvideNewUniqueReferenceService(),

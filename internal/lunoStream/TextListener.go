@@ -21,39 +21,47 @@ func TextListener(
 	const TextListenerConnection = "TextListenerConnection"
 	cfrName := "TextListenerConnection"
 
-	return fx.Options(
-		fx.Provide(
-			fx.Annotated{
-				Group: "CFR",
-				Target: func(params struct {
-					fx.In
-					PubSub *pubsub.PubSub `name:"Application"`
-				}) (intf.IConnectionReactorFactory, error) {
-					cfr := listener.NewConnectionReactorFactory(
-						cfrName,
-						params.PubSub,
-						func(m proto.Message) (goprotoextra.IReadWriterSize, error) {
-							bytes, err := json.MarshalIndent(m, "", "\t")
-							if err != nil {
-								return nil, err
-							}
-							return gomessageblock.NewReaderWriterBlock(bytes), nil
-						},
-						ConsumerCounter)
-					return cfr, nil
-				},
-			}),
-		fx.Provide(
-			fx.Annotated{
-				Group: "Apps",
-				Target: netListener.NewNetListenApp(
-					fx.Options(),
+	return fx.Provide(
+		fx.Annotated{
+			Group: "Apps",
+			Target: func(params struct {
+				fx.In
+				PubSub             *pubsub.PubSub `name:"Application"`
+				NetAppFuncInParams impl.NetAppFuncInParams
+			}) (*fx.App, error) {
+				fxOptions := fx.Options(
+					fx.Provide(fx.Annotated{Name: "Application", Target: func() *pubsub.PubSub { return params.PubSub }}),
+					fx.Provide(
+						fx.Annotated{
+							Target: func(params struct {
+								fx.In
+								PubSub *pubsub.PubSub `name:"Application"`
+							}) intf.ConnectionReactorFactoryCallback {
+								return func() (intf.IConnectionReactorFactory, error) {
+									cfr := listener.NewConnectionReactorFactory(
+										cfrName,
+										params.PubSub,
+										func(m proto.Message) (goprotoextra.IReadWriterSize, error) {
+											bytes, err := json.MarshalIndent(m, "", "\t")
+											if err != nil {
+												return nil, err
+											}
+											return gomessageblock.NewReaderWriterBlock(bytes), nil
+										},
+										ConsumerCounter)
+									return cfr, nil
+								}
+							},
+						}),
+				)
+				return netListener.NewNetListenAppNoCrfName(
+					fxOptions,
 					TextListenerConnection,
 					url,
 					impl.TransportFactoryEmptyName,
-					cfrName,
 					netListener.UserContextValue(pairInformation),
-					netListener.MaxConnectionsSetting(2000)),
-			}),
-	)
+					netListener.MaxConnectionsSetting(2000))(params.NetAppFuncInParams)
+			},
+		})
+
 }

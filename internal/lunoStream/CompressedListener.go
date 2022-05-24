@@ -21,33 +21,42 @@ func CompressedListener(
 	const CompressedListenerConnection = "CompressedListenerConnection"
 	cfrName := "CompressedListenerConnection.CFR"
 
-	return fx.Options(
-		fx.Provide(
-			fx.Annotated{
-				Group: "CFR",
-				Target: func(params struct {
-					fx.In
-					PubSub *pubsub.PubSub `name:"Application"`
-				}) (intf.IConnectionReactorFactory, error) {
-					return listener.NewConnectionReactorFactory(
-						cfrName,
-						params.PubSub,
-						func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
-							return stream.Marshall(data)
-						},
-						ConsumerCounter), nil
-				}}),
-		fx.Provide(
-			fx.Annotated{
-				Group: "Apps",
-				Target: netListener.NewNetListenApp(
-					fx.Options(),
+	return fx.Provide(
+		fx.Annotated{
+			Group: "Apps",
+			Target: func(params struct {
+				fx.In
+				PubSub             *pubsub.PubSub `name:"Application"`
+				NetAppFuncInParams impl.NetAppFuncInParams
+			}) (*fx.App, error) {
+				fxOptions := fx.Options(
+					fx.Provide(fx.Annotated{Name: "Application", Target: func() *pubsub.PubSub { return params.PubSub }}),
+					fx.Provide(
+						fx.Annotated{
+							Target: func(params struct {
+								fx.In
+								PubSub *pubsub.PubSub `name:"Application"`
+							}) intf.ConnectionReactorFactoryCallback {
+								return func() (intf.IConnectionReactorFactory, error) {
+									return listener.NewConnectionReactorFactory(
+										cfrName,
+										params.PubSub,
+										func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
+											return stream.Marshall(data)
+										},
+										ConsumerCounter), nil
+								}
+							},
+						}),
+				)
+				return netListener.NewNetListenAppNoCrfName(
+					fxOptions,
 					CompressedListenerConnection,
 					url,
 					impl.TransportFactoryCompressedTlsName,
-					cfrName,
 					netListener.UserContextValue(pairInformation),
-					netListener.MaxConnectionsSetting(maxConnections)),
-			}),
+					netListener.MaxConnectionsSetting(maxConnections))(params.NetAppFuncInParams)
+			},
+		},
 	)
 }

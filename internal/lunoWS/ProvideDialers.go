@@ -65,12 +65,11 @@ func ProvideDialers(options ...DialersApply) fx.Option {
 							),
 						)
 
-						return netDial.NewNetDialApp(
+						return netDial.NewNetDialAppNoCrfName(
 							fxOptions,
 							fmt.Sprintf("LunoStream[%v]", option.Pair),
 							fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
 							impl.WebSocketName,
-							//"",
 							netDial.MaxConnectionsSetting(settings.maxConnections),
 							netDial.UserContextValue(option),
 							netDial.CanDial(settings.canDial...))(params.AppFuncInParams)

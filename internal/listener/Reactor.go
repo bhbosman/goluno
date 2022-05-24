@@ -7,7 +7,7 @@ import (
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/messageRouter"
 	common3 "github.com/bhbosman/gocomms/common"
-	common2 "github.com/bhbosman/gocomms/connectionManager"
+	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gocomms/netDial"
@@ -32,7 +32,7 @@ type Reactor struct {
 func (self *Reactor) Init(
 	url *url.URL,
 	connectionId string,
-	connectionManager common2.IConnectionManagerService,
+	connectionManager CMIntf.IConnectionManagerService,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
 	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
 	_, err := self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
