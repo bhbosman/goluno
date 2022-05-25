@@ -12,9 +12,9 @@ import (
 	common3 "github.com/bhbosman/gocomms/common"
 	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
 
+	"github.com/bhbosman/gocommon/messages"
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
-	"github.com/bhbosman/gocomms/messages"
 	"github.com/bhbosman/gomessageblock"
 	"go.uber.org/zap"
 

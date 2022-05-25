@@ -3,9 +3,7 @@ package lunoStream
 import (
 	"github.com/bhbosman/goLuno/internal/lunoWS"
 	"github.com/bhbosman/gocommon"
-	"github.com/bhbosman/gocommon/Services/implementations"
-	"github.com/bhbosman/gocommon/Services/multiLogger"
-	app2 "github.com/bhbosman/gocommon/app"
+	app2 "github.com/bhbosman/gocommon/Providers"
 	"github.com/bhbosman/gocomms/connectionManager/CMImpl"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
@@ -49,29 +47,19 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 		terminalApplicationOptions = fx.Options(options...)
 	}
 
-	fxApp := fx.New(
+	fxApp := app2.NewFxAppWithServices(
+		"LunoApplication",
 		terminalApplicationOptions,
 		fx.Supply(settings, ConsumerCounter),
 		fx.Populate(&shutDowner),
 		fx.Populate(&runTimeManager),
-		app2.ProvideZapCoreEncoderConfigForDev(),
-		app2.ProvideZapCoreEncoderConfigForProd(),
-		app2.ProvideZapConfigForDev(nil, nil),
-		app2.ProvideZapConfigForProd(nil, nil),
-		app2.ProvideZapLogger(),
-		app2.ProvideFxWithLogger(),
 		app2.RegisterRunTimeManager(),
-		app2.RegisterApplicationContext(),
-		app2.ProvidePubSub("Application"),
 		CMImpl.RegisterDefaultConnectionManager(),
 		provide.RegisterHttpHandler(settings.httpListenerUrl),
 		endpoints.RegisterConnectionManagerEndpoint(),
-		implementations.ProvideNewUniqueReferenceService(),
-		implementations.ProvideUniqueSessionNumber(),
 		view.RegisterConnectionsHtmlTemplate(),
 		ProvideTextListener(settings, ConsumerCounter),
 		ProvideCompressedListener(settings, ConsumerCounter),
-		multiLogger.ProvideMultiLogFileService(),
 		lunoWS.ProvideDialers(
 			lunoWS.CanDial(ConsumerCounter),
 			lunoWS.AddPairsInformation(settings.pairs),
@@ -84,39 +72,7 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 			}),
 		ProvideLunoAPIKeyID(),
 		ProvideLunoAPIKeySecret(),
-		fx.Provide(
-			fx.Annotated{
-				Target: func() string {
-					return "LunoApplication"
-				},
-				Name: "ApplicationName",
-			}),
-		app2.InvokeApps(),
 	)
+
 	return NewTerminalAppUsingFxApp(fxApp, terminalApplication, shutDowner), nil
-}
-
-func ProvideTextListener(settings *AppSettings, ConsumerCounter *netDial.CanDialDefaultImpl) fx.Option {
-	var opts []fx.Option
-	if settings.textListenerEnabled {
-		opts = append(opts, TextListener(
-			ConsumerCounter,
-			1024,
-			settings.textListenerUrl,
-			settings.pairs...))
-	}
-	return fx.Options(opts...)
-}
-
-func ProvideCompressedListener(settings *AppSettings, ConsumerCounter *netDial.CanDialDefaultImpl) fx.Option {
-	var opts []fx.Option
-	if settings.compressedListenerEnabled {
-		opts = append(opts,
-			CompressedListener(
-				ConsumerCounter,
-				1024,
-				settings.compressedListenerUrl,
-				settings.pairs...))
-	}
-	return fx.Options(opts...)
 }

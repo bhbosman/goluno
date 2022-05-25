@@ -2,8 +2,8 @@ package uiImpl
 
 import (
 	"context"
-	"github.com/bhbosman/gocommon/Services/interfaces"
-	"github.com/bhbosman/gocomms/messages"
+	"github.com/bhbosman/gocommon/Services/ISendMessage"
+	"github.com/bhbosman/gocommon/messages"
 	"github.com/cskr/pubsub"
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
@@ -77,7 +77,7 @@ loop:
 			if !ok {
 				break loop
 			}
-			success, _ := interfaces.ChannelEventsForISendMessage(self.data, data)
+			success, _ := ISendMessage.ChannelEventsForISendMessage(self.data, data)
 			if success {
 				continue
 			}
@@ -101,6 +101,12 @@ func (self *ConnectionSlide) SetConnectionListChange(list []IdAndName) {
 		self.connectionList.Clear()
 		for _, s := range list {
 			self.connectionList.AddItem(s.Id, s.Name, 0, func() {
+				self.app.SetFocus(self.actionList)
+				self.actionList.SetDoneFunc(func() {
+					self.app.SetFocus(self.connectionList)
+				}).SetSelectedFunc(func(i int, s string, s2 string, r rune) {
+					self.app.SetFocus(self.connectionList)
+				})
 
 			})
 		}
@@ -127,26 +133,33 @@ func NewConnectionSlide(applicationContext context.Context, pubSub *pubsub.PubSu
 	channel := make(chan interface{}, 32)
 
 	connectionList := tview.NewList().ShowSecondaryText(true)
-	connectionList.SetBorder(true)
+	connectionList.SetBorder(true).SetTitle("Active Connections")
 	connectionList.SetChangedFunc(func(index int, mainText string, secondaryText string, shortcut rune) {
-		_, _ = interfaces.CallISendMessageSend(ctx, channel, false, &PublishInstanceDataFor{
+		_, _ = ISendMessage.CallISendMessageSend(ctx, channel, false, &PublishInstanceDataFor{
 			Id:   mainText,
 			Name: secondaryText,
 		})
 	})
 
 	actionList := tview.NewList().ShowSecondaryText(false)
-	actionList.SetBorder(true)
+	actionList.SetBorder(true).SetTitle("Acions")
+	actionList.AddItem("Disconnect", "", 0, func() {
 
+	})
 	table := tview.NewTable()
 	table.SetBorder(true)
 	layout := tview.NewFlex().
 		AddItem(
 			tview.NewFlex().
 				SetDirection(tview.FlexColumn).
-				AddItem(connectionList, 0, 1, true).
-				AddItem(table, 0, 4, false).
-				AddItem(actionList, 0, 1, false),
+				AddItem(tview.NewFlex().
+					SetDirection(tview.FlexRow).
+					AddItem(connectionList, 0, 3, true).
+					AddItem(actionList, 4, 2, false),
+					0,
+					1,
+					true).
+				AddItem(table, 0, 4, false),
 			0,
 			1,
 			true)

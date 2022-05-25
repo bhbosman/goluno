@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/listener"
+	"github.com/bhbosman/gocommon/messages"
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gocomms/netDial"
@@ -28,7 +29,7 @@ func TextListener(
 				fx.In
 				PubSub             *pubsub.PubSub `name:"Application"`
 				NetAppFuncInParams impl.NetAppFuncInParams
-			}) (*fx.App, error) {
+			}) messages.CreateAppCallback {
 				fxOptions := fx.Options(
 					fx.Provide(fx.Annotated{Name: "Application", Target: func() *pubsub.PubSub { return params.PubSub }}),
 					fx.Provide(

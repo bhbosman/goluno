@@ -32,9 +32,9 @@ func (self *TerminalAppUsingFxApp) RunTerminalApp() {
 		panic(err)
 	}
 
-	stopCtx, cancel := context.WithTimeout(context.Background(), self.FxApp.StopTimeout())
+	//stopCtx, cancel := context.WithTimeout(context.Background(), self.FxApp.StopTimeout())
 
-	err = self.FxApp.Stop(stopCtx)
-	defer cancel()
+	err = self.FxApp.Stop(context.Background())
+	//defer cancel()
 
 }

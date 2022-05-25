@@ -1,7 +1,8 @@
 package uiIntf
 
 import (
-	"github.com/bhbosman/gocommon/Services/interfaces"
+	"github.com/bhbosman/gocommon/Services/IDataShutDown"
+	"github.com/bhbosman/gocommon/Services/ISendMessage"
 	"github.com/rivo/tview"
 )
 
@@ -17,6 +18,6 @@ type IUiService interface {
 
 type IUiData interface {
 	IUi
-	interfaces.IDataShutDown
-	interfaces.ISendMessage
+	IDataShutDown.IDataShutDown
+	ISendMessage.ISendMessage
 }

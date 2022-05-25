@@ -29,8 +29,7 @@ func (self *Service) Build() uiIntf.OnApplication {
 func (self *Service) BuildApp() *tview.Application {
 	slides := []Slide{
 		self.Cover,
-		self.Table(),
-		self.Connections(),
+		Connections(self.ctx, self.pubSub, self.app),
 	}
 
 	pages := tview.NewPages()
@@ -70,7 +69,7 @@ func (self *Service) BuildApp() *tview.Application {
 		AddItem(info, 1, 1, false)
 
 	self.app.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
-		if event.Key() == tcell.KeyCtrlN {
+		if event.Key() == tcell.KeyCtrlO {
 			nextSlide()
 			return nil
 		} else if event.Key() == tcell.KeyCtrlP {

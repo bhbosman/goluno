@@ -2,10 +2,10 @@ package uiImpl
 
 import (
 	"context"
-	"github.com/bhbosman/gocommon/Services/interfaces"
+	"github.com/bhbosman/gocommon/Services/ISendMessage"
 	"github.com/bhbosman/gocommon/messageRouter"
+	"github.com/bhbosman/gocommon/messages"
 	"github.com/bhbosman/gocomms/connectionManager/model"
-	"github.com/bhbosman/gocomms/messages"
 	"sort"
 	"time"
 )
@@ -21,7 +21,7 @@ type IdAndName struct {
 }
 
 type iConnectionData interface {
-	interfaces.ISendMessage
+	ISendMessage.ISendMessage
 }
 type ConnectionData struct {
 	ConnectionId   string
