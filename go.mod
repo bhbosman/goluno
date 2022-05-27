@@ -5,13 +5,12 @@ go 1.15
 require (
 	github.com/bhbosman/goMessages v0.0.0-20210819131032-dfe3cad9135f
 	github.com/bhbosman/gocommon v0.0.0-20220120133819-681d385f0463
-	github.com/bhbosman/gocomms v0.0.0-20211124080017-8ffe6f0e804c
+	github.com/bhbosman/gocomms v0.0.0-20220527203916-c87f0e084175
 	github.com/bhbosman/gomessageblock v0.0.0-20211029070951-75b9d5ae1fe6
 	github.com/bhbosman/goprotoextra v0.0.2-0.20210817141206-117becbef7c7
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
 	github.com/cskr/pubsub v1.0.2
 	github.com/emirpasic/gods v1.12.0
-	github.com/gdamore/tcell/v2 v2.5.1
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2
 	github.com/google/go-cmp v0.5.7 // indirect

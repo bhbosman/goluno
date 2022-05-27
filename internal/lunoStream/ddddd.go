@@ -1,8 +1,8 @@
 package lunoStream
 
 import (
-	"github.com/bhbosman/goLuno/internal/ui/uiImpl"
-	"github.com/bhbosman/goLuno/internal/ui/uiIntf"
+	"github.com/bhbosman/gocommon/ui/uiImpl"
+	"github.com/bhbosman/gocommon/ui/uiIntf"
 	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
 	"github.com/cskr/pubsub"
 	"github.com/rivo/tview"
