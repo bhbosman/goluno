@@ -4,6 +4,7 @@ import (
 	"github.com/bhbosman/goLuno/internal/lunoWS"
 	"github.com/bhbosman/gocommon"
 	app2 "github.com/bhbosman/gocommon/Providers"
+	"github.com/bhbosman/gocommon/ui/uiImpl"
 	"github.com/bhbosman/gocomms/connectionManager/CMImpl"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
 	"github.com/bhbosman/gocomms/connectionManager/view"
@@ -41,7 +42,7 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 
 	terminalApplicationOptions := fx.Options()
 	if !serviceApplication {
-		ssss := terminalApplicationOptionsss()
+		ssss := uiImpl.TerminalApplicationOptionsss()
 		options := append([]fx.Option{fx.Populate(&terminalApplication)}, ssss...)
 		terminalApplicationOptions = fx.Options(options...)
 	}
