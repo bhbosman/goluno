@@ -44,7 +44,7 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 		terminalApplicationOptions = fx.Options(fx.Populate(&terminalApplication))
 	}
 
-	fxApp := app2.NewFxAppWithServices(
+	fxApp := app2.NewFxMainApplicationServices(
 		"LunoApplication",
 		serviceApplication,
 		terminalApplicationOptions,
