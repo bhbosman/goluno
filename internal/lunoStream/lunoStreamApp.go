@@ -39,7 +39,6 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 	var runTimeManager *gocommon.RunTimeManager
 	var terminalApplication *tview.Application
 
-	terminalApplicationOptionsss()
 	terminalApplicationOptions := fx.Options()
 	if !serviceApplication {
 		ssss := terminalApplicationOptionsss()
