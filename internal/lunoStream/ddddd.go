@@ -3,7 +3,6 @@ package lunoStream
 import (
 	"github.com/bhbosman/gocommon/ui/uiImpl"
 	"github.com/bhbosman/gocommon/ui/uiIntf"
-	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
 	"github.com/cskr/pubsub"
 	"github.com/rivo/tview"
 	"go.uber.org/fx"
@@ -57,52 +56,7 @@ func terminalApplicationOptionsss() []fx.Option {
 				Target: func() *tview.Pages {
 					return tview.NewPages()
 				}}),
-		fx.Provide(
-			fx.Annotated{
-				Group: "MainPageCommandList",
-				Target: func(params struct {
-					fx.In
-					Connections CMIntf.IConnectionManagerService
-					MainPages   *tview.Pages `name:"MainPages"`
-				}) ICommand {
-					return NewCommand("Connections", "", 0,
-						func(app *tview.Application) func() {
-							return func() {
-								connectionList, _ := params.Connections.GetConnections(context.Background())
-								commandList := tview.NewList()
-								commandList.
-									ShowSecondaryText(false).
-									SetBorder(true).
-									SetTitle("Commands")
-								commandList.AddItem("..", "", 0, func() {
-									params.MainPages.RemovePage("Connections")
-								})
 
-								commandList.AddItem("All", "", 0, func() {
-									commandList.ShowSecondaryText(false)
-								})
-								for _, enumValue := range connectionList {
-									information := enumValue
-									//index := i
-									commandList.AddItem(information.Name, "", 0, func() {
-
-									})
-								}
-								table := tview.NewTable()
-								dd := tview.NewFlex().
-									AddItem(
-										tview.NewFlex().
-											SetDirection(tview.FlexRow).
-											AddItem(commandList, 10, 1, true).
-											AddItem(table, 0, 1, false),
-										0,
-										1,
-										true)
-								params.MainPages.AddPage("Connections", dd, true, true)
-							}
-						})
-				},
-			}),
 		fx.Provide(
 			fx.Annotated{
 				Group: "MainPageCommandList",
