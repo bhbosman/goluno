@@ -11,12 +11,6 @@ import (
 
 func terminalApplicationOptionsss() []fx.Option {
 	return []fx.Option{
-		fx.Provide(
-			fx.Annotated{
-				Name: "MainPages",
-				Target: func() *tview.Pages {
-					return tview.NewPages()
-				}}),
 
 		fx.Provide(fx.Annotated{
 			Target: func(params struct {
