@@ -24,6 +24,7 @@
         <function importPath="os" name="UserCacheDir" />
         <function importPath="os" name="UserHomeDir" />
         <function importPath="net/url" name="ParseQuery" />
+        <function importPath="fmt" name="Fprint" />
       </functions>
       <methods>
         <method importPath="hash" receiver="Hash" name="Write" />
