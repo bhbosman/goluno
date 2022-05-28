@@ -46,12 +46,6 @@ func terminalApplicationOptionsss() []fx.Option {
 	return []fx.Option{
 		fx.Provide(
 			fx.Annotated{
-				Target: func() *TerminalApplicationBuilder {
-					return &TerminalApplicationBuilder{}
-				},
-			}),
-		fx.Provide(
-			fx.Annotated{
 				Name: "MainPages",
 				Target: func() *tview.Pages {
 					return tview.NewPages()
@@ -70,10 +64,9 @@ func terminalApplicationOptionsss() []fx.Option {
 			fx.Annotated{
 				Target: func(params struct {
 					fx.In
-					TerminalApplicationBuilder *TerminalApplicationBuilder
-					MainPages                  *tview.Pages `name:"MainPages"`
-					MainPageCommandList        []ICommand   `group:"MainPageCommandList"`
-					UiApp                      uiIntf.IUiService
+					MainPages           *tview.Pages `name:"MainPages"`
+					MainPageCommandList []ICommand   `group:"MainPageCommandList"`
+					UiApp               uiIntf.IUiService
 				}) *tview.Application {
 					return params.UiApp.Build()()
 
