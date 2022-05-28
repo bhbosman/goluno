@@ -121,7 +121,10 @@ func terminalApplicationOptionsss() []fx.Option {
 				ApplicationContext context.Context `name:"Application"`
 				PubSub             *pubsub.PubSub  `name:"Application"`
 			}) uiIntf.IUiService {
-				return uiImpl.NewService(params.ApplicationContext, params.PubSub)
+				return uiImpl.NewService(
+					params.ApplicationContext,
+					params.PubSub,
+					tview.NewApplication())
 			},
 		}),
 		fx.Provide(
