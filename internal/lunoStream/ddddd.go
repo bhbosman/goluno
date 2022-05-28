@@ -9,39 +9,6 @@ import (
 	"golang.org/x/net/context"
 )
 
-type ICommand interface {
-	Callback(app *tview.Application) func()
-	MainText() string
-	SecondaryText() string
-	ShortCut() rune
-}
-type Command struct {
-	mainText      string
-	secondaryText string
-	shortCut      rune
-	cb            func(app *tview.Application) func()
-}
-
-func NewCommand(mainText string, secondaryText string, shortCut rune, cb func(app *tview.Application) func()) *Command {
-	return &Command{mainText: mainText, secondaryText: secondaryText, shortCut: shortCut, cb: cb}
-}
-
-func (self *Command) ShortCut() rune {
-	return self.shortCut
-}
-
-func (self *Command) SecondaryText() string {
-	return self.secondaryText
-}
-
-func (self *Command) MainText() string {
-	return self.mainText
-}
-
-func (self *Command) Callback(app *tview.Application) func() {
-	return self.cb(app)
-}
-
 func terminalApplicationOptionsss() []fx.Option {
 	return []fx.Option{
 		fx.Provide(
@@ -64,12 +31,9 @@ func terminalApplicationOptionsss() []fx.Option {
 			fx.Annotated{
 				Target: func(params struct {
 					fx.In
-					MainPages           *tview.Pages `name:"MainPages"`
-					MainPageCommandList []ICommand   `group:"MainPageCommandList"`
-					UiApp               uiIntf.IUiService
+					UiApp uiIntf.IUiService
 				}) *tview.Application {
 					return params.UiApp.Build()()
-
 				},
 			}),
 	}
