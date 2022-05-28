@@ -44,6 +44,7 @@
         <method importPath="github.com/bhbosman/goStrava/App/internal/intf" receiver="IConvoyData" name="CompleteConvoyEntry" />
         <method importPath="github.com/bhbosman/goStrava/App/internal/services/internal" receiver="*ShutDownChannelEvent" name="Close" />
         <method importPath="github.com/bhbosman/goStrava/App/internal/intf" receiver="IConvoyData" name="QueryConvoyInstanceData" />
+        <method importPath="github.com/bhbosman/gocommon/messageRouter" receiver="*MessageRouter" name="Add" />
       </methods>
     </inspection_tool>
   </profile>

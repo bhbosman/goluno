@@ -3,7 +3,7 @@ package lunoWS
 import (
 	"fmt"
 	"github.com/bhbosman/gocommon/messages"
-	"github.com/bhbosman/gocomms/common"
+	"github.com/bhbosman/gocommon/model"
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gocomms/netDial"
@@ -42,8 +42,8 @@ func ProvideDialers(options ...DialersApply) fx.Option {
 						AppFuncInParams  impl.NetAppFuncInParams
 					}) messages.CreateAppCallback {
 						fxOptions := fx.Options(
-							fx.Provide(fx.Annotated{Name: "LunoAPIKeyID", Target: common.CreateStringContext(params.LunoAPIKeyID)}),
-							fx.Provide(fx.Annotated{Name: "LunoAPIKeySecret", Target: common.CreateStringContext(params.LunoAPIKeySecret)}),
+							fx.Provide(fx.Annotated{Name: "LunoAPIKeyID", Target: model.CreateStringContext(params.LunoAPIKeyID)}),
+							fx.Provide(fx.Annotated{Name: "LunoAPIKeySecret", Target: model.CreateStringContext(params.LunoAPIKeySecret)}),
 							fx.Provide(fx.Annotated{Name: "Application", Target: func() *pubsub.PubSub { return params.PubSub }}),
 							fx.Provide(
 								fx.Annotated{

@@ -9,7 +9,7 @@ import (
 	"github.com/bhbosman/goLuno/internal/lunoWS/internal"
 	lunaRawDataFeed "github.com/bhbosman/goMessages/luno/stream"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
-	common3 "github.com/bhbosman/gocomms/common"
+	common3 "github.com/bhbosman/gocommon/model"
 	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
 
 	"github.com/bhbosman/gocommon/messages"

@@ -6,7 +6,7 @@ import (
 	"github.com/bhbosman/goLuno/internal/common"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/messageRouter"
-	common3 "github.com/bhbosman/gocomms/common"
+	common3 "github.com/bhbosman/gocommon/model"
 	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
 	"github.com/bhbosman/gocomms/impl"
 	"github.com/bhbosman/gocomms/intf"
