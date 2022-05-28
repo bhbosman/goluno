@@ -3,6 +3,7 @@ package lunoStream
 import (
 	"github.com/bhbosman/goLuno/internal/lunoWS"
 	"github.com/bhbosman/gocommon"
+	"github.com/bhbosman/gocommon/FxWrappers"
 	app2 "github.com/bhbosman/gocommon/Providers"
 	"github.com/bhbosman/gocomms/connectionManager/CMImpl"
 	"github.com/bhbosman/gocomms/connectionManager/endpoints"
@@ -44,7 +45,7 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 		terminalApplicationOptions = fx.Options(fx.Populate(&terminalApplication))
 	}
 
-	fxApp := app2.NewFxMainApplicationServices(
+	fxApp := FxWrappers.NewFxMainApplicationServices(
 		"LunoApplication",
 		serviceApplication,
 		terminalApplicationOptions,
