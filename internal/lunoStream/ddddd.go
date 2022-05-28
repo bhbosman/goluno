@@ -57,28 +57,13 @@ func terminalApplicationOptionsss() []fx.Option {
 					return tview.NewPages()
 				}}),
 
-		fx.Provide(
-			fx.Annotated{
-				Group: "MainPageCommandList",
-				Target: func() ICommand {
-					return NewCommand("Services", "", 0,
-						func(app *tview.Application) func() {
-							return func() {
-
-							}
-						})
-				},
-			}),
 		fx.Provide(fx.Annotated{
 			Target: func(params struct {
 				fx.In
 				ApplicationContext context.Context `name:"Application"`
 				PubSub             *pubsub.PubSub  `name:"Application"`
 			}) uiIntf.IUiService {
-				return uiImpl.NewService(
-					params.ApplicationContext,
-					params.PubSub,
-					tview.NewApplication())
+				return uiImpl.NewService(params.ApplicationContext, params.PubSub, tview.NewApplication())
 			},
 		}),
 		fx.Provide(
@@ -92,26 +77,6 @@ func terminalApplicationOptionsss() []fx.Option {
 				}) *tview.Application {
 					return params.UiApp.Build()()
 
-					//app := tview.NewService()
-					//
-					//commandList := params.TerminalApplicationBuilder.createCommandList()
-					//for _, command := range params.MainPageCommandList {
-					//	commandList.AddItem(command.MainText(), command.SecondaryText(), command.ShortCut(), command.Callback(app))
-					//}
-					//commandList.AddItem("Quit", "", 'q', func() {
-					//	app.Stop()
-					//})
-					//
-					//outputPanel := params.TerminalApplicationBuilder.createOutputPanel(app)
-					//
-					//timeText := tview.NewTextView().SetTextAlign(tview.AlignRight)
-					//timeText.SetText(time.Now().Format(time.Stamp))
-					//layout := params.TerminalApplicationBuilder.createMainLayout(commandList, outputPanel, timeText)
-					//params.MainPages.AddPage("main", layout, true, true)
-					//
-					//app.SetRoot(params.MainPages, true)
-
-					//return app
 				},
 			}),
 	}
