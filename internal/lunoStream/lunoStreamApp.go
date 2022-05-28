@@ -49,6 +49,7 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 
 	fxApp := app2.NewFxAppWithServices(
 		"LunoApplication",
+		false,
 		terminalApplicationOptions,
 		fx.Supply(settings, ConsumerCounter),
 		fx.Populate(&shutDowner),
