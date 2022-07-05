@@ -9,28 +9,25 @@ import (
 	"github.com/bhbosman/goLuno/internal/lunoWS/internal"
 	lunaRawDataFeed "github.com/bhbosman/goMessages/luno/stream"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
-	common3 "github.com/bhbosman/gocommon/model"
-	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
-
 	"github.com/bhbosman/gocommon/messages"
-	"github.com/bhbosman/gocomms/impl"
-	"github.com/bhbosman/gocomms/intf"
+	common3 "github.com/bhbosman/gocommon/model"
+	common2 "github.com/bhbosman/gocomms/common"
 	"github.com/bhbosman/gomessageblock"
+	"github.com/reactivex/rxgo/v2"
 	"go.uber.org/zap"
 
 	"github.com/bhbosman/gocommon/messageRouter"
 
+	"github.com/bhbosman/goCommsStacks/webSocketMessages/wsmsg"
 	"github.com/bhbosman/gocommon/stream"
-	"github.com/bhbosman/gocomms/stacks/websocket/wsmsg"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
-	"net/url"
 )
 
 type Reactor struct {
-	impl.BaseConnectionReactor
+	common2.BaseConnectionReactor
 	messageRouter        *messageRouter.MessageRouter
 	APIKeyID             string
 	APIKeySecret         string
@@ -67,14 +64,20 @@ func (self *Reactor) SendMessage(message proto.Message) error {
 }
 
 func (self *Reactor) Init(
-	url *url.URL,
-	connectionId string,
-	connectionManager CMIntf.IConnectionManagerService,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
-	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
-	_, _ = self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
-	//self.Logger. NameChange(fmt.Sprintf("Luno: %v", self.LunaPairInformation.Pair))
-	_ = self.ConnectionManager.NameConnection(self.ConnectionId, fmt.Sprintf("Luno: %v", self.LunaPairInformation.Pair))
+	toConnectionReactor goprotoextra.ToReactorFunc,
+	toConnectionFuncReplacement rxgo.NextFunc,
+	toConnectionReactorReplacement rxgo.NextFunc,
+) (rxgo.NextFunc, rxgo.ErrFunc, rxgo.CompletedFunc, error) {
+	_, _, _, err := self.BaseConnectionReactor.Init(
+		toConnectionFunc,
+		toConnectionReactor,
+		toConnectionFuncReplacement,
+		toConnectionReactorReplacement,
+	)
+	if err != nil {
+		return nil, nil, nil, err
+	}
 	_ = self.messageRouter.Add(self.HandleWebSocketMessageWrapper)
 	_ = self.messageRouter.Add(self.HandleReaderWriter)
 	_ = self.messageRouter.Add(self.HandleLunaData)
@@ -98,7 +101,16 @@ func (self *Reactor) Init(
 		}
 	}(republishChannel, self.republishChannelName)
 
-	return self.doNext, nil
+	return func(i interface{}) {
+			self.doNext(false, i)
+		},
+		func(err error) {
+			self.doNext(false, err)
+		},
+		func() {
+			d := 23
+			d++
+		}, nil
 }
 
 func (self *Reactor) Close() error {
@@ -123,13 +135,23 @@ func (self *Reactor) doNext(_ bool, i interface{}) {
 	}
 }
 
-func (self *Reactor) HandleReaderWriter(msg *gomessageblock.ReaderWriter) error {
-	marshal, err := stream.UnMarshal(msg, self.CancelCtx, self.CancelFunc, self.ToReactor, self.ToConnection)
+func (self *Reactor) HandleReaderWriter(msg *gomessageblock.ReaderWriter) {
+	marshal, err := stream.UnMarshal(
+		msg,
+		func(i interface{}) {
+			self.ToReactor(false, i)
+		},
+		func(i interface{}) {
+			self.ToConnection(msg)
+		},
+	)
 	if err != nil {
-		return err
+		//return err
 	}
 	_, err = self.messageRouter.Route(marshal)
-	return err
+	if err != nil {
+		//return err
+	}
 }
 
 func (self *Reactor) HandlePublishMessage(_ *internal.PublishMessage) error {
@@ -274,7 +296,7 @@ func NewConnectionReactor(
 	userContext interface{}) *Reactor {
 	LunoPairInformation, _ := userContext.(*common.PairInformation)
 	return &Reactor{
-		BaseConnectionReactor: impl.NewBaseConnectionReactor(
+		BaseConnectionReactor: common2.NewBaseConnectionReactor(
 			logger, cancelCtx, cancelFunc, connectionCancelFunc, userContext),
 		messageRouter:       messageRouter.NewMessageRouter(),
 		APIKeyID:            APIKeyID,

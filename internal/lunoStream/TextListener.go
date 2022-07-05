@@ -2,25 +2,36 @@ package lunoStream
 
 import (
 	"encoding/json"
+	"github.com/bhbosman/goCommsDefinitions"
+	"github.com/bhbosman/goCommsNetDialer"
+	"github.com/bhbosman/goCommsNetListener"
+	"github.com/bhbosman/goCommsStacks/bottom"
+	"github.com/bhbosman/goCommsStacks/top"
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/listener"
+	"github.com/bhbosman/gocommon/fx/PubSub"
 	"github.com/bhbosman/gocommon/messages"
-	"github.com/bhbosman/gocomms/impl"
+	"github.com/bhbosman/gocommon/model"
+	common2 "github.com/bhbosman/gocomms/common"
 	"github.com/bhbosman/gocomms/intf"
-	"github.com/bhbosman/gocomms/netDial"
-	"github.com/bhbosman/gocomms/netListener"
 	"github.com/bhbosman/gomessageblock"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"google.golang.org/protobuf/proto"
+	"net/url"
 )
 
 func TextListener(
-	ConsumerCounter *netDial.CanDialDefaultImpl,
-	maxConnections int, url string, pairInformation ...*common.PairInformation) fx.Option {
+	serviceIdentifier model.ServiceIdentifier,
+	serviceDependentOn model.ServiceIdentifier,
+	ConsumerCounter *goCommsNetDialer.CanDialDefaultImpl,
+	maxConnections int,
+	UseProxy bool,
+	ProxyUrl *url.URL,
+	ConnectionUrl *url.URL,
+	pairInformation ...*common.PairInformation) fx.Option {
 	const TextListenerConnection = "TextListenerConnection"
-	cfrName := "TextListenerConnection"
 
 	return fx.Provide(
 		fx.Annotated{
@@ -28,41 +39,61 @@ func TextListener(
 			Target: func(params struct {
 				fx.In
 				PubSub             *pubsub.PubSub `name:"Application"`
-				NetAppFuncInParams impl.NetAppFuncInParams
-			}) messages.CreateAppCallback {
-				fxOptions := fx.Options(
-					fx.Provide(fx.Annotated{Name: "Application", Target: func() *pubsub.PubSub { return params.PubSub }}),
-					fx.Provide(
-						fx.Annotated{
-							Target: func(params struct {
-								fx.In
-								PubSub *pubsub.PubSub `name:"Application"`
-							}) intf.ConnectionReactorFactoryCallback {
-								return func() (intf.IConnectionReactorFactory, error) {
-									cfr := listener.NewConnectionReactorFactory(
-										cfrName,
-										params.PubSub,
-										func(m proto.Message) (goprotoextra.IReadWriterSize, error) {
-											bytes, err := json.MarshalIndent(m, "", "\t")
-											if err != nil {
-												return nil, err
-											}
-											return gomessageblock.NewReaderWriterBlock(bytes), nil
-										},
-										ConsumerCounter)
-									return cfr, nil
-								}
-							},
-						}),
-				)
-				return netListener.NewNetListenAppNoCrfName(
-					fxOptions,
+				NetAppFuncInParams common2.NetAppFuncInParams
+			}) (messages.CreateAppCallback, error) {
+
+				f := goCommsNetListener.NewNetListenApp(
 					TextListenerConnection,
-					url,
-					impl.TransportFactoryEmptyName,
-					netListener.UserContextValue(pairInformation),
-					netListener.MaxConnectionsSetting(2000))(params.NetAppFuncInParams)
+					serviceIdentifier,
+					serviceDependentOn,
+					TextListenerConnection,
+					UseProxy,
+					ProxyUrl,
+					ConnectionUrl,
+					goCommsDefinitions.TransportFactoryEmptyName,
+					goCommsNetListener.UserContextValue(pairInformation),
+					common2.MaxConnectionsSetting(maxConnections),
+					common2.NewConnectionInstanceOptions(
+						fx.Provide(
+							fx.Annotated{
+								Target: func() *goCommsNetDialer.CanDialDefaultImpl {
+									return ConsumerCounter
+								},
+							},
+						),
+						PubSub.ProvidePubSubInstance("Application", params.PubSub),
+						goCommsDefinitions.ProvideTransportFactoryForEmptyName(
+							top.ProvideTopStack(),
+							bottom.Provide(),
+						),
+						ProvideConnectionReactorFactory(),
+					),
+				)
+				return f(params.NetAppFuncInParams), nil
 			},
 		})
+}
 
+func ProvideConnectionReactorFactory() fx.Option {
+	return fx.Provide(
+		fx.Annotated{
+			Target: func(
+				params struct {
+					fx.In
+					PubSub          *pubsub.PubSub `name:"Application"`
+					ConsumerCounter *goCommsNetDialer.CanDialDefaultImpl
+				}) (intf.IConnectionReactorFactory, error) {
+				return listener.NewConnectionReactorFactory(
+					params.PubSub,
+					func(m proto.Message) (goprotoextra.IReadWriterSize, error) {
+						bytes, err := json.MarshalIndent(m, "", "\t")
+						if err != nil {
+							return nil, err
+						}
+						return gomessageblock.NewReaderWriterBlock(bytes), nil
+					},
+					params.ConsumerCounter)
+			},
+		},
+	)
 }

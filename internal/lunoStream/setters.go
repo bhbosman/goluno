@@ -2,6 +2,7 @@ package lunoStream
 
 import (
 	"github.com/bhbosman/goLuno/internal/common"
+	"github.com/bhbosman/gocommon/model"
 )
 
 type addCurrencyPair struct {
@@ -18,11 +19,18 @@ func (self *addCurrencyPair) apply(settings *AppSettings) error {
 }
 
 type textListenerUrl struct {
-	url string
+	url                string
+	ServiceIdentifier  model.ServiceIdentifier
+	ServiceDependentOn model.ServiceIdentifier
 }
 
-func TextListenerUrl(url string) *textListenerUrl {
-	return &textListenerUrl{url: url}
+func TextListenerUrl(url string,
+	ServiceIdentifier model.ServiceIdentifier,
+	serviceDependentOn model.ServiceIdentifier) *textListenerUrl {
+	return &textListenerUrl{url: url,
+		ServiceIdentifier:  ServiceIdentifier,
+		ServiceDependentOn: serviceDependentOn,
+	}
 }
 
 func (self *textListenerUrl) apply(settings *AppSettings) error {
@@ -32,11 +40,21 @@ func (self *textListenerUrl) apply(settings *AppSettings) error {
 }
 
 type compressedListenerUrl struct {
-	url string
+	url                string
+	ServiceIdentifier  model.ServiceIdentifier
+	ServiceDependentOn model.ServiceIdentifier
 }
 
-func CompressedListenerUrl(url string) *compressedListenerUrl {
-	return &compressedListenerUrl{url: url}
+func CompressedListenerUrl(
+	url string,
+	ServiceIdentifier model.ServiceIdentifier,
+	serviceDependentOn model.ServiceIdentifier,
+) *compressedListenerUrl {
+	return &compressedListenerUrl{
+		url:                url,
+		ServiceIdentifier:  ServiceIdentifier,
+		ServiceDependentOn: serviceDependentOn,
+	}
 }
 
 func (self *compressedListenerUrl) apply(settings *AppSettings) error {
@@ -45,16 +63,17 @@ func (self *compressedListenerUrl) apply(settings *AppSettings) error {
 	return nil
 }
 
-type httpListenerUrl struct {
-	url string
+type Errors struct {
+	errors []error
 }
 
-func HttpListenerUrl(url string) *httpListenerUrl {
-	return &httpListenerUrl{url: url}
+func NewErrors(errors ...error) *Errors {
+	return &Errors{
+		errors: errors,
+	}
 }
 
-func (self *httpListenerUrl) apply(settings *AppSettings) error {
-	settings.httpListenerUrlEnabled = true
-	settings.httpListenerUrl = self.url
+func (self *Errors) apply(settings *AppSettings) error {
+	settings.errors = append(settings.errors, self.errors...)
 	return nil
 }

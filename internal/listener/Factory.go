@@ -2,23 +2,17 @@ package listener
 
 import (
 	"context"
+	"github.com/bhbosman/goCommsNetDialer"
 	"github.com/bhbosman/gocommon/model"
 	"github.com/bhbosman/gocomms/intf"
-	"github.com/bhbosman/gocomms/netDial"
 	"github.com/cskr/pubsub"
 	"go.uber.org/zap"
 )
 
 type Factory struct {
-	name            string
 	PubSub          *pubsub.PubSub
 	SerializeData   SerializeData
-	ConsumerCounter *netDial.CanDialDefaultImpl
-}
-
-func (self *Factory) Values(_ map[string]interface{}) (map[string]interface{}, error) {
-	result := make(map[string]interface{})
-	return result, nil
+	ConsumerCounter *goCommsNetDialer.CanDialDefaultImpl
 }
 
 func (self *Factory) Create(
@@ -26,7 +20,7 @@ func (self *Factory) Create(
 	cancelFunc context.CancelFunc,
 	connectionCancelFunc model.ConnectionCancelFunc,
 	logger *zap.Logger,
-	userContext interface{}) intf.IConnectionReactor {
+	userContext interface{}) (intf.IConnectionReactor, error) {
 	result := NewConnectionReactor(
 		logger,
 		cancelCtx,
@@ -36,22 +30,18 @@ func (self *Factory) Create(
 		self.PubSub,
 		self.SerializeData,
 		self.ConsumerCounter)
-	return result
-}
-
-func (self *Factory) Name() string {
-	return self.name
+	return result, nil
 }
 
 func NewConnectionReactorFactory(
-	name string,
 	pubSub *pubsub.PubSub,
 	SerializeData SerializeData,
-	ConsumerCounter *netDial.CanDialDefaultImpl) intf.IConnectionReactorFactory {
-	return &Factory{
-		name:            name,
+	ConsumerCounter *goCommsNetDialer.CanDialDefaultImpl,
+) (*Factory, error) {
+	fac := &Factory{
 		PubSub:          pubSub,
 		SerializeData:   SerializeData,
 		ConsumerCounter: ConsumerCounter,
 	}
+	return fac, nil
 }

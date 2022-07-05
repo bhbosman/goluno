@@ -2,16 +2,21 @@ package lunoWS
 
 import (
 	"fmt"
+	"github.com/bhbosman/goCommsDefinitions"
+	"github.com/bhbosman/goCommsNetDialer"
+	"github.com/bhbosman/goCommsStacks/bottom"
+	"github.com/bhbosman/goCommsStacks/top"
+	"github.com/bhbosman/goCommsStacks/websocket"
+	"github.com/bhbosman/gocommon/fx/PubSub"
 	"github.com/bhbosman/gocommon/messages"
-	"github.com/bhbosman/gocommon/model"
-	"github.com/bhbosman/gocomms/impl"
-	"github.com/bhbosman/gocomms/intf"
-	"github.com/bhbosman/gocomms/netDial"
+	"github.com/bhbosman/gocomms/common"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 )
 
-func ProvideDialers(options ...DialersApply) fx.Option {
+func ProvideDialers(
+	options ...DialersApply,
+) fx.Option {
 	settings := &lunoStreamDialersSettings{}
 	for _, option := range options {
 		if option == nil {
@@ -20,15 +25,11 @@ func ProvideDialers(options ...DialersApply) fx.Option {
 		option.apply(settings)
 	}
 	var opt []fx.Option
-	for _, optionEnum := range settings.pairs {
-		if optionEnum == nil {
+	for _, lunoPair := range settings.pairs {
+		if lunoPair == nil {
 			continue
 		}
-
-		option := optionEnum
-
-		crfName := fmt.Sprintf("LunoStream.%v.CRF", option.Pair)
-
+		option := lunoPair
 		opt = append(
 			opt,
 			fx.Provide(
@@ -39,43 +40,74 @@ func ProvideDialers(options ...DialersApply) fx.Option {
 						PubSub           *pubsub.PubSub `name:"Application"`
 						LunoAPIKeyID     string         `name:"LunoAPIKeyID"`
 						LunoAPIKeySecret string         `name:"LunoAPIKeySecret"`
-						AppFuncInParams  impl.NetAppFuncInParams
+						AppFuncInParams  common.NetAppFuncInParams
 					}) messages.CreateAppCallback {
-						fxOptions := fx.Options(
-							fx.Provide(fx.Annotated{Name: "LunoAPIKeyID", Target: model.CreateStringContext(params.LunoAPIKeyID)}),
-							fx.Provide(fx.Annotated{Name: "LunoAPIKeySecret", Target: model.CreateStringContext(params.LunoAPIKeySecret)}),
-							fx.Provide(fx.Annotated{Name: "Application", Target: func() *pubsub.PubSub { return params.PubSub }}),
-							fx.Provide(
-								fx.Annotated{
-									Target: func(params struct {
-										fx.In
-										PubSub           *pubsub.PubSub `name:"Application"`
-										LunoAPIKeyID     string         `name:"LunoAPIKeyID"`
-										LunoAPIKeySecret string         `name:"LunoAPIKeySecret"`
-									}) intf.ConnectionReactorFactoryCallback {
-										return func() (intf.IConnectionReactorFactory, error) {
-											return NewConnectionReactorFactory(
-												crfName,
-												params.LunoAPIKeyID,
-												params.LunoAPIKeySecret,
-												params.PubSub), nil
+						f := goCommsNetDialer.NewNetDialApp(
+							fmt.Sprintf("LunoStream.%v.ConnectionManager", option.Pair),
+							option.ServiceIdentifier,
+							option.ServiceDependentOn,
+							fmt.Sprintf("LunoStream.%v.Connection", option.Pair),
+							option.UseSocks5,
+							option.SocksUrl,
+							option.PairUrl, // fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
+							goCommsDefinitions.WebSocketName,
+							common.MaxConnectionsSetting(settings.maxConnections),
+							goCommsNetDialer.UserContextValue(option),
+							goCommsNetDialer.CanDial(settings.canDial...),
 
-										}
-									},
-								},
+							// TODO: work out IConnectionReactorFactory
+							//common.NewOverrideCreateConnectionReactor(
+							//	fx.Provide(
+							//		fx.Annotated{
+							//			Target: func(
+							//				params struct {
+							//					fx.In
+							//					LunoAPIKeyID         string         `name:"LunoAPIKeyID"`
+							//					LunoAPIKeySecret     string         `name:"LunoAPIKeySecret"`
+							//					PubSub               *pubsub.PubSub `name:"Application"`
+							//					CancelCtx            context.Context
+							//					CancelFunc           context.CancelFunc
+							//					ConnectionCancelFunc model.ConnectionCancelFunc
+							//					Logger               *zap.Logger
+							//					Cfr                  intf.IConnectionReactorFactory
+							//					ClientContext        interface{} `name:"UserContext"`
+							//				},
+							//			) (intf.IConnectionReactor, error) {
+							//				result := NewConnectionReactor(
+							//					params.Logger,
+							//					params.CancelCtx,
+							//					params.CancelFunc,
+							//					params.ConnectionCancelFunc,
+							//					params.LunoAPIKeyID,
+							//					params.LunoAPIKeySecret,
+							//					params.PubSub,
+							//					params.ClientContext,
+							//				)
+							//				return result, nil
+							//
+							//			},
+							//		},
+							//	),
+							//),
+							common.NewConnectionInstanceOptions(
+								goCommsDefinitions.ProvideTransportFactoryForWebSocketName(
+									top.ProvideTopStack(),
+									bottom.Provide(),
+									websocket.ProvideWebsocketStacks(),
+								),
+								goCommsDefinitions.ProvideStringContext("LunoAPIKeyID", params.LunoAPIKeyID),
+								goCommsDefinitions.ProvideStringContext("LunoAPIKeySecret", params.LunoAPIKeySecret),
+								PubSub.ProvidePubSubInstance("Application", params.PubSub),
+								ProvideConnectionReactorFactory(),
 							),
 						)
 
-						return netDial.NewNetDialAppNoCrfName(
-							fxOptions,
-							fmt.Sprintf("LunoStream[%v]", option.Pair),
-							fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", option.Pair),
-							impl.WebSocketName,
-							netDial.MaxConnectionsSetting(settings.maxConnections),
-							netDial.UserContextValue(option),
-							netDial.CanDial(settings.canDial...))(params.AppFuncInParams)
+						return f(
+							params.AppFuncInParams)
 					},
-				}))
+				},
+			),
+		)
 	}
 	return fx.Options(opt...)
 }

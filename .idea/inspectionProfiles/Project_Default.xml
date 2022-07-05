@@ -15,16 +15,7 @@
     <inspection_tool class="GoReceiverNames" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="GoUnhandledErrorResult" enabled="true" level="WARNING" enabled_by_default="true">
       <functions>
-        <function importPath="fmt" name="Printf" />
-        <function importPath="fmt" name="Errorf" />
-        <function importPath="math/rand" name="Read" />
-        <function importPath="fmt" name="Println" />
-        <function importPath="fmt" name="Print" />
-        <function importPath="github.com/bhbosman/goStrava/App/internal/intf" name="ChannelEventsForIConvoy" />
-        <function importPath="os" name="UserCacheDir" />
-        <function importPath="os" name="UserHomeDir" />
-        <function importPath="net/url" name="ParseQuery" />
-        <function importPath="fmt" name="Fprint" />
+        <function importPath="net/url" name="Parse" />
       </functions>
       <methods>
         <method importPath="hash" receiver="Hash" name="Write" />
@@ -45,6 +36,23 @@
         <method importPath="github.com/bhbosman/goStrava/App/internal/services/internal" receiver="*ShutDownChannelEvent" name="Close" />
         <method importPath="github.com/bhbosman/goStrava/App/internal/intf" receiver="IConvoyData" name="QueryConvoyInstanceData" />
         <method importPath="github.com/bhbosman/gocommon/messageRouter" receiver="*MessageRouter" name="Add" />
+        <method importPath="github.com/bhbosman/gocommon/Services/ISendMessage" receiver="ISendMessage" name="Send" />
+        <method importPath="github.com/bhbosman/gocommon/Services/IConnectionManager" receiver="IService" name="CloseConnection" />
+        <method importPath="github.com/bhbosman/gocommon/Services/IConnectionManager" receiver="IPublishConnectionInformation" name="ConnectionInformationReceived" />
+        <method importPath="github.com/bhbosman/gocomms/internal/stacks/tlsConnection/internal" receiver="*StackData" name="setOnOutBoundSendError" />
+        <method importPath="go.uber.org/fx" receiver="*App" name="Start" />
+        <method importPath="net" receiver="Listener" name="Accept" />
+        <method importPath="golang.org/x/crypto/ssh" receiver="Conn" name="Close" />
+        <method importPath="golang.org/x/crypto/ssh" receiver="NewChannel" name="Accept" />
+        <method importPath="golang.org/x/crypto/ssh" receiver="NewChannel" name="Reject" />
+        <method importPath="go.uber.org/fx" receiver="*App" name="Stop" />
+        <method importPath="io" receiver="Closer" name="Close" />
+        <method importPath="net" receiver="Conn" name="Close" />
+        <method importPath="github.com/bhbosman/goCommsNetListener" receiver="ISshNewChannel" name="Accept" />
+        <method importPath="github.com/bhbosman/goCommsSshListener/sshSessionChannel/internal" receiver="ISshChannelMessageQueueService" name="Send" />
+        <method importPath="golang.org/x/crypto/ssh" receiver="*Request" name="Reply" />
+        <method importPath="github.com/bhbosman/goCommsSshListener/sshCommon" receiver="ISshChannel" name="Close" />
+        <method importPath="github.com/bhbosman/gocommon/messageRouter" receiver="*MessageRouter" name="Route" />
       </methods>
     </inspection_tool>
   </profile>

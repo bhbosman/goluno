@@ -1,13 +1,14 @@
 package internal
 
 import (
+	"github.com/bhbosman/goFxApp"
 	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/lunoStream"
 	"github.com/kardianos/service"
 )
 
 type Program struct {
-	app *lunoStream.TerminalAppUsingFxApp
+	app *goFxApp.TerminalAppUsingFxApp
 }
 
 func NewProgram() *Program {
@@ -16,7 +17,7 @@ func NewProgram() *Program {
 	}
 }
 
-func (self *Program) Start(s service.Service) error {
+func (self *Program) Start(_ service.Service) error {
 	self.app, _ = lunoStream.App(
 		true,
 		lunoStream.HttpListenerUrl("http://127.0.0.1:8080"),
@@ -38,6 +39,6 @@ func (self *Program) Start(s service.Service) error {
 	return nil
 }
 
-func (self *Program) Stop(s service.Service) error {
+func (self *Program) Stop(_ service.Service) error {
 	return self.app.Shutdown.Shutdown()
 }

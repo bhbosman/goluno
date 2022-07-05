@@ -1,15 +1,44 @@
 package common
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/bhbosman/gocommon/model"
+	"net/url"
+)
 
 type PairInformation struct {
-	Pair string
+	UseSocks5          bool
+	SocksUrl           *url.URL
+	PairUrl            *url.URL
+	Pair               string
+	ServiceIdentifier  model.ServiceIdentifier
+	ServiceDependentOn model.ServiceIdentifier
 }
 
-func NewPairInformation(pair string) *PairInformation {
-	return &PairInformation{
-		Pair: pair,
+func NewPairInformation(
+	pair string,
+	ServiceIdentifier model.ServiceIdentifier,
+	serviceDependentOn model.ServiceIdentifier,
+	UseSocks5 bool,
+	SocksUrl string,
+	PairUrl string,
+) (*PairInformation, error) {
+	sockUrl, err := url.Parse(SocksUrl)
+	if err != nil {
+		return nil, err
 	}
+	pairUrl, err := url.Parse(PairUrl)
+	if err != nil {
+		return nil, err
+	}
+	return &PairInformation{
+		UseSocks5:          UseSocks5,
+		SocksUrl:           sockUrl,
+		PairUrl:            pairUrl,
+		Pair:               pair,
+		ServiceIdentifier:  ServiceIdentifier,
+		ServiceDependentOn: serviceDependentOn,
+	}, nil
 }
 
 func PublishName(s string) string {

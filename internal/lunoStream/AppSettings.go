@@ -1,8 +1,8 @@
 package lunoStream
 
 import (
+	"github.com/bhbosman/goCommsNetDialer"
 	"github.com/bhbosman/goLuno/internal/common"
-	"github.com/bhbosman/gocomms/netDial"
 )
 
 type AppSettings struct {
@@ -11,10 +11,9 @@ type AppSettings struct {
 	textListenerUrl           string
 	compressedListenerEnabled bool
 	compressedListenerUrl     string
-	httpListenerUrlEnabled    bool
-	httpListenerUrl           string
-	canDial                   []netDial.ICanDial
+	canDial                   []goCommsNetDialer.ICanDial
 	macConnections            int
+	errors                    []error
 }
 
 type ILunoStreamAppApplySettings interface {

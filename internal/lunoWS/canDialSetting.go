@@ -1,12 +1,14 @@
 package lunoWS
 
-import "github.com/bhbosman/gocomms/netDial"
+import (
+	"github.com/bhbosman/goCommsNetDialer"
+)
 
 type canDialSetting struct {
-	canDial []netDial.ICanDial
+	canDial []goCommsNetDialer.ICanDial
 }
 
-func CanDial(canDial ...netDial.ICanDial) *canDialSetting {
+func CanDial(canDial ...goCommsNetDialer.ICanDial) *canDialSetting {
 	return &canDialSetting{canDial: canDial}
 }
 

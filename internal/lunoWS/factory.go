@@ -29,7 +29,7 @@ func (self *ConnectionReactorFactory) Create(
 	cancelFunc context.CancelFunc,
 	connectionCancelFunc model.ConnectionCancelFunc,
 	logger *zap.Logger,
-	userContext interface{}) intf.IConnectionReactor {
+	userContext interface{}) (intf.IConnectionReactor, error) {
 	result := NewConnectionReactor(
 		logger,
 		cancelCtx,
@@ -39,7 +39,7 @@ func (self *ConnectionReactorFactory) Create(
 		self.APIKeySecret,
 		self.PubSub,
 		userContext)
-	return result
+	return result, nil
 }
 
 func NewConnectionReactorFactory(

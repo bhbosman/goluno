@@ -3,41 +3,44 @@ package listener
 import (
 	"context"
 	"fmt"
+	"github.com/bhbosman/goCommsNetDialer"
 	"github.com/bhbosman/goLuno/internal/common"
 	marketDataStream "github.com/bhbosman/goMessages/marketData/stream"
 	"github.com/bhbosman/gocommon/messageRouter"
 	common3 "github.com/bhbosman/gocommon/model"
-	"github.com/bhbosman/gocomms/connectionManager/CMIntf"
-	"github.com/bhbosman/gocomms/impl"
-	"github.com/bhbosman/gocomms/intf"
-	"github.com/bhbosman/gocomms/netDial"
+	common2 "github.com/bhbosman/gocomms/common"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
+	"github.com/reactivex/rxgo/v2"
 	"go.uber.org/zap"
 	"google.golang.org/protobuf/proto"
-	"net/url"
 	"strings"
 )
 
 type SerializeData func(m proto.Message) (goprotoextra.IReadWriterSize, error)
 type Reactor struct {
-	impl.BaseConnectionReactor
+	common2.BaseConnectionReactor
 	messageRouter   *messageRouter.MessageRouter
 	PubSub          *pubsub.PubSub
 	Pairs           []*common.PairInformation
 	SerializeData   SerializeData
-	ConsumerCounter *netDial.CanDialDefaultImpl
+	ConsumerCounter *goCommsNetDialer.CanDialDefaultImpl
 }
 
 func (self *Reactor) Init(
-	url *url.URL,
-	connectionId string,
-	connectionManager CMIntf.IConnectionManagerService,
 	toConnectionFunc goprotoextra.ToConnectionFunc,
-	toConnectionReactor goprotoextra.ToReactorFunc) (intf.NextExternalFunc, error) {
-	_, err := self.BaseConnectionReactor.Init(url, connectionId, connectionManager, toConnectionFunc, toConnectionReactor)
+	toConnectionReactor goprotoextra.ToReactorFunc,
+	toConnectionFuncReplacement rxgo.NextFunc,
+	toConnectionReactorReplacement rxgo.NextFunc,
+) (rxgo.NextFunc, rxgo.ErrFunc, rxgo.CompletedFunc, error) {
+	_, _, _, err := self.BaseConnectionReactor.Init(
+		toConnectionFunc,
+		toConnectionReactor,
+		toConnectionFuncReplacement,
+		toConnectionReactorReplacement,
+	)
 	if err != nil {
-		return nil, err
+		return nil, nil, nil, err
 	}
 	_ = self.messageRouter.Add(self.HandleTop5)
 
@@ -66,10 +69,18 @@ func (self *Reactor) Init(
 		self.PubSub.Pub(&struct{}{}, republishTopics...)
 	}
 
-	return self.doNext, nil
+	return func(i interface{}) {
+			self.doNext(false, i)
+		},
+		func(err error) {
+			self.doNext(false, err)
+		},
+		func() {
+
+		}, nil
 }
 
-func (self *Reactor) doNext(external bool, i interface{}) {
+func (self *Reactor) doNext(_ bool, i interface{}) {
 	_, _ = self.messageRouter.Route(i)
 }
 
@@ -108,10 +119,10 @@ func NewConnectionReactor(
 	userContext interface{},
 	PubSub *pubsub.PubSub,
 	SerializeData SerializeData,
-	ConsumerCounter *netDial.CanDialDefaultImpl) *Reactor {
+	ConsumerCounter *goCommsNetDialer.CanDialDefaultImpl) *Reactor {
 	Pairs, _ := userContext.([]*common.PairInformation)
 	result := &Reactor{
-		BaseConnectionReactor: impl.NewBaseConnectionReactor(
+		BaseConnectionReactor: common2.NewBaseConnectionReactor(
 			logger,
 			cancelCtx,
 			cancelFunc,

@@ -1,31 +1,26 @@
 package lunoStream
 
 import (
+	"github.com/bhbosman/goCommsNetDialer"
+	"github.com/bhbosman/goFxApp"
+	"github.com/bhbosman/goLuno/internal/common"
 	"github.com/bhbosman/goLuno/internal/lunoWS"
-	"github.com/bhbosman/gocommon"
-	"github.com/bhbosman/gocommon/FxWrappers"
 	app2 "github.com/bhbosman/gocommon/Providers"
-	"github.com/bhbosman/gocomms/connectionManager/CMImpl"
-	"github.com/bhbosman/gocomms/connectionManager/endpoints"
-	"github.com/bhbosman/gocomms/connectionManager/view"
-	"github.com/bhbosman/gocomms/netDial"
-	"github.com/bhbosman/gocomms/provide"
-	"github.com/rivo/tview"
+	"github.com/bhbosman/gocommon/model"
 	"go.uber.org/fx"
 	"go.uber.org/multierr"
 )
 
-func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*TerminalAppUsingFxApp, error) {
+func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*goFxApp.TerminalAppUsingFxApp, error) {
 	settings := &AppSettings{
 		pairs:                     nil,
 		textListenerEnabled:       false,
 		textListenerUrl:           "tcp4://127.0.0.1:3000",
 		compressedListenerEnabled: false,
 		compressedListenerUrl:     "tcp4://127.0.0.1:3001",
-		httpListenerUrlEnabled:    false,
-		httpListenerUrl:           "http://127.0.0.1:8080",
 		canDial:                   nil,
 		macConnections:            0,
+		errors:                    nil,
 	}
 	var errs error
 	for _, apply := range pairs {
@@ -35,30 +30,18 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 	if errs != nil {
 		return nil, errs
 	}
-	ConsumerCounter := netDial.NewCanDialDefaultImpl()
-	var shutDowner fx.Shutdowner
-	var runTimeManager *gocommon.RunTimeManager
-	var terminalApplication *tview.Application
+	ConsumerCounter := goCommsNetDialer.NewCanDialDefaultImpl()
+	var runTimeManager *app2.RunTimeManager
 
-	terminalApplicationOptions := fx.Options()
-	if !serviceApplication {
-		terminalApplicationOptions = fx.Options(fx.Populate(&terminalApplication))
-	}
-
-	fxApp := FxWrappers.NewFxMainApplicationServices(
+	return goFxApp.NewFxMainApplicationServices(
 		"LunoApplication",
 		serviceApplication,
-		terminalApplicationOptions,
+		fx.Error(settings.errors...),
 		fx.Supply(settings, ConsumerCounter),
-		fx.Populate(&shutDowner),
 		fx.Populate(&runTimeManager),
 		app2.RegisterRunTimeManager(),
-		CMImpl.RegisterDefaultConnectionManager(),
-		provide.RegisterHttpHandler(settings.httpListenerUrl),
-		endpoints.RegisterConnectionManagerEndpoint(),
-		view.RegisterConnectionsHtmlTemplate(),
-		ProvideTextListener(settings, ConsumerCounter),
-		ProvideCompressedListener(settings, ConsumerCounter),
+		ProvideTextListener(common.TextListenerServiceNumber, model.NoDependency, settings, ConsumerCounter),
+		ProvideCompressedListener(common.CompressedListenerServiceNumber, model.NoDependency, settings, ConsumerCounter),
 		lunoWS.ProvideDialers(
 			lunoWS.CanDial(ConsumerCounter),
 			lunoWS.AddPairsInformation(settings.pairs),
@@ -71,7 +54,5 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*Termin
 			}),
 		ProvideLunoAPIKeyID(),
 		ProvideLunoAPIKeySecret(),
-	)
-
-	return NewTerminalAppUsingFxApp(fxApp, terminalApplication, shutDowner), nil
+	), nil
 }
