@@ -1,19 +1,25 @@
 package lunoStream
 
 import (
-	"github.com/bhbosman/goCommsNetDialer"
+	"github.com/bhbosman/goCommonMarketData/fullMarketDataHelper"
+	"github.com/bhbosman/goCommonMarketData/fullMarketDataManagerService"
+	"github.com/bhbosman/goCommonMarketData/fullMarketDataManagerViewer"
+	"github.com/bhbosman/goCommonMarketData/instrumentReference"
+	"github.com/bhbosman/goCommsMultiDialer"
 	"github.com/bhbosman/goFxApp"
-	"github.com/bhbosman/goLuno/internal/common"
-	"github.com/bhbosman/goLuno/internal/lunoWS"
+	"github.com/bhbosman/goLuno/internal/lunoConfiguration"
 	app2 "github.com/bhbosman/gocommon/Providers"
-	"github.com/bhbosman/gocommon/model"
 	"go.uber.org/fx"
 	"go.uber.org/multierr"
 )
 
-func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*goFxApp.TerminalAppUsingFxApp, error) {
+func App(
+	serviceApplication bool,
+	applicationName string,
+	pairs ...ILunoStreamAppApplySettings,
+) (*goFxApp.TerminalAppUsingFxApp, error) {
+
 	settings := &AppSettings{
-		pairs:                     nil,
 		textListenerEnabled:       false,
 		textListenerUrl:           "tcp4://127.0.0.1:3000",
 		compressedListenerEnabled: false,
@@ -30,29 +36,30 @@ func App(serviceApplication bool, pairs ...ILunoStreamAppApplySettings) (*goFxAp
 	if errs != nil {
 		return nil, errs
 	}
-	ConsumerCounter := goCommsNetDialer.NewCanDialDefaultImpl()
 	var runTimeManager *app2.RunTimeManager
 
 	return goFxApp.NewFxMainApplicationServices(
-		"LunoApplication",
-		serviceApplication,
-		fx.Error(settings.errors...),
-		fx.Supply(settings, ConsumerCounter),
-		fx.Populate(&runTimeManager),
-		app2.RegisterRunTimeManager(),
-		ProvideTextListener(common.TextListenerServiceNumber, model.NoDependency, settings, ConsumerCounter),
-		ProvideCompressedListener(common.CompressedListenerServiceNumber, model.NoDependency, settings, ConsumerCounter),
-		lunoWS.ProvideDialers(
-			lunoWS.CanDial(ConsumerCounter),
-			lunoWS.AddPairsInformation(settings.pairs),
-			lunoWS.MaxConnections(1)),
-		ProvideLunoKeys(
-			false,
-			&lunoKeys{
-				Key:    "hzy4572ygxbb6",
-				Secret: "0LXalWARHJmhze3Yk0lUPrHF51lUn8XqX49E4D7vsW4",
-			}),
-		ProvideLunoAPIKeyID(),
-		ProvideLunoAPIKeySecret(),
-	), nil
+			applicationName,
+			serviceApplication,
+			fx.Error(settings.errors...),
+			fx.Supply(settings),
+			fx.Populate(&runTimeManager),
+			goCommsMultiDialer.Provide(),
+			fullMarketDataManagerViewer.Provide(),
+			fullMarketDataManagerService.Provide(false),
+			fullMarketDataHelper.Provide(),
+			instrumentReference.Provide(),
+			app2.RegisterRunTimeManager(),
+			lunoConfiguration.Provide(),
+			ProvideCompressedListener(settings),
+			ProvideLunoKeys(),
+			//true,
+			//&lunoKeys{
+			//	Key:    "e52n78axhy2j7",
+			//	Secret: "4q00paAkXche01noiISYWsZQGtSOKe1kuMnQUk3m3Io",
+			//}),
+			ProvideLunoAPIKeyID(),
+			ProvideLunoAPIKeySecret(),
+		),
+		nil
 }

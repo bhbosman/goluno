@@ -16,6 +16,7 @@
     <inspection_tool class="GoUnhandledErrorResult" enabled="true" level="WARNING" enabled_by_default="true">
       <functions>
         <function importPath="net/url" name="Parse" />
+        <function importPath="github.com/bhbosman/gocommon/pubSub" name="Unsubscribe" />
       </functions>
       <methods>
         <method importPath="hash" receiver="Hash" name="Write" />
@@ -53,6 +54,9 @@
         <method importPath="golang.org/x/crypto/ssh" receiver="*Request" name="Reply" />
         <method importPath="github.com/bhbosman/goCommsSshListener/sshCommon" receiver="ISshChannel" name="Close" />
         <method importPath="github.com/bhbosman/gocommon/messageRouter" receiver="*MessageRouter" name="Route" />
+        <method importPath="github.com/bhbosman/gocommon/GoFunctionCounter" receiver="IService" name="GoRun" />
+        <method importPath="github.com/bhbosman/goLuno/netMultiDialer" receiver="INetMultiDialerService" name="Dial" />
+        <method importPath="github.com/bhbosman/goCommonMarketData/instrumentReference" receiver="IInstrumentReferenceService" name="GetKrakenProviders" />
       </methods>
     </inspection_tool>
   </profile>

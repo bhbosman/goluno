@@ -2,7 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="Go" enabled="true" />
   <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../goCommonMarketData" />
     <content url="file://$MODULE_DIR$/../goCommsDefinitions" />
+    <content url="file://$MODULE_DIR$/../goCommsMultiDialer" />
     <content url="file://$MODULE_DIR$/../goCommsNetDialer" />
     <content url="file://$MODULE_DIR$/../goCommsNetListener" />
     <content url="file://$MODULE_DIR$/../goCommsSshListener" />
@@ -16,6 +18,7 @@
     <content url="file://$MODULE_DIR$/../goMessages" />
     <content url="file://$MODULE_DIR$/../goPolygon-io" />
     <content url="file://$MODULE_DIR$/../goSocks5" />
+    <content url="file://$MODULE_DIR$/../goTrader" />
     <content url="file://$MODULE_DIR$/../goUi" />
     <content url="file://$MODULE_DIR$/../gocommon" />
     <content url="file://$MODULE_DIR$/../gocomms" />
@@ -24,6 +27,7 @@
     <content url="file://$MODULE_DIR$/../gomessageblock" />
     <content url="file://$MODULE_DIR$/../gomock" />
     <content url="file://$MODULE_DIR$/../goprotoextra" />
+    <content url="file://$MODULE_DIR$/../pubsub" />
     <content url="file://$MODULE_DIR$/../sshApplication" />
     <content url="file://$MODULE_DIR$/../tcell" />
     <content url="file://$MODULE_DIR$/../tview" />
