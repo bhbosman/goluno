@@ -11,7 +11,6 @@ import (
 	"github.com/bhbosman/goCommsStacks/messageNumber"
 	"github.com/bhbosman/goCommsStacks/pingPong"
 	"github.com/bhbosman/goCommsStacks/protoBuf"
-	"github.com/bhbosman/goCommsStacks/tlsStack"
 	"github.com/bhbosman/goCommsStacks/topStack"
 	"github.com/bhbosman/gocommon/fx/PubSub"
 	"github.com/bhbosman/gocommon/messages"
@@ -57,14 +56,13 @@ func CompressedListener(
 							},
 						),
 						PubSub.ProvidePubSubInstance("Application", params.PubSub),
-						goCommsDefinitions.ProvideTransportFactoryForCompressedTlsName(
+						goCommsDefinitions.ProvideTransportFactoryForCompressedName(
 							topStack.ProvideTopStack(),
 							pingPong.ProvidePingPongStacks(),
 							protoBuf.ProvideStack(),
 							messageCompressor.Provide(),
 							messageNumber.ProvideMessageNumberStack(),
 							bvisMessageBreaker.Provide(),
-							tlsStack.ProvideTlsConnectionStacks(),
 							bottom.Provide(),
 						),
 						ProvideConnectionReactor(),
