@@ -69,11 +69,13 @@ func (self *decorator) Err() error {
 func (self *decorator) internalStart(ctx context.Context) error {
 	pairUrl, _ := url.Parse(fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", self.name))
 	var err error
-	self.dialApp, self.dialAppCancelFunc, err = self.NetMultiDialer.Dial(
+	var connectionId string
+	self.dialApp, self.dialAppCancelFunc, connectionId, err = self.NetMultiDialer.Dial(
 		false,
 		nil,
 		pairUrl,
 		self.reconnect,
+		self.dialAppCancelFunc,
 		fmt.Sprintf("Luno.%v", self.name),
 		fmt.Sprintf("Luno.%v", self.name),
 		Provide(),
@@ -104,6 +106,7 @@ func (self *decorator) internalStart(ctx context.Context) error {
 	}
 
 	err = self.dialAppCancelFunc.Add(
+		connectionId,
 		func() func() {
 			b := false
 			return func() {
@@ -115,6 +118,7 @@ func (self *decorator) internalStart(ctx context.Context) error {
 							"Stopping error. not really a problem. informational",
 							zap.Error(stopErr))
 					}
+					_ = self.dialAppCancelFunc.Remove(connectionId)
 				}
 			}
 		}(),

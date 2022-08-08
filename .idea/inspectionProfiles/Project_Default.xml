@@ -57,6 +57,7 @@
         <method importPath="github.com/bhbosman/gocommon/GoFunctionCounter" receiver="IService" name="GoRun" />
         <method importPath="github.com/bhbosman/goLuno/netMultiDialer" receiver="INetMultiDialerService" name="Dial" />
         <method importPath="github.com/bhbosman/goCommonMarketData/instrumentReference" receiver="IInstrumentReferenceService" name="GetKrakenProviders" />
+        <method importPath="github.com/bhbosman/goCommonMarketData/fullMarketData" receiver="IFullMarketOrderBook" name="Send" />
       </methods>
     </inspection_tool>
   </profile>
