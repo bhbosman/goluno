@@ -58,6 +58,7 @@
         <method importPath="github.com/bhbosman/goLuno/netMultiDialer" receiver="INetMultiDialerService" name="Dial" />
         <method importPath="github.com/bhbosman/goCommonMarketData/instrumentReference" receiver="IInstrumentReferenceService" name="GetKrakenProviders" />
         <method importPath="github.com/bhbosman/goCommonMarketData/fullMarketData" receiver="IFullMarketOrderBook" name="Send" />
+        <method importPath="github.com/bhbosman/goTrader/internal/lunoApi/client" receiver="ClientWithResponsesInterface" name="ListOrdersV2WithResponse" />
       </methods>
     </inspection_tool>
   </profile>

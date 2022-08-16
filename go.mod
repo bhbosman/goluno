@@ -70,8 +70,6 @@ replace github.com/golang/mock => github.com/bhbosman/gomock v1.6.1-0.2022061713
 
 replace github.com/rivo/tview => ../tview
 
-//replace github.com/rivo/tview => ../tview latest
-
 replace github.com/bhbosman/gocomms => ../gocomms
 
 replace github.com/bhbosman/goFxAppManager => ../goFxAppManager
