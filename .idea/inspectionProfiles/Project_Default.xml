@@ -17,6 +17,7 @@
       <functions>
         <function importPath="net/url" name="Parse" />
         <function importPath="github.com/bhbosman/gocommon/pubSub" name="Unsubscribe" />
+        <function importPath="fmt" name="Fprint" />
       </functions>
       <methods>
         <method importPath="hash" receiver="Hash" name="Write" />
