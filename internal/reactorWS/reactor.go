@@ -30,13 +30,13 @@ import (
 
 type reactor struct {
 	common2.BaseConnectionReactor
-	APIKeyID      string
-	APIKeySecret  string
-	UpdateCount   int64
+	apiKeyID      string
+	apiKeySecret  string
+	updateCount   int64
 	sequence      int64
 	messageRouter *messageRouter.MessageRouter
-	FmdService    fullMarketDataManagerService.IFmdManagerService
-	FmdHelper     fullMarketDataHelper.IFullMarketDataHelper
+	fmdService    fullMarketDataManagerService.IFmdManagerService
+	fmdHelper     fullMarketDataHelper.IFullMarketDataHelper
 	referenceData instrumentReference.LunoReferenceData
 }
 
@@ -88,7 +88,7 @@ func (self *reactor) Init(
 }
 
 func (self *reactor) Close() error {
-	_ = self.FmdService.Send(
+	_ = self.fmdService.Send(
 		&stream2.FullMarketData_RemoveInstrumentInstruction{
 			Instrument: self.referenceData.SystemName,
 		},
@@ -102,7 +102,7 @@ func (self *reactor) Open() error {
 	if err != nil {
 		return err
 	}
-	self.FmdService.MultiSend(
+	self.fmdService.MultiSend(
 		&stream2.FullMarketData_Clear{
 			Instrument: self.referenceData.SystemName,
 		},
@@ -151,7 +151,7 @@ func (self *reactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamData) error {
 		clearMessage := &stream2.FullMarketData_Clear{
 			Instrument: self.referenceData.SystemName,
 		}
-		_ = self.FmdService.Send(
+		_ = self.fmdService.Send(
 			clearMessage,
 		)
 
@@ -165,7 +165,7 @@ func (self *reactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamData) error {
 					Volume: bidOrder.Volume,
 				},
 			}
-			_ = self.FmdService.Send(
+			_ = self.fmdService.Send(
 				instruction,
 			)
 		}
@@ -179,7 +179,7 @@ func (self *reactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamData) error {
 					Volume: askOrder.Volume,
 				},
 			}
-			_ = self.FmdService.Send(
+			_ = self.fmdService.Send(
 				instruction,
 			)
 		}
@@ -191,7 +191,7 @@ func (self *reactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamData) error {
 				Id:         order.MakerOrderId,
 				Volume:     order.Base,
 			}
-			_ = self.FmdService.Send(
+			_ = self.fmdService.Send(
 				reduceVolume,
 			)
 		}
@@ -200,7 +200,7 @@ func (self *reactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamData) error {
 			Instrument: self.referenceData.SystemName,
 			Id:         msg.DeleteUpdate.OrderId,
 		}
-		_ = self.FmdService.Send(
+		_ = self.fmdService.Send(
 			deleteOrder,
 		)
 	case msg.CreateUpdate != nil:
@@ -220,7 +220,7 @@ func (self *reactor) HandleLunaData(msg *lunaRawDataFeed.LunoStreamData) error {
 				Volume: createUpdate.Volume,
 			}
 		}(msg.CreateUpdate)
-		_ = self.FmdService.Send(
+		_ = self.fmdService.Send(
 			&stream2.FullMarketData_AddOrderInstruction{
 				Instrument: self.referenceData.SystemName,
 				Order:      order,
@@ -268,7 +268,7 @@ func (self *reactor) HandleWebSocketMessage(msg *wsmsg.WebSocketMessage) {
 			return
 		}
 		if lunaData.Status != "" {
-			_ = self.FmdService.Send(
+			_ = self.fmdService.Send(
 				&stream2.FullMarketData_Instrument_InstrumentStatus{
 					Instrument: self.referenceData.SystemName,
 					Status:     lunaData.Status,
@@ -289,8 +289,8 @@ func (self *reactor) HandleWebSocketMessage(msg *wsmsg.WebSocketMessage) {
 		return
 	case wsmsg.WebSocketMessage_OpStartLoop:
 		msg := &lunaRawDataFeed.Credentials{
-			ApiKeyId:     self.APIKeyID,
-			ApiKeySecret: self.APIKeySecret,
+			ApiKeyId:     self.apiKeyID,
+			ApiKeySecret: self.apiKeySecret,
 		}
 		_ = self.SendMessage(msg)
 		return
@@ -323,11 +323,11 @@ func NewConnectionReactor(
 			PubSub,
 			GoFunctionCounter,
 		),
-		APIKeyID:      APIKeyID,
-		APIKeySecret:  APIKeySecret,
+		apiKeyID:      APIKeyID,
+		apiKeySecret:  APIKeySecret,
 		messageRouter: messageRouter.NewMessageRouter(),
-		FmdService:    FmdService,
-		FmdHelper:     FullMarketDataHelper,
+		fmdService:    FmdService,
+		fmdHelper:     FullMarketDataHelper,
 		referenceData: referenceData,
 	}
 	_ = result.messageRouter.Add(result.HandleWebSocketMessageWrapper)
