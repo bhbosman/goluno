@@ -22,16 +22,16 @@ import (
 
 type decorator struct {
 	stoppedCalled        bool
-	NetMultiDialer       goCommsMultiDialer.INetMultiDialerService
+	netMultiDialer       goCommsMultiDialer.INetMultiDialerService
 	name                 string
 	pubSub               *pubsub.PubSub
-	LunoAPIKeyID         string
-	LunoAPIKeySecret     string
+	lunoAPIKeyID         string
+	lunoAPIKeySecret     string
 	dialApp              messages.IApp
 	dialAppCancelFunc    goCommsDefinitions.ICancellationContext
-	Logger               *zap.Logger
-	FullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper
-	FmdService           fullMarketDataManagerService.IFmdManagerService
+	logger               *zap.Logger
+	fullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper
+	fmdService           fullMarketDataManagerService.IFmdManagerService
 	referenceData        instrumentReference.LunoReferenceData
 }
 
@@ -70,7 +70,7 @@ func (self *decorator) internalStart(ctx context.Context) error {
 	pairUrl, _ := url.Parse(fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", self.name))
 	var err error
 	var connectionId string
-	self.dialApp, self.dialAppCancelFunc, connectionId, err = self.NetMultiDialer.Dial(
+	self.dialApp, self.dialAppCancelFunc, connectionId, err = self.netMultiDialer.Dial(
 		false,
 		nil,
 		pairUrl,
@@ -85,14 +85,14 @@ func (self *decorator) internalStart(ctx context.Context) error {
 			bottom.Provide(),
 		),
 		goCommsDefinitions.ProvideStringContext("Pair", self.name),
-		goCommsDefinitions.ProvideStringContext("LunoAPIKeyID", self.LunoAPIKeyID),
-		goCommsDefinitions.ProvideStringContext("LunoAPIKeySecret", self.LunoAPIKeySecret),
+		goCommsDefinitions.ProvideStringContext("LunoAPIKeyID", self.lunoAPIKeyID),
+		goCommsDefinitions.ProvideStringContext("LunoAPIKeySecret", self.lunoAPIKeySecret),
 		PubSub.ProvidePubSubInstance("Application", self.pubSub),
 		fx.Supply(self.referenceData),
 		fx.Provide(
 			fx.Annotated{
 				Target: func() (fullMarketDataHelper.IFullMarketDataHelper, fullMarketDataManagerService.IFmdManagerService) {
-					return self.FullMarketDataHelper, self.FmdService
+					return self.fullMarketDataHelper, self.fmdService
 				},
 			},
 		),
@@ -102,7 +102,7 @@ func (self *decorator) internalStart(ctx context.Context) error {
 	}
 	err = self.dialApp.Start(context.Background())
 	if err != nil {
-		self.Logger.Error("Error in start", zap.Error(err))
+		self.logger.Error("Error in start", zap.Error(err))
 	}
 
 	err = self.dialAppCancelFunc.Add(
@@ -114,7 +114,7 @@ func (self *decorator) internalStart(ctx context.Context) error {
 					b = true
 					stopErr := self.dialApp.Stop(context.Background())
 					if stopErr != nil {
-						self.Logger.Error(
+						self.logger.Error(
 							"Stopping error. not really a problem. informational",
 							zap.Error(stopErr))
 					}
@@ -160,14 +160,14 @@ func NewDecorator(
 	FmdService fullMarketDataManagerService.IFmdManagerService,
 ) *decorator {
 	return &decorator{
-		Logger:               Logger,
-		NetMultiDialer:       NetMultiDialer,
+		logger:               Logger,
+		netMultiDialer:       NetMultiDialer,
 		name:                 name,
 		pubSub:               pubSub,
-		LunoAPIKeyID:         LunoAPIKeyID,
-		LunoAPIKeySecret:     LunoAPIKeySecret,
-		FullMarketDataHelper: FullMarketDataHelper,
-		FmdService:           FmdService,
+		lunoAPIKeyID:         LunoAPIKeyID,
+		lunoAPIKeySecret:     LunoAPIKeySecret,
+		fullMarketDataHelper: FullMarketDataHelper,
+		fmdService:           FmdService,
 		referenceData:        referenceData,
 	}
 }
