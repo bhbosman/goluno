@@ -105,7 +105,7 @@ func (self *decorator) internalStart(ctx context.Context) error {
 		self.logger.Error("Error in start", zap.Error(err))
 	}
 
-	err = self.dialAppCancelFunc.Add(
+	_, _ = self.dialAppCancelFunc.Add(
 		connectionId,
 		func() func() {
 			b := false
