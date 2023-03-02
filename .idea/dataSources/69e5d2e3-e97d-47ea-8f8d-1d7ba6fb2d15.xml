@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="identifier.sqlite">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.43">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.45">
     <root id="1"/>
     <collation id="2" parent="1" name="BINARY"/>
     <collation id="3" parent="1" name="NOCASE"/>
@@ -1335,56 +1335,56 @@
     </table>
     <table id="492" parent="170" name="strava_credentials"/>
     <column id="493" parent="491" name="type">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <Position>1</Position>
     </column>
     <column id="494" parent="491" name="name">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <Position>2</Position>
     </column>
     <column id="495" parent="491" name="tbl_name">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <Position>3</Position>
     </column>
     <column id="496" parent="491" name="rootpage">
-      <DataType>int|0s</DataType>
+      <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
     <column id="497" parent="491" name="sql">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <Position>5</Position>
     </column>
     <column id="498" parent="492" name="client_id">
-      <DataType>integer|0s</DataType>
+      <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="499" parent="492" name="access_token">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
     <column id="500" parent="492" name="refresh_token">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
     <column id="501" parent="492" name="expires_at">
-      <DataType>integer|0s</DataType>
+      <DasType>integer|0s</DasType>
       <Position>4</Position>
     </column>
     <column id="502" parent="492" name="name">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
     <column id="503" parent="492" name="surname">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
     <column id="504" parent="492" name="img_url">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <Position>7</Position>
     </column>
     <index id="505" parent="492" name="table_name_column_1_uindex">
