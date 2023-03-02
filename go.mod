@@ -3,17 +3,17 @@ module github.com/bhbosman/goLuno
 go 1.18
 
 require (
-	github.com/bhbosman/goCommonMarketData v0.0.0-20220802122727-698b9feba01e
-	github.com/bhbosman/goCommsDefinitions v0.0.0-20220801175552-c5aa68065af3
-	github.com/bhbosman/goCommsMultiDialer v0.0.0-20220728174928-21aff6c1232e
-	github.com/bhbosman/goCommsNetDialer v0.0.0-20220726130315-bec9f09e45e7
-	github.com/bhbosman/goCommsNetListener v0.0.0-20220802132650-9c07365eb427
-	github.com/bhbosman/goCommsStacks v0.0.0-20220715172028-e8be81d8a4d9
-	github.com/bhbosman/goFxApp v0.0.0-20220715185456-22d132c8b983
-	github.com/bhbosman/goFxAppManager v0.0.0-20220730103022-02c299931769
-	github.com/bhbosman/goMessages v0.0.0-20220719163819-d38fc7e6d38c
-	github.com/bhbosman/gocommon v0.0.0-20220802132121-5e81013de07d
-	github.com/bhbosman/gocomms v0.0.0-20220802123532-201eb833272c
+	github.com/bhbosman/goCommonMarketData v0.0.0-20230302063432-ad0560f72219
+	github.com/bhbosman/goCommsDefinitions v0.0.0-20230302063431-887458f90947
+	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230302062227-4194021269c8
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20230302062228-c88685956b15
+	github.com/bhbosman/goCommsNetListener v0.0.0-20230302062227-0285e8a8cd6f
+	github.com/bhbosman/goCommsStacks v0.0.0-20230302062229-66b41ae7b59e
+	github.com/bhbosman/goFxApp v0.0.0-20230302062232-67e350e68bfd
+	github.com/bhbosman/goFxAppManager v0.0.0-20230302062228-c47f15fe6ef8
+	github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599
+	github.com/bhbosman/gocommon v0.0.0-20230302065226-cf91cedfab33
+	github.com/bhbosman/gocomms v0.0.0-20230302065226-07b22458b28c
 	github.com/bhbosman/gomessageblock v0.0.0-20220617132215-32f430d7de62
 	github.com/bhbosman/goprotoextra v0.0.2-0.20210817141206-117becbef7c7
 	github.com/cskr/pubsub v1.0.2
@@ -28,8 +28,8 @@ require (
 )
 
 require (
-	github.com/bhbosman/goConnectionManager v0.0.0-20220802122816-d9db41f332dc // indirect
-	github.com/bhbosman/goUi v0.0.0-20220802121659-b90381157031 // indirect
+	github.com/bhbosman/goConnectionManager v0.0.0-20230302062225-8d0286818635 // indirect
+	github.com/bhbosman/goUi v0.0.0-20230302065227-24c3cb06165e // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
