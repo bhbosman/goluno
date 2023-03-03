@@ -80,8 +80,8 @@ func (self *decorator) internalStart(ctx context.Context) error {
 		fmt.Sprintf("Luno.%v", self.name),
 		Provide(),
 		goCommsDefinitions.ProvideTransportFactoryForWebSocketName(
-			topStack.ProvideTopStack(),
-			websocket.ProvideWebsocketStacks(),
+			topStack.Provide(),
+			websocket.Provide(),
 			bottom.Provide(),
 		),
 		goCommsDefinitions.ProvideStringContext("Pair", self.name),
