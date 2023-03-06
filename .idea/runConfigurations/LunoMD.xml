@@ -1,7 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="LunoMD" type="CompoundRunConfigurationType">
-    <toRun name="goMarketData" type="GoApplicationRunConfiguration" />
-    <toRun name="luno-stream" type="GoApplicationRunConfiguration" />
-    <method v="2" />
-  </configuration>
-</component>
