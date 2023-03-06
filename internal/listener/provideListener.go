@@ -14,7 +14,7 @@ import (
 	"github.com/bhbosman/goCommsStacks/topStack"
 	"github.com/bhbosman/gocommon/fx/PubSub"
 	"github.com/bhbosman/gocommon/messages"
-	common2 "github.com/bhbosman/gocomms/common"
+	"github.com/bhbosman/gocomms/common"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"net/url"
@@ -35,7 +35,7 @@ func CompressedListener(
 				params struct {
 					fx.In
 					PubSub               *pubsub.PubSub `name:"Application"`
-					NetAppFuncInParams   common2.NetAppFuncInParams
+					NetAppFuncInParams   common.NetAppFuncInParams
 					FullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper
 					FmdService           fullMarketDataManagerService.IFmdManagerService
 				},
@@ -46,8 +46,8 @@ func CompressedListener(
 					UseProxy,
 					ProxyUrl,
 					ConnectionUrl,
-					common2.MaxConnectionsSetting(maxConnections),
-					common2.NewConnectionInstanceOptions(
+					common.MaxConnectionsSetting(maxConnections),
+					common.NewConnectionInstanceOptions(
 						fx.Provide(
 							fx.Annotated{
 								Target: func() (fullMarketDataHelper.IFullMarketDataHelper, fullMarketDataManagerService.IFmdManagerService) {
