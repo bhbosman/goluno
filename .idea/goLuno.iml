@@ -17,6 +17,7 @@
     <content url="file://$MODULE_DIR$/../goMarketStructures" />
     <content url="file://$MODULE_DIR$/../goMessages" />
     <content url="file://$MODULE_DIR$/../goPolygon-io" />
+    <content url="file://$MODULE_DIR$/../goRx" />
     <content url="file://$MODULE_DIR$/../goSocks5" />
     <content url="file://$MODULE_DIR$/../goTrader" />
     <content url="file://$MODULE_DIR$/../goUi" />
