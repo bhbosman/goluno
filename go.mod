@@ -12,8 +12,8 @@ require (
 	github.com/bhbosman/goFxApp v0.0.0-20230302062232-67e350e68bfd
 	github.com/bhbosman/goFxAppManager v0.0.0-20230302062228-c47f15fe6ef8
 	github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599
-	github.com/bhbosman/gocommon v0.0.0-20230303055326-d59d6b655a59
-	github.com/bhbosman/gocomms v0.0.0-20230302065226-07b22458b28c
+	github.com/bhbosman/gocommon v0.0.0-20230307160320-44a8839f9b89
+	github.com/bhbosman/gocomms v0.0.0-20230307212550-0918a992672c
 	github.com/bhbosman/gomessageblock v0.0.0-20220617132215-32f430d7de62
 	github.com/bhbosman/goprotoextra v0.0.2-0.20210817141206-117becbef7c7
 	github.com/cskr/pubsub v1.0.2
@@ -100,4 +100,5 @@ replace github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
 replace github.com/cskr/pubsub => github.com/bhbosman/pubsub v1.0.3-0.20220802200819-029949e8a8af
 
 replace github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
+
 //replace github.com/reactivex/rxgo/v2 => ../goRx
