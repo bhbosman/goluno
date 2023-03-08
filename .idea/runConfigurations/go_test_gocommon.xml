@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="go test gocommon" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
+    <module name="goLuno" />
+    <working_directory value="$PROJECT_DIR$/../gocommon" />
+    <kind value="DIRECTORY" />
+    <package value="github.com/bhbosman/goCommonMarketData" />
+    <directory value="$PROJECT_DIR$/../gocommon" />
+    <filePath value="$PROJECT_DIR$/../goCommonMarketData" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>
