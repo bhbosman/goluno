@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="go test goCommsNetDialer" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
+    <module name="goLuno" />
+    <working_directory value="$PROJECT_DIR$/../goCommsNetDialer" />
+    <kind value="DIRECTORY" />
+    <package value="github.com/bhbosman/goCommonMarketData" />
+    <directory value="$PROJECT_DIR$/../goCommsNetDialer" />
+    <filePath value="$PROJECT_DIR$/../goCommonMarketData" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>
