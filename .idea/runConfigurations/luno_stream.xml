@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="luno-stream" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="goLuno" />
+    <working_directory value="$PROJECT_DIR$" />
+    <parameters value="-AppName LunoTesting" />
+    <kind value="PACKAGE" />
+    <package value="github.com/bhbosman/goLuno/luno-stream" />
+    <directory value="$PROJECT_DIR$/../goEchoClient" />
+    <filePath value="$PROJECT_DIR$/luno-stream/main.go" />
+    <method v="2" />
+  </configuration>
+</component>
