@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/bhbosman/goCommonMarketData v0.0.0-20230302063432-ad0560f72219
-	github.com/bhbosman/goCommsDefinitions v0.0.0-20230302063431-887458f90947
+	github.com/bhbosman/goCommsDefinitions v0.0.0-20230308211643-24fe88b2378e
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230302062227-4194021269c8
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20230302062228-c88685956b15
 	github.com/bhbosman/goCommsNetListener v0.0.0-20230302062227-0285e8a8cd6f
@@ -12,7 +12,7 @@ require (
 	github.com/bhbosman/goFxApp v0.0.0-20230302062232-67e350e68bfd
 	github.com/bhbosman/goFxAppManager v0.0.0-20230302062228-c47f15fe6ef8
 	github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599
-	github.com/bhbosman/gocommon v0.0.0-20230307160320-44a8839f9b89
+	github.com/bhbosman/gocommon v0.0.0-20230308114127-b5a97171c205
 	github.com/bhbosman/gocomms v0.0.0-20230307212550-0918a992672c
 	github.com/bhbosman/gomessageblock v0.0.0-20220617132215-32f430d7de62
 	github.com/bhbosman/goprotoextra v0.0.2-0.20210817141206-117becbef7c7
