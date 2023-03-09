@@ -72,6 +72,7 @@ func (self *reactor) handleFullMarketData_Instrument_RegisterWrapper(message *st
 	key := self.FullMarketDataHelper.InstrumentChannelName(message.Data.Instrument)
 	self.PubSub.AddSub(self.OnSendToConnectionPubSubBag, key)
 	message.SetNext(self.OnSendToConnectionPubSubBag)
+	message.Data.RegisterName = self.UniqueReference
 	_ = self.FmdService.Send(message)
 }
 
@@ -80,6 +81,7 @@ func (self *reactor) handleFullMarketData_Instrument_UnregisterWrapper(message *
 	key := self.FullMarketDataHelper.InstrumentChannelName(message.Data.Instrument)
 	self.PubSub.Unsub(self.OnSendToConnectionPubSubBag, key)
 	message.SetNext(self.OnSendToConnectionPubSubBag)
+	message.Data.RegisterName = self.UniqueReference
 	_ = self.FmdService.Send(message)
 }
 
