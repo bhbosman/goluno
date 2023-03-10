@@ -107,9 +107,9 @@ func (self *decorator) internalStart(ctx context.Context) error {
 
 	_, _ = self.dialAppCancelFunc.Add(
 		connectionId,
-		func() func() {
+		func() func(cancelCtx goCommsDefinitions.ICancellationContext) {
 			b := false
-			return func() {
+			return func(cancelCtx goCommsDefinitions.ICancellationContext) {
 				if !b {
 					b = true
 					stopErr := self.dialApp.Stop(context.Background())
@@ -118,7 +118,7 @@ func (self *decorator) internalStart(ctx context.Context) error {
 							"Stopping error. not really a problem. informational",
 							zap.Error(stopErr))
 					}
-					_ = self.dialAppCancelFunc.Remove(connectionId)
+					_ = cancelCtx.Remove(connectionId)
 				}
 			}
 		}(),
