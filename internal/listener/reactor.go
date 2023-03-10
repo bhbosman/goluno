@@ -12,14 +12,11 @@ import (
 	"github.com/bhbosman/gocommon/model"
 	"github.com/bhbosman/gocomms/common"
 	"github.com/bhbosman/gocomms/intf"
-	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"github.com/reactivex/rxgo/v2"
 	"go.uber.org/zap"
-	"google.golang.org/protobuf/proto"
 )
 
-type serializeData func(m proto.Message) (goprotoextra.IReadWriterSize, error)
 type reactor struct {
 	common.BaseConnectionReactor
 	messageRouter            *messageRouter.MessageRouter
@@ -101,7 +98,7 @@ func (self *reactor) handleFullMarketData_InstrumentList_RequestWrapper(message 
 	_ = self.fmdService.Send(message)
 }
 
-func NewConnectionReactor(
+func newConnectionReactor(
 	logger *zap.Logger,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,

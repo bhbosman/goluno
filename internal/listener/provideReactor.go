@@ -32,7 +32,7 @@ func ProvideConnectionReactor() fx.Option {
 					},
 				) (intf.IConnectionReactor, error) {
 					params.Logger.Info("Creating Connection Reactor")
-					result, err := NewConnectionReactor(
+					result, err := newConnectionReactor(
 						params.Logger,
 						params.CancelCtx,
 						params.CancelFunc,
