@@ -15,6 +15,7 @@ import (
 	"github.com/bhbosman/gocommon/messages"
 	common3 "github.com/bhbosman/gocommon/model"
 	common2 "github.com/bhbosman/gocomms/common"
+	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/gomessageblock"
 	"github.com/reactivex/rxgo/v2"
 	"go.uber.org/zap"
@@ -64,13 +65,9 @@ func (self *reactor) SendMessage(message proto.Message) error {
 }
 
 func (self *reactor) Init(
-	onSendToReactor rxgo.NextFunc,
-	onSendToConnection rxgo.NextFunc,
+	params intf.IInitParams,
 ) (rxgo.NextFunc, rxgo.ErrFunc, rxgo.CompletedFunc, error) {
-	_, _, _, err := self.BaseConnectionReactor.Init(
-		onSendToReactor,
-		onSendToConnection,
-	)
+	_, _, _, err := self.BaseConnectionReactor.Init(params)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -312,7 +309,7 @@ func NewConnectionReactor(
 	uniqueReferenceService interfaces.IUniqueReferenceService,
 	fullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper,
 	fmdService fullMarketDataManagerService.IFmdManagerService,
-) (*reactor, error) {
+) (intf.IConnectionReactor, error) {
 	result := &reactor{
 		BaseConnectionReactor: common2.NewBaseConnectionReactor(
 			logger,

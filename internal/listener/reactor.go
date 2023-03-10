@@ -2,14 +2,16 @@ package listener
 
 import (
 	"context"
-	stream2 "github.com/bhbosman/goCommonMarketData/fullMarketData/stream"
+	"fmt"
+	"github.com/bhbosman/goCommonMarketData/fullMarketData/stream"
 	"github.com/bhbosman/goCommonMarketData/fullMarketDataHelper"
 	"github.com/bhbosman/goCommonMarketData/fullMarketDataManagerService"
 	"github.com/bhbosman/gocommon/GoFunctionCounter"
 	"github.com/bhbosman/gocommon/Services/interfaces"
 	"github.com/bhbosman/gocommon/messageRouter"
-	common3 "github.com/bhbosman/gocommon/model"
-	common2 "github.com/bhbosman/gocomms/common"
+	"github.com/bhbosman/gocommon/model"
+	"github.com/bhbosman/gocomms/common"
+	"github.com/bhbosman/gocomms/intf"
 	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"github.com/reactivex/rxgo/v2"
@@ -19,22 +21,18 @@ import (
 
 type serializeData func(m proto.Message) (goprotoextra.IReadWriterSize, error)
 type reactor struct {
-	common2.BaseConnectionReactor
-	messageRouter          *messageRouter.MessageRouter
-	SerializeData          serializeData
-	UniqueReferenceService interfaces.IUniqueReferenceService
-	FullMarketDataHelper   fullMarketDataHelper.IFullMarketDataHelper
-	FmdService             fullMarketDataManagerService.IFmdManagerService
+	common.BaseConnectionReactor
+	messageRouter            *messageRouter.MessageRouter
+	UniqueReferenceService   interfaces.IUniqueReferenceService
+	fmdServiceHelper         fullMarketDataHelper.IFullMarketDataHelper
+	fmdService               fullMarketDataManagerService.IFmdManagerService
+	registeredFmdInstruments map[string]bool
 }
 
 func (self *reactor) Init(
-	onSendToReactor rxgo.NextFunc,
-	onSendToConnection rxgo.NextFunc,
+	params intf.IInitParams,
 ) (rxgo.NextFunc, rxgo.ErrFunc, rxgo.CompletedFunc, error) {
-	_, _, _, err := self.BaseConnectionReactor.Init(
-		onSendToReactor,
-		onSendToConnection,
-	)
+	_, _, _, err := self.BaseConnectionReactor.Init(params)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -68,49 +66,56 @@ func (self *reactor) Close() error {
 }
 
 //goland:noinspection GoSnakeCaseUsage
-func (self *reactor) handleFullMarketData_Instrument_RegisterWrapper(message *stream2.FullMarketData_Instrument_RegisterWrapper) {
-	key := self.FullMarketDataHelper.InstrumentChannelName(message.Data.Instrument)
+func (self *reactor) handleFullMarketData_Instrument_RegisterWrapper(message *stream.FullMarketData_Instrument_RegisterWrapper) {
+	key := self.fmdServiceHelper.InstrumentChannelName(message.Data.Instrument)
 	self.PubSub.AddSub(self.OnSendToConnectionPubSubBag, key)
 	message.SetNext(self.OnSendToConnectionPubSubBag)
-	_ = self.FmdService.Send(message)
+	_ = self.fmdService.Send(message)
+	self.registeredFmdInstruments[message.Data.Instrument] = true
+}
+
+func (self *reactor) handlePublishRxHandlerCounters(message *model.PublishRxHandlerCounters) {
+	for s := range self.registeredFmdInstruments {
+		message.AddMapData(fmt.Sprintf("FMD: %v", s), "")
+	}
 }
 
 //goland:noinspection GoSnakeCaseUsage
-func (self *reactor) handleFullMarketData_Instrument_UnregisterWrapper(message *stream2.FullMarketData_Instrument_UnregisterWrapper) {
-	key := self.FullMarketDataHelper.InstrumentChannelName(message.Data.Instrument)
+func (self *reactor) handleFullMarketData_Instrument_UnregisterWrapper(message *stream.FullMarketData_Instrument_UnregisterWrapper) {
+	key := self.fmdServiceHelper.InstrumentChannelName(message.Data.Instrument)
 	self.PubSub.Unsub(self.OnSendToConnectionPubSubBag, key)
 	message.SetNext(self.OnSendToConnectionPubSubBag)
-	_ = self.FmdService.Send(message)
+	_ = self.fmdService.Send(message)
+	delete(self.registeredFmdInstruments, message.Data.Instrument)
 }
 
 //goland:noinspection GoSnakeCaseUsage
-func (self *reactor) handleFullMarketData_InstrumentList_SubscribeWrapper(message *stream2.FullMarketData_InstrumentList_SubscribeWrapper) {
+func (self *reactor) handleFullMarketData_InstrumentList_SubscribeWrapper(message *stream.FullMarketData_InstrumentList_SubscribeWrapper) {
 	self.PubSub.AddSub(
 		self.OnSendToConnectionPubSubBag,
-		self.FullMarketDataHelper.InstrumentListChannelName(),
+		self.fmdServiceHelper.InstrumentListChannelName(),
 	)
 }
 
 //goland:noinspection GoSnakeCaseUsage
-func (self *reactor) handleFullMarketData_InstrumentList_RequestWrapper(message *stream2.FullMarketData_InstrumentList_RequestWrapper) {
+func (self *reactor) handleFullMarketData_InstrumentList_RequestWrapper(message *stream.FullMarketData_InstrumentList_RequestWrapper) {
 	message.SetNext(self.OnSendToConnectionPubSubBag)
-	_ = self.FmdService.Send(message)
+	_ = self.fmdService.Send(message)
 }
 
 func NewConnectionReactor(
 	logger *zap.Logger,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
-	connectionCancelFunc common3.ConnectionCancelFunc,
+	connectionCancelFunc model.ConnectionCancelFunc,
 	PubSub *pubsub.PubSub,
-	SerializeData serializeData,
 	GoFunctionCounter GoFunctionCounter.IService,
 	UniqueReferenceService interfaces.IUniqueReferenceService,
 	FullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper,
 	FmdService fullMarketDataManagerService.IFmdManagerService,
-) (*reactor, error) {
+) (intf.IConnectionReactor, error) {
 	result := &reactor{
-		BaseConnectionReactor: common2.NewBaseConnectionReactor(
+		BaseConnectionReactor: common.NewBaseConnectionReactor(
 			logger,
 			cancelCtx,
 			cancelFunc,
@@ -119,17 +124,18 @@ func NewConnectionReactor(
 			PubSub,
 			GoFunctionCounter,
 		),
-		messageRouter:          messageRouter.NewMessageRouter(),
-		SerializeData:          SerializeData,
-		UniqueReferenceService: UniqueReferenceService,
-		FmdService:             FmdService,
-		FullMarketDataHelper:   FullMarketDataHelper,
+		messageRouter:            messageRouter.NewMessageRouter(),
+		UniqueReferenceService:   UniqueReferenceService,
+		fmdService:               FmdService,
+		fmdServiceHelper:         FullMarketDataHelper,
+		registeredFmdInstruments: make(map[string]bool),
 	}
 	result.messageRouter.Add(result.handleFullMarketData_InstrumentList_SubscribeWrapper)
 	result.messageRouter.Add(result.handleFullMarketData_InstrumentList_RequestWrapper)
 	//
 	result.messageRouter.Add(result.handleFullMarketData_Instrument_RegisterWrapper)
 	result.messageRouter.Add(result.handleFullMarketData_Instrument_UnregisterWrapper)
+	result.messageRouter.Add(result.handlePublishRxHandlerCounters)
 
 	return result, nil
 }

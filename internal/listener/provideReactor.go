@@ -6,14 +6,11 @@ import (
 	"github.com/bhbosman/gocommon/GoFunctionCounter"
 	"github.com/bhbosman/gocommon/Services/interfaces"
 	"github.com/bhbosman/gocommon/model"
-	"github.com/bhbosman/gocommon/stream"
 	"github.com/bhbosman/gocomms/intf"
-	"github.com/bhbosman/goprotoextra"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 	"golang.org/x/net/context"
-	"google.golang.org/protobuf/proto"
 )
 
 func ProvideConnectionReactor() fx.Option {
@@ -41,9 +38,6 @@ func ProvideConnectionReactor() fx.Option {
 						params.CancelFunc,
 						params.ConnectionCancelFunc,
 						params.PubSub,
-						func(data proto.Message) (goprotoextra.IReadWriterSize, error) {
-							return stream.Marshall(data)
-						},
 						params.GoFunctionCounter,
 						params.UniqueReferenceService,
 						params.FullMarketDataHelper,
