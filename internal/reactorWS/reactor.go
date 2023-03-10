@@ -296,7 +296,7 @@ func (self *reactor) HandleWebSocketMessage(msg *wsmsg.WebSocketMessage) {
 	}
 }
 
-func NewConnectionReactor(
+func newConnectionReactor(
 	logger *zap.Logger,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,

@@ -35,7 +35,7 @@ func Provide() fx.Option {
 					ReferenceData          instrumentReference.LunoReferenceData
 				},
 			) (intf.IConnectionReactor, error) {
-				result, err := NewConnectionReactor(
+				result, err := newConnectionReactor(
 					params.Logger,
 					params.CancelCtx,
 					params.CancelFunc,
