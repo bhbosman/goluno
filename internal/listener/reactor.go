@@ -29,9 +29,7 @@ type reactor struct {
 	registeredFmdInstruments map[string]bool
 }
 
-func (self *reactor) Init(
-	params intf.IInitParams,
-) (rxgo.NextFunc, rxgo.ErrFunc, rxgo.CompletedFunc, error) {
+func (self *reactor) Init(params intf.IInitParams) (rxgo.NextFunc, rxgo.ErrFunc, rxgo.CompletedFunc, error) {
 	_, _, _, err := self.BaseConnectionReactor.Init(params)
 	if err != nil {
 		return nil, nil, nil, err
