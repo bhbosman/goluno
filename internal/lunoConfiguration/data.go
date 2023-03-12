@@ -8,7 +8,7 @@ import (
 type data struct {
 	//m             map[string]*LunoConfiguration
 	isDirty       map[string]bool
-	MessageRouter *messageRouter.MessageRouter
+	MessageRouter messageRouter.IMessageRouter
 }
 
 func (self *data) Send(message interface{}) error {
@@ -23,7 +23,7 @@ func (self *data) ShutDown() error {
 	return nil
 }
 
-func (self *data) handleEmptyQueue(msg *messages.EmptyQueue) {
+func (self *data) handleEmptyQueue(*messages.EmptyQueue) {
 	self.isDirty = make(map[string]bool)
 }
 
@@ -32,6 +32,6 @@ func newData() (ILunoConfigurationData, error) {
 		MessageRouter: messageRouter.NewMessageRouter(),
 		isDirty:       make(map[string]bool),
 	}
-	result.MessageRouter.Add(result.handleEmptyQueue)
+	_ = result.MessageRouter.Add(result.handleEmptyQueue)
 	return result, nil
 }

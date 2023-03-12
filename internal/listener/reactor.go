@@ -19,7 +19,7 @@ import (
 
 type reactor struct {
 	common.BaseConnectionReactor
-	messageRouter            *messageRouter.MessageRouter
+	messageRouter            messageRouter.IMessageRouter
 	UniqueReferenceService   interfaces.IUniqueReferenceService
 	fmdServiceHelper         fullMarketDataHelper.IFullMarketDataHelper
 	fmdService               fullMarketDataManagerService.IFmdManagerService
@@ -85,7 +85,7 @@ func (self *reactor) handleFullMarketData_Instrument_UnregisterWrapper(message *
 }
 
 //goland:noinspection GoSnakeCaseUsage
-func (self *reactor) handleFullMarketData_InstrumentList_SubscribeWrapper(message *stream.FullMarketData_InstrumentList_SubscribeWrapper) {
+func (self *reactor) handleFullMarketData_InstrumentList_SubscribeWrapper(*stream.FullMarketData_InstrumentList_SubscribeWrapper) {
 	self.PubSub.AddSub(
 		self.OnSendToConnectionPubSubBag,
 		self.fmdServiceHelper.InstrumentListChannelName(),
@@ -125,12 +125,12 @@ func newConnectionReactor(
 		fmdServiceHelper:         FullMarketDataHelper,
 		registeredFmdInstruments: make(map[string]bool),
 	}
-	result.messageRouter.Add(result.handleFullMarketData_InstrumentList_SubscribeWrapper)
-	result.messageRouter.Add(result.handleFullMarketData_InstrumentList_RequestWrapper)
+	_ = result.messageRouter.Add(result.handleFullMarketData_InstrumentList_SubscribeWrapper)
+	_ = result.messageRouter.Add(result.handleFullMarketData_InstrumentList_RequestWrapper)
 	//
-	result.messageRouter.Add(result.handleFullMarketData_Instrument_RegisterWrapper)
-	result.messageRouter.Add(result.handleFullMarketData_Instrument_UnregisterWrapper)
-	result.messageRouter.Add(result.handlePublishRxHandlerCounters)
+	_ = result.messageRouter.Add(result.handleFullMarketData_Instrument_RegisterWrapper)
+	_ = result.messageRouter.Add(result.handleFullMarketData_Instrument_UnregisterWrapper)
+	_ = result.messageRouter.Add(result.handlePublishRxHandlerCounters)
 
 	return result, nil
 }

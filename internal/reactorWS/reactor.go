@@ -35,7 +35,7 @@ type reactor struct {
 	apiKeySecret  string
 	updateCount   int64
 	sequence      int64
-	messageRouter *messageRouter.MessageRouter
+	messageRouter messageRouter.IMessageRouter
 	fmdService    fullMarketDataManagerService.IFmdManagerService
 	fmdHelper     fullMarketDataHelper.IFullMarketDataHelper
 	referenceData instrumentReference.LunoReferenceData
@@ -122,7 +122,7 @@ func (self *reactor) HandleReaderWriter(msg *gomessageblock.ReaderWriter) {
 	}
 }
 
-func (self *reactor) HandleEmptyQueue(msg *messages.EmptyQueue) {
+func (self *reactor) HandleEmptyQueue(_ *messages.EmptyQueue) {
 }
 
 func (self *reactor) updateSequence(newSeq int64) error {
