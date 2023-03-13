@@ -12,6 +12,7 @@ import (
 	"github.com/bhbosman/goCommsStacks/websocket"
 	"github.com/bhbosman/gocommon/fx/PubSub"
 	"github.com/bhbosman/gocommon/messages"
+	"github.com/bhbosman/gocomms/common"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
@@ -28,7 +29,7 @@ type decorator struct {
 	lunoAPIKeyID         string
 	lunoAPIKeySecret     string
 	dialApp              messages.IApp
-	dialAppCancelFunc    goCommsDefinitions.ICancellationContext
+	dialAppCancelFunc    common.ICancellationContext
 	logger               *zap.Logger
 	fullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper
 	fmdService           fullMarketDataManagerService.IFmdManagerService
@@ -107,9 +108,9 @@ func (self *decorator) internalStart(ctx context.Context) error {
 
 	_, _ = self.dialAppCancelFunc.Add(
 		connectionId,
-		func(dialApp messages.IApp) func(cancelCtx goCommsDefinitions.ICancellationContext) {
+		func(dialApp messages.IApp) func(cancelCtx common.ICancellationContext) {
 			b := false
-			return func(cancelCtx goCommsDefinitions.ICancellationContext) {
+			return func(cancelCtx common.ICancellationContext) {
 				if !b {
 					b = true
 					stopErr := dialApp.Stop(context.Background())
