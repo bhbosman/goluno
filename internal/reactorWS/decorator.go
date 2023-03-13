@@ -15,10 +15,12 @@ import (
 	"github.com/bhbosman/gocomms/common"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
+	"go.uber.org/multierr"
 	"go.uber.org/zap"
 	"golang.org/x/net/context"
 	"io"
 	"net/url"
+	"sync"
 )
 
 type decorator struct {
@@ -106,25 +108,45 @@ func (self *decorator) internalStart(ctx context.Context) error {
 		self.logger.Error("Error in start", zap.Error(err))
 	}
 
-	_, _ = self.dialAppCancelFunc.Add(
-		connectionId,
-		func(dialApp messages.IApp) func(cancelCtx common.ICancellationContext) {
-			b := false
-			return func(cancelCtx common.ICancellationContext) {
-				if !b {
-					b = true
-					stopErr := dialApp.Stop(context.Background())
-					if stopErr != nil {
-						self.logger.Error(
-							"Stopping error. not really a problem. informational",
-							zap.Error(stopErr))
-					}
-					_ = cancelCtx.Remove(connectionId)
-				}
-			}
-		}(self.dialApp),
-	)
+	_ = self.registerConnectionShutdown(connectionId, self.dialApp, self.logger, self.dialAppCancelFunc)
 	return nil
+}
+
+func (self *decorator) registerConnectionShutdown(
+	connectionId string,
+	connectionApp messages.IApp,
+	logger *zap.Logger,
+	cancellationContext ...common.ICancellationContext,
+) error {
+	mutex := sync.Mutex{}
+	cancelCalled := false
+	cb := func() {
+		mutex.Lock()
+		b := cancelCalled
+		cancelCalled = true
+		mutex.Unlock()
+		if !b {
+			errInGoRoutine := connectionApp.Stop(context.Background())
+			if errInGoRoutine != nil {
+				logger.Error(
+					"Stopping error. not really a problem. informational",
+					zap.Error(errInGoRoutine))
+			}
+			for _, instance := range cancellationContext {
+				_ = instance.Remove(connectionId)
+			}
+		}
+	}
+	var result error
+	for _, ctx := range cancellationContext {
+		b, err := ctx.Add(connectionId, cb)
+		result = multierr.Append(result, err)
+		if !b {
+			cb()
+			return result
+		}
+	}
+	return result
 }
 
 func (self *decorator) internalStop(ctx context.Context) error {
