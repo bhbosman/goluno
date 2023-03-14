@@ -3,19 +3,18 @@ module github.com/bhbosman/goLuno
 go 1.18
 
 require (
-	github.com/bhbosman/goCommonMarketData v0.0.0-20230302063432-ad0560f72219
-	github.com/bhbosman/goCommsDefinitions v0.0.0-20230308211643-24fe88b2378e
-	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230302062227-4194021269c8
-	github.com/bhbosman/goCommsNetDialer v0.0.0-20230302062228-c88685956b15
-	github.com/bhbosman/goCommsNetListener v0.0.0-20230302062227-0285e8a8cd6f
-	github.com/bhbosman/goCommsStacks v0.0.0-20230302185506-f2c4d856b6d3
-	github.com/bhbosman/goFxApp v0.0.0-20230302062232-67e350e68bfd
-	github.com/bhbosman/goFxAppManager v0.0.0-20230302062228-c47f15fe6ef8
+	github.com/bhbosman/goCommonMarketData v0.0.0-20230314090538-c2558d337a80
+	github.com/bhbosman/goCommsDefinitions v0.0.0-20230313180751-41613a6b3173
+	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230313180750-7c042977b3ec
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20230314091908-3561ac6c4f78
+	github.com/bhbosman/goCommsNetListener v0.0.0-20230314091907-f262dd1c2a75
+	github.com/bhbosman/goCommsStacks v0.0.0-20230312190127-8beb54de6372
+	github.com/bhbosman/goFxApp v0.0.0-20230310082949-aef924725ac0
+	github.com/bhbosman/goFxAppManager v0.0.0-20230312204225-46ba6dc25430
 	github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599
-	github.com/bhbosman/gocommon v0.0.0-20230308114127-b5a97171c205
-	github.com/bhbosman/gocomms v0.0.0-20230307212550-0918a992672c
-	github.com/bhbosman/gomessageblock v0.0.0-20220617132215-32f430d7de62
-	github.com/bhbosman/goprotoextra v0.0.2-0.20210817141206-117becbef7c7
+	github.com/bhbosman/gocommon v0.0.0-20230312205650-25cf8341f1c9
+	github.com/bhbosman/gocomms v0.0.0-20230314091910-d10668a1a4cd
+	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
 	github.com/cskr/pubsub v1.0.2
 	github.com/golang/protobuf v1.5.2
 	github.com/reactivex/rxgo/v2 v2.5.0
@@ -24,13 +23,13 @@ require (
 	go.uber.org/multierr v1.6.0
 	go.uber.org/zap v1.23.0
 	golang.org/x/net v0.7.0
-	google.golang.org/protobuf v1.28.0
 )
 
 require (
-	github.com/bhbosman/goConnectionManager v0.0.0-20230302065222-d613f6fe8f80 // indirect
+	github.com/bhbosman/goConnectionManager v0.0.0-20230312204225-183859f3cef5 // indirect
 	github.com/bhbosman/goUi v0.0.0-20230302065227-24c3cb06165e // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
+	github.com/bhbosman/goprotoextra v0.0.2-0.20210817141206-117becbef7c7 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
@@ -59,6 +58,7 @@ require (
 	golang.org/x/term v0.5.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f // indirect
+	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
@@ -100,5 +100,3 @@ replace github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
 replace github.com/cskr/pubsub => github.com/bhbosman/pubsub v1.0.3-0.20220802200819-029949e8a8af
 
 replace github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
-
-//replace github.com/reactivex/rxgo/v2 => ../goRx

@@ -4,7 +4,7 @@
     <option name="FORCE_PUSH_PROHIBITED_PATTERNS">
       <list>
         <option value="master" />
-        <option value="DoNotDeregisterDepth" />
+        <option value="CurrentWork" />
       </list>
     </option>
   </component>
