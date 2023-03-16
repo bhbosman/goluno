@@ -2,6 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="Go" enabled="true" />
   <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../goBoom" />
     <content url="file://$MODULE_DIR$/../goCommonMarketData" />
     <content url="file://$MODULE_DIR$/../goCommsDefinitions" />
     <content url="file://$MODULE_DIR$/../goCommsMultiDialer" />
@@ -9,6 +10,7 @@
     <content url="file://$MODULE_DIR$/../goCommsNetListener" />
     <content url="file://$MODULE_DIR$/../goCommsSshListener" />
     <content url="file://$MODULE_DIR$/../goCommsStacks" />
+    <content url="file://$MODULE_DIR$/../goConn" />
     <content url="file://$MODULE_DIR$/../goConnectionManager" />
     <content url="file://$MODULE_DIR$/../goFxApp" />
     <content url="file://$MODULE_DIR$/../goFxAppManager" />
