@@ -14,7 +14,6 @@ import (
 	"github.com/bhbosman/goConn"
 	"github.com/bhbosman/gocommon/fx/PubSub"
 	"github.com/bhbosman/gocommon/messages"
-	"github.com/bhbosman/gocomms/netBase"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
@@ -107,7 +106,7 @@ func (self *decorator) internalStart(ctx context.Context) error {
 		self.logger.Error("Error in start", zap.Error(err))
 	}
 
-	return netBase.RegisterConnectionShutdown(
+	return goConn.RegisterConnectionShutdown(
 		connectionId,
 		func(
 			connectionApp messages.IApp,
