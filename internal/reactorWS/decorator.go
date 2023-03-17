@@ -11,9 +11,9 @@ import (
 	"github.com/bhbosman/goCommsStacks/bottom"
 	"github.com/bhbosman/goCommsStacks/topStack"
 	"github.com/bhbosman/goCommsStacks/websocket"
+	"github.com/bhbosman/goConn"
 	"github.com/bhbosman/gocommon/fx/PubSub"
 	"github.com/bhbosman/gocommon/messages"
-	"github.com/bhbosman/gocomms/common"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"go.uber.org/multierr"
@@ -31,7 +31,7 @@ type decorator struct {
 	lunoAPIKeyID         string
 	lunoAPIKeySecret     string
 	dialApp              messages.IApp
-	dialAppCancelFunc    common.ICancellationContext
+	dialAppCancelFunc    goConn.ICancellationContext
 	logger               *zap.Logger
 	fullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper
 	fmdService           fullMarketDataManagerService.IFmdManagerService
@@ -116,7 +116,7 @@ func (self *decorator) registerConnectionShutdown(
 	connectionId string,
 	connectionApp messages.IApp,
 	logger *zap.Logger,
-	cancellationContext ...common.ICancellationContext,
+	cancellationContext ...goConn.ICancellationContext,
 ) error {
 	mutex := sync.Mutex{}
 	cancelCalled := false
