@@ -40,7 +40,7 @@ type decorator struct {
 
 func (self *decorator) Cancel() {
 	if self.dialAppCancelFunc != nil {
-		self.dialAppCancelFunc.Cancel()
+		self.dialAppCancelFunc.Cancel("456")
 	}
 }
 
@@ -151,7 +151,7 @@ func (self *decorator) registerConnectionShutdown(
 
 func (self *decorator) internalStop(ctx context.Context) error {
 	if self.dialAppCancelFunc != nil {
-		self.dialAppCancelFunc.Cancel()
+		self.dialAppCancelFunc.Cancel("789")
 	}
 	return nil
 }
