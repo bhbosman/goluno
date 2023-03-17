@@ -21,11 +21,11 @@ require (
 	github.com/rivo/tview v0.0.0-20220709181631-73bf2902b59a
 	go.uber.org/fx v1.19.2
 	go.uber.org/multierr v1.10.0
-	go.uber.org/zap v1.23.0
+	go.uber.org/zap v1.24.0
 	golang.org/x/net v0.7.0
 )
 
-require github.com/bhbosman/goConn v0.0.0-20230317052122-2eec27fd9bc8 // indirect
+require github.com/bhbosman/goConn v0.0.0-20230317052122-2eec27fd9bc8
 
 require (
 	github.com/bhbosman/goConnectionManager v0.0.0-20230312204225-183859f3cef5 // indirect
