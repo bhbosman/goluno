@@ -2,10 +2,12 @@ package lunoConfiguration
 
 import (
 	"context"
+	"fmt"
 	"github.com/bhbosman/goCommonMarketData/fullMarketDataHelper"
 	"github.com/bhbosman/goCommonMarketData/fullMarketDataManagerService"
 	"github.com/bhbosman/goCommonMarketData/instrumentReference"
 	"github.com/bhbosman/goCommsMultiDialer"
+	"github.com/bhbosman/goConn"
 	fxAppManager "github.com/bhbosman/goFxAppManager/service"
 	"github.com/bhbosman/goLuno/internal/reactorWS"
 	"github.com/bhbosman/gocommon/GoFunctionCounter"
@@ -15,6 +17,7 @@ import (
 	"go.uber.org/fx"
 	"go.uber.org/multierr"
 	"go.uber.org/zap"
+	"net/url"
 )
 
 func Provide() fx.Option {
@@ -71,6 +74,7 @@ func Provide() fx.Option {
 					fx.In
 					Logger                     *zap.Logger
 					LunoConfigurationService   ILunoConfigurationService
+					ApplicationContext         context.Context `name:"Application"`
 					Lifecycle                  fx.Lifecycle
 					FxManagerService           fxAppManager.IFxManagerService
 					NetMultiDialer             goCommsMultiDialer.INetMultiDialerService
@@ -91,9 +95,18 @@ func Provide() fx.Option {
 							}
 							f := func(
 								name string,
-								referenceData instrumentReference.LunoReferenceData) func() (messages.IApp, context.CancelFunc, error) {
-								return func() (messages.IApp, context.CancelFunc, error) {
-									dec := reactorWS.NewDecorator(
+								referenceData instrumentReference.LunoReferenceData) func() (messages.IApp, goConn.ICancellationContext, error) {
+
+								return func() (messages.IApp, goConn.ICancellationContext, error) {
+
+									namedLogger := params.Logger.Named(name)
+									ctx, cancelFunc := context.WithCancel(params.ApplicationContext)
+									cancellationContext := goConn.NewCancellationContext(name, cancelFunc, ctx, namedLogger, nil)
+
+									pairUrl, _ := url.Parse(fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", name))
+
+									dec, err := reactorWS.NewDecorator(
+										pairUrl,
 										params.Logger,
 										params.NetMultiDialer,
 										referenceData,
@@ -103,8 +116,12 @@ func Provide() fx.Option {
 										params.LunoAPIKeySecret,
 										params.FullMarketDataHelper,
 										params.FmdService,
+										cancellationContext,
 									)
-									return dec, dec.Cancel, nil
+									if err != nil {
+										return nil, nil, err
+									}
+									return dec, cancellationContext, nil
 								}
 							}
 

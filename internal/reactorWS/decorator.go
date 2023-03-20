@@ -17,66 +17,50 @@ import (
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
-	"io"
 	"net/url"
 )
 
 type decorator struct {
-	stoppedCalled        bool
-	netMultiDialer       goCommsMultiDialer.INetMultiDialerService
-	name                 string
-	pubSub               *pubsub.PubSub
-	lunoAPIKeyID         string
-	lunoAPIKeySecret     string
-	dialApp              messages.IApp
-	dialAppCancelFunc    goConn.ICancellationContext
-	logger               *zap.Logger
-	fullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper
-	fmdService           fullMarketDataManagerService.IFmdManagerService
-	referenceData        instrumentReference.LunoReferenceData
+	netMultiDialer                goCommsMultiDialer.INetMultiDialerService
+	name                          string
+	pubSub                        *pubsub.PubSub
+	lunoAPIKeyID                  string
+	lunoAPIKeySecret              string
+	logger                        *zap.Logger
+	fullMarketDataHelper          fullMarketDataHelper.IFullMarketDataHelper
+	fmdService                    fullMarketDataManagerService.IFmdManagerService
+	referenceData                 instrumentReference.LunoReferenceData
+	decoratorCancellationContext  goConn.ICancellationContext
+	connectionCancellationContext goConn.ICancellationContext
+	connectionUrl                 *url.URL
 }
 
-func (self *decorator) Cancel() {
-	if self.dialAppCancelFunc != nil {
-		self.dialAppCancelFunc.Cancel("456")
+func (self *decorator) Start(context.Context) error {
+	if self.decoratorCancellationContext.Err() != nil {
+		return self.decoratorCancellationContext.Err()
 	}
-}
-
-func (self *decorator) Start(ctx context.Context) error {
-	if !self.stoppedCalled {
-		go func() {
-			_ = self.internalStart(ctx)
-		}()
-		return nil
-	}
-	return io.EOF
-}
-
-func (self *decorator) Stop(ctx context.Context) error {
-	if !self.stoppedCalled {
-		self.stoppedCalled = true
-		return self.internalStop(ctx)
-	}
-	return io.EOF
-}
-
-func (self *decorator) Err() error {
-	if self.dialApp != nil {
-		return self.dialApp.Err()
-	}
+	go func() {
+		_ = self.internalStart()
+	}()
 	return nil
 }
 
-func (self *decorator) internalStart(ctx context.Context) error {
-	pairUrl, _ := url.Parse(fmt.Sprintf("wss://ws.luno.com:443/api/1/stream/%v", self.name))
-	var err error
-	var connectionId string
-	self.dialApp, self.dialAppCancelFunc, connectionId, err = self.netMultiDialer.Dial(
+func (self *decorator) Stop(context.Context) error {
+	self.decoratorCancellationContext.Cancel("ASDADSA")
+	return self.decoratorCancellationContext.Err()
+}
+
+func (self *decorator) Err() error {
+	return self.decoratorCancellationContext.Err()
+}
+
+func (self *decorator) internalStart() error {
+	dialApp, dialAppCancelFunc, connectionId, err := self.netMultiDialer.Dial(
 		false,
 		nil,
-		pairUrl,
+		self.connectionUrl,
 		self.reconnect,
-		self.dialAppCancelFunc,
+		self.decoratorCancellationContext,
 		fmt.Sprintf("Luno.%v", self.name),
 		fmt.Sprintf("Luno.%v", self.name),
 		Provide(),
@@ -101,54 +85,58 @@ func (self *decorator) internalStart(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	err = self.dialApp.Start(context.Background())
+	err = dialApp.Start(context.Background())
 	if err != nil {
 		self.logger.Error("Error in start", zap.Error(err))
 	}
+	self.connectionCancellationContext = dialAppCancelFunc
 
 	return goConn.RegisterConnectionShutdown(
 		connectionId,
 		func(
 			connectionApp messages.IApp,
 			logger *zap.Logger,
+			connectionCancellationContext goConn.ICancellationContext,
 		) func() {
 			return func() {
 				errInGoRoutine := connectionApp.Stop(context.Background())
+				connectionCancellationContext.Cancel("asadasdas")
 				if errInGoRoutine != nil {
 					logger.Error(
 						"Stopping error. not really a problem. informational",
 						zap.Error(errInGoRoutine))
 				}
 			}
-		}(self.dialApp, self.logger),
-
-		self.dialAppCancelFunc,
+		}(dialApp, self.logger, dialAppCancelFunc),
+		self.decoratorCancellationContext,
+		dialAppCancelFunc,
 	)
 }
 
-func (self *decorator) internalStop(ctx context.Context) error {
-	if self.dialAppCancelFunc != nil {
-		self.dialAppCancelFunc.Cancel("789")
-	}
-	return nil
+func (self *decorator) internalStop() error {
+	self.connectionCancellationContext.Cancel("adsdasdas")
+	self.connectionCancellationContext = nil
+	return self.decoratorCancellationContext.Err()
 }
 
 func (self *decorator) reconnect() {
+	if self.decoratorCancellationContext.Err() != nil {
+		return
+	}
 	go func() {
-		if !self.stoppedCalled {
-			err := self.internalStop(context.Background())
-			if err != nil {
-				return
-			}
-			err = self.internalStart(context.Background())
-			if err != nil {
-				return
-			}
+		err := self.internalStop()
+		if err != nil {
+			return
+		}
+		err = self.internalStart()
+		if err != nil {
+			return
 		}
 	}()
 }
 
 func NewDecorator(
+	connectionUrl *url.URL,
 	Logger *zap.Logger,
 	NetMultiDialer goCommsMultiDialer.INetMultiDialerService,
 	referenceData instrumentReference.LunoReferenceData,
@@ -158,16 +146,19 @@ func NewDecorator(
 	LunoAPIKeySecret string,
 	FullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper,
 	FmdService fullMarketDataManagerService.IFmdManagerService,
-) *decorator {
+	decoratorCancellationContext goConn.ICancellationContext,
+) (messages.IApp, error) {
 	return &decorator{
-		logger:               Logger,
-		netMultiDialer:       NetMultiDialer,
-		name:                 name,
-		pubSub:               pubSub,
-		lunoAPIKeyID:         LunoAPIKeyID,
-		lunoAPIKeySecret:     LunoAPIKeySecret,
-		fullMarketDataHelper: FullMarketDataHelper,
-		fmdService:           FmdService,
-		referenceData:        referenceData,
-	}
+		connectionUrl:                connectionUrl,
+		logger:                       Logger,
+		netMultiDialer:               NetMultiDialer,
+		name:                         name,
+		pubSub:                       pubSub,
+		lunoAPIKeyID:                 LunoAPIKeyID,
+		lunoAPIKeySecret:             LunoAPIKeySecret,
+		fullMarketDataHelper:         FullMarketDataHelper,
+		fmdService:                   FmdService,
+		referenceData:                referenceData,
+		decoratorCancellationContext: decoratorCancellationContext,
+	}, nil
 }
