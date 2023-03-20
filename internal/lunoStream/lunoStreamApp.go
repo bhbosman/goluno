@@ -20,8 +20,8 @@ func App(
 ) (*goFxApp.TerminalAppUsingFxApp, error) {
 
 	settings := &AppSettings{
-		textListenerEnabled:       false,
-		textListenerUrl:           "tcp4://127.0.0.1:3000",
+		//textListenerEnabled:       false,
+		//textListenerUrl:           "tcp4://127.0.0.1:3000",
 		compressedListenerEnabled: false,
 		compressedListenerUrl:     "tcp4://127.0.0.1:3001",
 		canDial:                   nil,

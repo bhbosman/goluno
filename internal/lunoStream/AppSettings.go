@@ -5,8 +5,8 @@ import (
 )
 
 type AppSettings struct {
-	textListenerEnabled       bool
-	textListenerUrl           string
+	//textListenerEnabled       bool
+	//textListenerUrl           string
 	compressedListenerEnabled bool
 	compressedListenerUrl     string
 	canDial                   []goCommsNetDialer.ICanDial
