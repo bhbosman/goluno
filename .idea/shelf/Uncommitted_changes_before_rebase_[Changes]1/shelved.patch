@@ -1,0 +1,33 @@
+Index: ../goBoom/builder/typeSpec.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package builder\n\nimport \"go/ast\"\n\ntype TypeSpec struct {\n\tlocation\n\tident    string\n\ttypeSpec *ast.TypeSpec\n}\n\nfunc (self *TypeSpec) GetIdent() string {\n\treturn self.ident\n}\n\nfunc (self *TypeSpec) SetIdent(ident string) {\n\tself.ident = ident\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../goBoom/builder/typeSpec.go b/../goBoom/builder/typeSpec.go
+--- a/../goBoom/builder/typeSpec.go	(revision 4e278c87e26e8f899b3f8bac54a6c41c9fd9ba0d)
++++ b/../goBoom/builder/typeSpec.go	(date 1679659780934)
+@@ -1,6 +1,9 @@
+ package builder
+ 
+-import "go/ast"
++import (
++	"go/ast"
++	"go/token"
++)
+ 
+ type TypeSpec struct {
+ 	location
+@@ -15,3 +18,11 @@
+ func (self *TypeSpec) SetIdent(ident string) {
+ 	self.ident = ident
+ }
++
++func NewTypeSpec(indent int, pos token.Pos, end token.Pos, typeSpec *ast.TypeSpec) *TypeSpec {
++	return &TypeSpec{
++		location: newLocation(indent, pos, end),
++		typeSpec: typeSpec,
++	}
++}
++
