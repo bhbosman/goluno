@@ -1,0 +1,31 @@
+Index: ../goBoom/playground/0001.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package playground\n\n// Test Case: Test if we can read the definition with primitive field types\ntype Definition0001 struct {\n\tSomeInt    int\n\tSomeString string\n}\n\n//type IDefinition0001 interface {\n//\tSomeVoid()\n//\tSomeInt() int\n//}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../goBoom/playground/0001.go b/../goBoom/playground/0001.go
+--- a/../goBoom/playground/0001.go	(revision c56e9c4876f6c100648a97ab5c92f88d2b53b545)
++++ b/../goBoom/playground/0001.go	(date 1679772351137)
+@@ -1,12 +1,13 @@
+ package playground
+ 
+ // Test Case: Test if we can read the definition with primitive field types
+-type Definition0001 struct {
+-	SomeInt    int
+-	SomeString string
+-}
+ 
+-//type IDefinition0001 interface {
+-//	SomeVoid()
+-//	SomeInt() int
++//type Definition0001 struct {
++//	SomeInt    int
++//	SomeString string
+ //}
++
++type IDefinition0001 interface {
++	SomeVoid()
++	SomeInt() int
++}
