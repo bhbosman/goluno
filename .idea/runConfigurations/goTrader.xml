@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="goTrader" type="GoApplicationRunConfiguration" factoryName="Go Application">
-    <module name="goLuno" />
+    <module name="MainProject" />
     <working_directory value="$PROJECT_DIR$/../goTrader" />
     <kind value="PACKAGE" />
     <package value="github.com/bhbosman/goTrader" />

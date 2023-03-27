@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="go test goCommsNetDialer" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
-    <module name="goLuno" />
+    <module name="MainProject" />
     <working_directory value="$PROJECT_DIR$/../goCommsNetDialer" />
     <kind value="DIRECTORY" />
     <package value="github.com/bhbosman/goCommonMarketData" />
