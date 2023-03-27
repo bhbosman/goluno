@@ -3,9 +3,9 @@ module github.com/bhbosman/goLuno
 go 1.18
 
 require (
-	github.com/bhbosman/goCommonMarketData v0.0.0-20230320101758-3470fb389a3d
+	github.com/bhbosman/goCommonMarketData v0.0.0-20230327104601-f812528217c6
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c
-	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230320101758-6772392a6bc3
+	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230327104602-ff16d5832e7a
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20230320195223-5a973c1422d0
 	github.com/bhbosman/goCommsNetListener v0.0.0-20230320195222-8cf9e04581fc
 	github.com/bhbosman/goCommsStacks v0.0.0-20230320101758-57b309a0fba1
@@ -97,10 +97,10 @@ replace github.com/bhbosman/goConnectionManager => ../goConnectionManager
 
 replace github.com/bhbosman/goprotoextra => ../goprotoextra
 
-replace github.com/bhbosman/goMessages => ../goMessages
+//replace github.com/bhbosman/goMessages => ../goMessages
 
-replace github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
+//replace github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
 
-replace github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
+//replace github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
 
-replace github.com/bhbosman/goConn => ../goConn
+//replace github.com/bhbosman/goConn => ../goConn
