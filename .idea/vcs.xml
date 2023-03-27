@@ -9,7 +9,6 @@
     </option>
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/../goBoom" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommonMarketData" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommsDefinitions" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommsMultiDialer" vcs="Git" />
@@ -38,7 +37,6 @@
     <mapping directory="$PROJECT_DIR$/../gomessageblock" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gomock" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goprotoextra" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../gorxextra" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../pubsub" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../sshApplication" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../tcell" vcs="Git" />
