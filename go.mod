@@ -1,7 +1,7 @@
 module github.com/bhbosman/goLuno
 
 go 1.18
-adasdasdasdas
+
 require (
 	github.com/bhbosman/goCommonMarketData v0.0.0-20230314090538-c2558d337a80
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20230313180751-41613a6b3173
