@@ -20,6 +20,8 @@ github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa h1:7lakH1tzJ/EocZS
 github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa/go.mod h1:ls316tsU4UUuVGmhpn30sbd702HbPHYTn0ATQavKGEk=
 github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b h1:Us3sl2zR6LbUuM6HM5ZyY7SFitgFJ04FRhKzb7cceHo=
 github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b/go.mod h1:cJohvxREq/SWojBi6xm/MD93SNY6997md9HOhM/PmYo=
+github.com/bhbosman/goFxAppManager v0.0.0-20230328152128-7497014a964a h1:b+jYYMttcJQhkyOMVqj7AIl9LiOKDIUEpPtX5PdO0GA=
+github.com/bhbosman/goFxAppManager v0.0.0-20230328152128-7497014a964a/go.mod h1:i55xCqtpcOZK99WnWRYshAngCZMJJHY4BMAseApNETw=
 github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c h1:Kc8lZkwpaCYrGpplcSwMiMgk1RwK2DhTgLAgHZsaYaM=
 github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c/go.mod h1:etttJeznDvzaPnjLKKkPGhxCyhqfVdasA28mnT1+LWY=
 github.com/bhbosman/gocommon v0.0.0-20230328150634-566a0f916878 h1:giTFJcUbn4abWJdRALlUKBBSlixJ7ELinOCLRUaP934=
