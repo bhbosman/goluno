@@ -4,7 +4,7 @@
     <working_directory value="$PROJECT_DIR$/../goMarketData" />
     <kind value="PACKAGE" />
     <package value="github.com/bhbosman/goMarketData" />
-    <directory value="$PROJECT_DIR$/../goCommonMarketData" />
+    <directory value="$PROJECT_DIR$/../goCommsMultiDialer" />
     <filePath value="$PROJECT_DIR$/../goMarketData/main.go" />
     <method v="2" />
   </configuration>

@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run" type="CompoundRunConfigurationType">
+  <configuration default="false" name="FullMarkerDataApplications" type="CompoundRunConfigurationType">
     <toRun name="goMarketData" type="GoApplicationRunConfiguration" />
     <toRun name="kraken-stream" type="GoApplicationRunConfiguration" />
     <toRun name="luno-stream" type="GoApplicationRunConfiguration" />

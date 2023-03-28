@@ -4,7 +4,7 @@
     <working_directory value="$PROJECT_DIR$" />
     <kind value="PACKAGE" />
     <package value="github.com/bhbosman/goLuno/luno-stream" />
-    <directory value="$PROJECT_DIR$/../RxGo" />
+    <directory value="$PROJECT_DIR$/../goCommsMultiDialer" />
     <filePath value="$PROJECT_DIR$/luno-stream/main.go" />
     <method v="2" />
   </configuration>
