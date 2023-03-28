@@ -3,7 +3,7 @@ module github.com/bhbosman/goLuno
 go 1.18
 
 require (
-	github.com/bhbosman/goCommonMarketData v0.0.0-20230327104601-f812528217c6
+	github.com/bhbosman/goCommonMarketData v0.0.0-20230328140730-aa1e4f5286a1
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230327104602-ff16d5832e7a
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20230320195223-5a973c1422d0
@@ -95,7 +95,7 @@ replace github.com/bhbosman/goerrors => ../goerrors
 
 replace github.com/bhbosman/goConnectionManager => ../goConnectionManager
 
-replace github.com/bhbosman/goprotoextra => ../goprotoextra
+//replace github.com/bhbosman/goprotoextra => ../goprotoextra
 
 //replace github.com/bhbosman/goMessages => ../goMessages
 
