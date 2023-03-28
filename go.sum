@@ -5,8 +5,8 @@ github.com/bhbosman/goCommonMarketData v0.0.0-20230327104601-f812528217c6 h1:ero
 github.com/bhbosman/goCommonMarketData v0.0.0-20230327104601-f812528217c6/go.mod h1:0kcElAx+Cf+k7o6VEeLhKb00cGbWEoGYGKzxyZGkPGw=
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20230327104602-ff16d5832e7a h1:CzvD7156+0YCQsJuLql1PCrxvYF/e9hI50vBP39U6H0=
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20230327104602-ff16d5832e7a/go.mod h1:LijhJF8jgPZpNwAl7tJdICefskx0A2v1vU3mHD22+ec=
-github.com/bhbosman/goConn v0.0.0-20230320102125-d7416dd8d6dc h1:Lx80GI9XKxQlJgeZq8cYsAWf79AlM64QMQRGCjaO1k4=
-github.com/bhbosman/goConn v0.0.0-20230320102125-d7416dd8d6dc/go.mod h1:ls316tsU4UUuVGmhpn30sbd702HbPHYTn0ATQavKGEk=
+github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa h1:7lakH1tzJ/EocZSdCWYF5LIH+ySs6egdupZLHTqjrD4=
+github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa/go.mod h1:ls316tsU4UUuVGmhpn30sbd702HbPHYTn0ATQavKGEk=
 github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599 h1:njuSpfrv5EUpOoU8UlS7ouO49uHHHzQhDXSvyjpPNZU=
 github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599/go.mod h1:QF5tO/PUw+ALlyx7AIHdgahpKkh/oA7ni72g90mnn1g=
 github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c h1:UQCbM3rXlsDsSpo6iJr0DeYRiEA7UT8+9UJkXwzI3kA=

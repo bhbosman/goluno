@@ -26,10 +26,10 @@ require (
 	golang.org/x/net v0.7.0
 )
 
-require github.com/bhbosman/goConn v0.0.0-20230320102125-d7416dd8d6dc
+require github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
 
 require (
-	github.com/bhbosman/goConnectionManager v0.0.0-20230312204225-183859f3cef5 // indirect
+	github.com/bhbosman/goConnectionManager v0.0.0-20230327104600-4b1464715bb4 // indirect
 	github.com/bhbosman/goUi v0.0.0-20230312204226-c4c7ec5f0899 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
@@ -95,7 +95,7 @@ replace github.com/bhbosman/goerrors => ../goerrors
 
 replace github.com/bhbosman/goConnectionManager => ../goConnectionManager
 
-//replace github.com/bhbosman/goprotoextra => ../goprotoextra
+replace github.com/bhbosman/goprotoextra => ../goprotoextra
 
 //replace github.com/bhbosman/goMessages => ../goMessages
 
