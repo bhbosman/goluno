@@ -10,8 +10,8 @@ require (
 	github.com/bhbosman/goCommsNetListener v0.0.0-20230328152946-bae51c4dfa4c
 	github.com/bhbosman/goCommsStacks v0.0.0-20230328152947-93095a31b055
 	github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
-	github.com/bhbosman/goFxApp v0.0.0-20230328152947-5d22532f49ce
-	github.com/bhbosman/goFxAppManager v0.0.0-20230328205958-0dcafa6bef73
+	github.com/bhbosman/goFxApp v0.0.0-20230328220051-e297c2bf33db
+	github.com/bhbosman/goFxAppManager v0.0.0-20230328220050-a5b50e43977e
 	github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c
 	github.com/bhbosman/gocommon v0.0.0-20230328220050-dafaab862dd2
 	github.com/bhbosman/gocomms v0.0.0-20230328145403-30d1cbb347ef
