@@ -77,9 +77,7 @@ replace github.com/bhbosman/gocomms => ../gocomms
 
 replace github.com/bhbosman/goFxAppManager => ../goFxAppManager
 
-//replace github.com/bhbosman/gocommon => ../gocommon
-
-replace github.com/bhbosman/goCommsStacks => ../goCommsStacks
+//replace github.com/bhbosman/goCommsStacks => ../goCommsStacks
 
 replace github.com/bhbosman/goCommsNetDialer => ../goCommsNetDialer
 
