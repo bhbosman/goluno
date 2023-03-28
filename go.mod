@@ -12,7 +12,7 @@ require (
 	github.com/bhbosman/goFxApp v0.0.0-20230310082949-aef924725ac0
 	github.com/bhbosman/goFxAppManager v0.0.0-20230320053418-125763bdf8d5
 	github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599
-	github.com/bhbosman/gocommon v0.0.0-20230320083256-4088c43f62a7
+	github.com/bhbosman/gocommon v0.0.0-20230328140834-3b6f0ea2faaa
 	github.com/bhbosman/gocomms v0.0.0-20230325224146-be663bcaf158
 	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
 	github.com/cskr/pubsub v1.0.2
@@ -25,7 +25,7 @@ require (
 	golang.org/x/net v0.7.0
 )
 
-require github.com/bhbosman/goConn v0.0.0-20230320102125-d7416dd8d6dc
+require github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
 
 require (
 	github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b // indirect
@@ -93,7 +93,7 @@ replace github.com/bhbosman/goUi => ../goUi
 
 replace github.com/bhbosman/goerrors => ../goerrors
 
-replace github.com/bhbosman/goConnectionManager => ../goConnectionManager
+//replace github.com/bhbosman/goConnectionManager => ../goConnectionManager
 
 //replace github.com/bhbosman/goprotoextra => ../goprotoextra
 
