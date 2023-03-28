@@ -77,12 +77,11 @@ replace github.com/bhbosman/gocomms => ../gocomms
 
 replace github.com/bhbosman/goFxAppManager => ../goFxAppManager
 
-
 replace github.com/bhbosman/goCommsNetDialer => ../goCommsNetDialer
 
 replace github.com/bhbosman/goCommsNetListener => ../goCommsNetListener
 
-replace github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
+//replace github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
 
 replace github.com/bhbosman/goFxApp => ../goFxApp
 
