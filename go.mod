@@ -87,7 +87,7 @@ replace github.com/bhbosman/goCommsNetListener => ../goCommsNetListener
 
 replace github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
 
-replace github.com/bhbosman/goFxApp => ../goFxApp
+//replace github.com/bhbosman/goFxApp => ../goFxApp
 
 replace github.com/bhbosman/goUi => ../goUi
 
