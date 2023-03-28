@@ -15,7 +15,7 @@ require (
 	github.com/bhbosman/gocommon v0.0.0-20230320083256-4088c43f62a7
 	github.com/bhbosman/gocomms v0.0.0-20230325224146-be663bcaf158
 	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
-	github.com/bhbosman/goprotoextra v0.0.0-20230309055846-4d9940f8b875
+	github.com/bhbosman/goprotoextra v0.0.1 // indirect
 	github.com/cskr/pubsub v1.0.2
 	github.com/golang/protobuf v1.5.2
 	github.com/reactivex/rxgo/v2 v2.5.0
