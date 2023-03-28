@@ -9,6 +9,7 @@ require (
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20230328152946-289563dfdcd2
 	github.com/bhbosman/goCommsNetListener v0.0.0-20230328152946-bae51c4dfa4c
 	github.com/bhbosman/goCommsStacks v0.0.0-20230328152947-93095a31b055
+	github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
 	github.com/bhbosman/goFxApp v0.0.0-20230328152947-5d22532f49ce
 	github.com/bhbosman/goFxAppManager v0.0.0-20230328152128-7497014a964a
 	github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c
@@ -26,7 +27,6 @@ require (
 )
 
 require (
-	github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
 	github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b // indirect
 	github.com/bhbosman/goUi v0.0.0-20230328181044-49e31970d158 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
