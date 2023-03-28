@@ -25,9 +25,8 @@ require (
 	golang.org/x/net v0.7.0
 )
 
-require github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
-
 require (
+	github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
 	github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b // indirect
 	github.com/bhbosman/goUi v0.0.0-20230328181044-49e31970d158 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
@@ -73,5 +72,4 @@ replace github.com/cskr/pubsub => github.com/bhbosman/pubsub v1.0.3-0.2022080220
 
 replace github.com/rivo/tview => github.com/bhbosman/tview v0.0.0-20230310100135-f8b257a85d36
 
-//replace github.com/bhbosman/goFxApp => ../goFxApp
-
+replace github.com/bhbosman/goFxApp => ../goFxApp
