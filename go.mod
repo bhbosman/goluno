@@ -3,18 +3,18 @@ module github.com/bhbosman/goLuno
 go 1.18
 
 require (
-	github.com/bhbosman/goCommonMarketData latest
-	github.com/bhbosman/goCommsDefinitions latest
-	github.com/bhbosman/goCommsMultiDialer latest
-	github.com/bhbosman/goCommsNetDialer latest
-	github.com/bhbosman/goCommsNetListener latest
-	github.com/bhbosman/goCommsStacks latest
-	github.com/bhbosman/goFxApp latest
-	github.com/bhbosman/goFxAppManager latest
-	github.com/bhbosman/goMessages latest
-	github.com/bhbosman/gocommon latest
-	github.com/bhbosman/gocomms latest
-	github.com/bhbosman/gomessageblock latest
+	github.com/bhbosman/goCommonMarketData v0.0.0-20230328152946-4eadc8adbe7f
+	github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c
+	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328152946-29be13f4e053
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20230328152946-289563dfdcd2
+	github.com/bhbosman/goCommsNetListener v0.0.0-20230328152946-bae51c4dfa4c
+	github.com/bhbosman/goCommsStacks v0.0.0-20230328152947-93095a31b055
+	github.com/bhbosman/goFxApp v0.0.0-20230328152947-5d22532f49ce
+	github.com/bhbosman/goFxAppManager v0.0.0-20230328152128-7497014a964a
+	github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c
+	github.com/bhbosman/gocommon v0.0.0-20230328150634-566a0f916878
+	github.com/bhbosman/gocomms v0.0.0-20230328145403-30d1cbb347ef
+	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
 	github.com/cskr/pubsub v1.0.2
 	github.com/golang/protobuf v1.5.2
 	github.com/reactivex/rxgo/v2 v2.5.0
