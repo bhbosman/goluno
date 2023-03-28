@@ -3,17 +3,18 @@ module github.com/bhbosman/goLuno
 go 1.18
 
 require (
-	github.com/bhbosman/goCommonMarketData v0.0.0-20230328140730-aa1e4f5286a1
+	github.com/bhbosman/goCommonMarketData v0.0.0-20230328152946-4eadc8adbe7f
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c
-	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230327104602-ff16d5832e7a
-	github.com/bhbosman/goCommsNetDialer v0.0.0-20230320195223-5a973c1422d0
-	github.com/bhbosman/goCommsNetListener v0.0.0-20230320195222-8cf9e04581fc
-	github.com/bhbosman/goCommsStacks v0.0.0-20230320101758-57b309a0fba1
-	github.com/bhbosman/goFxApp v0.0.0-20230310082949-aef924725ac0
-	github.com/bhbosman/goFxAppManager v0.0.0-20230320053418-125763bdf8d5
-	github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599
-	github.com/bhbosman/gocommon v0.0.0-20230328140834-3b6f0ea2faaa
-	github.com/bhbosman/gocomms v0.0.0-20230325224146-be663bcaf158
+	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328152946-29be13f4e053
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20230328152946-289563dfdcd2
+	github.com/bhbosman/goCommsNetListener v0.0.0-20230328152946-bae51c4dfa4c
+	github.com/bhbosman/goCommsStacks v0.0.0-20230328152947-93095a31b055
+	github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
+	github.com/bhbosman/goFxApp v0.0.0-20230328152947-5d22532f49ce
+	github.com/bhbosman/goFxAppManager v0.0.0-20230328152128-7497014a964a
+	github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c
+	github.com/bhbosman/gocommon v0.0.0-20230328150634-566a0f916878
+	github.com/bhbosman/gocomms v0.0.0-20230328145403-30d1cbb347ef
 	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
 	github.com/cskr/pubsub v1.0.2
 	github.com/golang/protobuf v1.5.2
@@ -25,11 +26,9 @@ require (
 	golang.org/x/net v0.7.0
 )
 
-require github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
-
 require (
-	github.com/bhbosman/goConnectionManager v0.0.0-20230328152128-966e33ba52f4 // indirect
-	github.com/bhbosman/goUi v0.0.0-20230327111003-b80e10f7c669 // indirect
+	github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b // indirect
+	github.com/bhbosman/goUi v0.0.0-20230328181044-49e31970d158 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
 	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
@@ -73,34 +72,4 @@ replace github.com/cskr/pubsub => github.com/bhbosman/pubsub v1.0.3-0.2022080220
 
 replace github.com/rivo/tview => github.com/bhbosman/tview v0.0.0-20230310100135-f8b257a85d36
 
-replace github.com/bhbosman/gocomms => ../gocomms
-
-replace github.com/bhbosman/goFxAppManager => ../goFxAppManager
-
-replace github.com/bhbosman/gocommon => ../gocommon
-
-replace github.com/bhbosman/goCommsStacks => ../goCommsStacks
-
-replace github.com/bhbosman/goCommsNetDialer => ../goCommsNetDialer
-
-replace github.com/bhbosman/goCommsNetListener => ../goCommsNetListener
-
-replace github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
-
 replace github.com/bhbosman/goFxApp => ../goFxApp
-
-replace github.com/bhbosman/goUi => ../goUi
-
-replace github.com/bhbosman/goerrors => ../goerrors
-
-replace github.com/bhbosman/goConnectionManager => ../goConnectionManager
-
-//replace github.com/bhbosman/goprotoextra => ../goprotoextra
-
-//replace github.com/bhbosman/goMessages => ../goMessages
-
-//replace github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
-
-//replace github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
-
-//replace github.com/bhbosman/goConn => ../goConn
