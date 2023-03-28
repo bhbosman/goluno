@@ -13,7 +13,7 @@ require (
 	github.com/bhbosman/goFxApp v0.0.0-20230328152947-5d22532f49ce
 	github.com/bhbosman/goFxAppManager v0.0.0-20230328152128-7497014a964a
 	github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c
-	github.com/bhbosman/gocommon v0.0.0-20230328190055-dffeb142435d
+	github.com/bhbosman/gocommon v0.0.0-20230328205958-d21444a729d1
 	github.com/bhbosman/gocomms v0.0.0-20230328145403-30d1cbb347ef
 	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
 	github.com/cskr/pubsub v1.0.2
@@ -72,4 +72,4 @@ replace github.com/cskr/pubsub => github.com/bhbosman/pubsub v1.0.3-0.2022080220
 
 replace github.com/rivo/tview => github.com/bhbosman/tview v0.0.0-20230310100135-f8b257a85d36
 
-replace github.com/bhbosman/goFxApp => ../goFxApp
+//replace github.com/bhbosman/goFxApp => ../goFxApp
