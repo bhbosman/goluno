@@ -31,7 +31,7 @@ require (
 	github.com/bhbosman/goConnectionManager v0.0.0-20230328152128-966e33ba52f4 // indirect
 	github.com/bhbosman/goUi v0.0.0-20230327111003-b80e10f7c669 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
-	github.com/bhbosman/goprotoextra v0.0.1 // indirect
+	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
@@ -95,7 +95,7 @@ replace github.com/bhbosman/goerrors => ../goerrors
 
 replace github.com/bhbosman/goConnectionManager => ../goConnectionManager
 
-replace github.com/bhbosman/goprotoextra => ../goprotoextra
+//replace github.com/bhbosman/goprotoextra => ../goprotoextra
 
 //replace github.com/bhbosman/goMessages => ../goMessages
 
