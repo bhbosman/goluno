@@ -11,6 +11,8 @@ github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b h1:Us
 github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b/go.mod h1:cJohvxREq/SWojBi6xm/MD93SNY6997md9HOhM/PmYo=
 github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599 h1:njuSpfrv5EUpOoU8UlS7ouO49uHHHzQhDXSvyjpPNZU=
 github.com/bhbosman/goMessages v0.0.0-20230302063433-258339efe599/go.mod h1:QF5tO/PUw+ALlyx7AIHdgahpKkh/oA7ni72g90mnn1g=
+github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf h1:uI7bP2Ue0pjjB8j2zWY+nRbjQgeTfmOW6VR7WvVGK1I=
+github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf/go.mod h1:2aeMPIIYjD7+5AmN1yaV/oAqCaExRDcl7SN+/zFLpew=
 github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c h1:UQCbM3rXlsDsSpo6iJr0DeYRiEA7UT8+9UJkXwzI3kA=
 github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c/go.mod h1:TZ2IkIqXD6cRPBNJYUlLC4V11cwB6KoO984OAcL9blI=
 github.com/bhbosman/gomock v1.6.1-0.20230302060806-d02c40b7514e h1:9ZZLTcBpRq0gCtFml4/M9EQ3E5sQoHIBRk0yLpuVFVQ=
