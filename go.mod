@@ -28,10 +28,10 @@ require (
 require github.com/bhbosman/goConn v0.0.0-20230320102125-d7416dd8d6dc
 
 require (
-	github.com/bhbosman/goConnectionManager v0.0.0-20230312204225-183859f3cef5 // indirect
+	github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b // indirect
 	github.com/bhbosman/goUi v0.0.0-20230312204226-c4c7ec5f0899 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
-	github.com/bhbosman/goprotoextra v0.0.2-0.20210817141206-117becbef7c7 // indirect
+	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
