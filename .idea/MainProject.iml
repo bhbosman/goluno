@@ -15,7 +15,6 @@
     <content url="file://$MODULE_DIR$/../goCommsNetListener" />
     <content url="file://$MODULE_DIR$/../goCommsSshListener" />
     <content url="file://$MODULE_DIR$/../goCommsStacks" />
-    <content url="file://$MODULE_DIR$/../goConn" />
     <content url="file://$MODULE_DIR$/../goConnectionManager" />
     <content url="file://$MODULE_DIR$/../goFxApp" />
     <content url="file://$MODULE_DIR$/../goFxAppManager" />

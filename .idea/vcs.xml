@@ -17,7 +17,6 @@
     <mapping directory="$PROJECT_DIR$/../goCommsNetListener" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommsSshListener" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommsStacks" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../goConn" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goConnectionManager" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goFxApp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goFxAppManager" vcs="Git" />
