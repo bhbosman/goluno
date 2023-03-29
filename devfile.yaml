@@ -1,7 +1,0 @@
-schemaVersion: 2.2.0
-attributes:
-  space:
-    instanceType: large
-    editor:
-      type: Idea
-      version: '2022.2'
