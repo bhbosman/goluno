@@ -23,10 +23,8 @@
     <mapping directory="$PROJECT_DIR$/../goFxAppManager" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMarketData" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../goMarketStructures" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goMessages" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goPolygon-io" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../goRx" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goSocks5" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goTrader" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goUi" vcs="Git" />
