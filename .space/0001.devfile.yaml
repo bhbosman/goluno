@@ -13,8 +13,14 @@ attributes:
       # release state, e.g. Release or EAP
       updateChannel: Release
 projects:
-  - name: my-go-project
+  - name: goprotoextra
     clonePath: go/src/github.com/bhbosman/goprotoextra
     git:
       remotes:
-        origin: 'https://github.com/bhbosman/goprotoextra'
+        bhbosman: 'https://github.com/bhbosman/goprotoextra'
+      checkoutFrom:
+        remote: bhbosman
+        revision: CurrentWork
+variables:
+  a: 12
+  b: 123
