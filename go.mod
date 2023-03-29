@@ -6,7 +6,7 @@ require (
 	github.com/bhbosman/goCommonMarketData v0.0.0-20230328152946-4eadc8adbe7f
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328152946-29be13f4e053
-	github.com/bhbosman/goCommsNetDialer v0.0.0-20230328152946-289563dfdcd2
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20230328224225-97ee5ecb684c
 	github.com/bhbosman/goCommsNetListener v0.0.0-20230328152946-bae51c4dfa4c
 	github.com/bhbosman/goCommsStacks v0.0.0-20230328152947-93095a31b055
 	github.com/bhbosman/goConn v0.0.0-20230328145648-e6bab0984275
@@ -14,7 +14,7 @@ require (
 	github.com/bhbosman/goFxAppManager v0.0.0-20230328220050-a5b50e43977e
 	github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c
 	github.com/bhbosman/gocommon v0.0.0-20230328230250-805500c476ac
-	github.com/bhbosman/gocomms v0.0.0-20230328221033-4231cc0340d0
+	github.com/bhbosman/gocomms v0.0.0-20230329081153-c8a2da884df3
 	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
 	github.com/cskr/pubsub v1.0.2
 	github.com/golang/protobuf v1.5.2
