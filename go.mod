@@ -71,5 +71,3 @@ replace github.com/golang/mock => github.com/bhbosman/gomock v1.6.1-0.2023030206
 replace github.com/cskr/pubsub => github.com/bhbosman/pubsub v1.0.3-0.20220802200819-029949e8a8af
 
 replace github.com/rivo/tview => github.com/bhbosman/tview v0.0.0-20230310100135-f8b257a85d36
-
-//replace github.com/bhbosman/goFxApp => ../goFxApp
