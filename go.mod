@@ -26,7 +26,6 @@ require (
 )
 
 require (
-	github.com/bhbosman/goConn v0.0.0-20230328145648-e6bab0984275 // indirect
 	github.com/bhbosman/goConnectionManager v0.0.0-20230328221032-2e48eb2721d0 // indirect
 	github.com/bhbosman/goUi v0.0.0-20230328220052-834528d68f6d // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
@@ -71,18 +70,17 @@ replace (
 	github.com/rivo/tview => github.com/bhbosman/tview v0.0.0-20230310100135-f8b257a85d36
 )
 
-//replace (
-//	github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
-//	github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
-//	github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
-//	github.com/bhbosman/goCommsNetDialer => ../goCommsNetDialer
-//	github.com/bhbosman/goCommsNetListener => ../goCommsNetListener
-//	github.com/bhbosman/goCommsStacks => ../goCommsStacks
-//
-//	github.com/bhbosman/goFxApp => ../goFxApp
-//	github.com/bhbosman/goFxAppManager => ../goFxAppManager
-//	github.com/bhbosman/goMessages => ../goMessages
-//	github.com/bhbosman/gocommon => ../gocommon
-//	github.com/bhbosman/gocomms => ../gocomms
-//	github.com/bhbosman/gomessageblock => ../gomessageblock
-//)
+replace (
+	github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
+	github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
+	github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
+	github.com/bhbosman/goCommsNetDialer => ../goCommsNetDialer
+	github.com/bhbosman/goCommsNetListener => ../goCommsNetListener
+	github.com/bhbosman/goCommsStacks => ../goCommsStacks
+	github.com/bhbosman/goFxApp => ../goFxApp
+	github.com/bhbosman/goFxAppManager => ../goFxAppManager
+	github.com/bhbosman/goMessages => ../goMessages
+	github.com/bhbosman/gocommon => ../gocommon
+	github.com/bhbosman/gocomms => ../gocomms
+	github.com/bhbosman/gomessageblock => ../gomessageblock
+)
