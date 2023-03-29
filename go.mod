@@ -6,8 +6,8 @@ require (
 	github.com/bhbosman/goCommonMarketData v0.0.0-20230329102141-a91b266b20e3
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20230329100608-a6a24c060ad8
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328221032-9d1230ea9384
-	github.com/bhbosman/goCommsNetDialer v0.0.0-20230328224225-97ee5ecb684c
-	github.com/bhbosman/goCommsNetListener v0.0.0-20230328221032-95cc426246fe
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20230329104213-5493957faab0
+	github.com/bhbosman/goCommsNetListener v0.0.0-20230329104212-9f1b0eafaa6b
 	github.com/bhbosman/goCommsStacks v0.0.0-20230328221032-cd6c6063e9ef
 	github.com/bhbosman/goFxApp v0.0.0-20230329100615-cac401f3c57c
 	github.com/bhbosman/goFxAppManager v0.0.0-20230329105958-8874cb25c628
