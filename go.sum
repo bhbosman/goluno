@@ -10,12 +10,16 @@ github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c h1:Ky8
 github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c/go.mod h1:vbCOElN9jFdYC0z8KZXGvrVWDRmcPZYwhDLoMfkvD9A=
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328152946-29be13f4e053 h1:MzEdUbaVobEIVWD9gVk5ETFUC7yetaxfSWxg+TuCmTM=
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328152946-29be13f4e053/go.mod h1:xoZ6wlXn9YPJTZtZbrSO3zqWW0jq5dxhWOpPWjsu4aQ=
+github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328221032-9d1230ea9384 h1:VGmTT8jm3GQMLNMnm2ah7QXSLtq7cKXxRlKglPFc8fQ=
+github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328221032-9d1230ea9384/go.mod h1:OrfyoxgXlQXC6prp8LUq3wEgJ4x1Slf9PTuoeEhyPyM=
 github.com/bhbosman/goCommsNetDialer v0.0.0-20230328224225-97ee5ecb684c h1:Xuep+l/0fEN9Hb6DQ/w77+7vx6RoYq9FPbJJkMcpDzg=
 github.com/bhbosman/goCommsNetDialer v0.0.0-20230328224225-97ee5ecb684c/go.mod h1:NDAYkaWNtStWShQl+X7Vo+0mK5/s1xHakIloYwzxIaI=
 github.com/bhbosman/goCommsNetListener v0.0.0-20230328152946-bae51c4dfa4c h1:p1K3KS0QIywVb3sP/q+3d5Gr/AsziZSbMnads3zrw24=
 github.com/bhbosman/goCommsNetListener v0.0.0-20230328152946-bae51c4dfa4c/go.mod h1:xo7jkxk86Dgzy/tk162XdgdN/08PaU7m7c4Ypj/G+VM=
 github.com/bhbosman/goCommsStacks v0.0.0-20230328152947-93095a31b055 h1:8c4Y3oOOsZWC3EdEgb7fghTBElKWPPV5dRkqyaotaFw=
 github.com/bhbosman/goCommsStacks v0.0.0-20230328152947-93095a31b055/go.mod h1:ZuBkO2dWSFowpooBzyULSI3iomczfPZOfAzxlzkRM4o=
+github.com/bhbosman/goConn v0.0.0-20230328145648-e6bab0984275 h1:mb8udNg6G36PPdwH7R2XM1cdIo+cy7l59wMURJPXrSQ=
+github.com/bhbosman/goConn v0.0.0-20230328145648-e6bab0984275/go.mod h1:IqnusjHk+667VfU4wKbfTTf0RDInttgjpkuN02P0C4U=
 github.com/bhbosman/goConnectionManager v0.0.0-20230328221032-2e48eb2721d0 h1:JgFkHqqe4A053Gi7Zkcu0B6Hs8Zj1pwKjed2MXhwmaY=
 github.com/bhbosman/goConnectionManager v0.0.0-20230328221032-2e48eb2721d0/go.mod h1:Gm7Jj1TTD18FvkICm3qMgenc0DLrt7RBxnU5jcN5qb8=
 github.com/bhbosman/goFxApp v0.0.0-20230328220051-e297c2bf33db h1:7+h9Zep6Sc4HFi5ODec+hu7Q53Jz46C9Y+D0lhWobAY=
