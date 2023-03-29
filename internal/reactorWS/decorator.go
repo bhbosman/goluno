@@ -13,7 +13,6 @@ import (
 	"github.com/bhbosman/goCommsStacks/websocket"
 	"github.com/bhbosman/goConn"
 	"github.com/bhbosman/gocommon/fx/PubSub"
-	"github.com/bhbosman/gocommon/messages"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
@@ -94,7 +93,7 @@ func (self *decorator) internalStart() error {
 	return goConn.RegisterConnectionShutdown(
 		connectionId,
 		func(
-			connectionApp messages.IApp,
+			connectionApp goConn.IApp,
 			logger *zap.Logger,
 			connectionCancellationContext goConn.ICancellationContext,
 		) func() {
@@ -147,7 +146,7 @@ func NewDecorator(
 	FullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper,
 	FmdService fullMarketDataManagerService.IFmdManagerService,
 	decoratorCancellationContext goConn.ICancellationContext,
-) (messages.IApp, error) {
+) (goConn.IApp, error) {
 	return &decorator{
 		connectionUrl:                connectionUrl,
 		logger:                       Logger,

@@ -11,7 +11,6 @@ import (
 	fxAppManager "github.com/bhbosman/goFxAppManager/service"
 	"github.com/bhbosman/goLuno/internal/reactorWS"
 	"github.com/bhbosman/gocommon/GoFunctionCounter"
-	"github.com/bhbosman/gocommon/messages"
 	"github.com/bhbosman/gocommon/services/interfaces"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
@@ -95,9 +94,9 @@ func Provide() fx.Option {
 							}
 							f := func(
 								name string,
-								referenceData instrumentReference.LunoReferenceData) func() (messages.IApp, goConn.ICancellationContext, error) {
+								referenceData instrumentReference.LunoReferenceData) func() (goConn.IApp, goConn.ICancellationContext, error) {
 
-								return func() (messages.IApp, goConn.ICancellationContext, error) {
+								return func() (goConn.IApp, goConn.ICancellationContext, error) {
 
 									namedLogger := params.Logger.Named(name)
 									ctx, cancelFunc := context.WithCancel(params.ApplicationContext)
