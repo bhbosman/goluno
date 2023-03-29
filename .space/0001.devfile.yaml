@@ -17,4 +17,4 @@ projects:
     clonePath: go/src/github.com/bhbosman/goprotoextra
     git:
       remotes:
-        origin: 'https://github.com/bhbosman/goprotoextra'	
+        origin: 'https://github.com/bhbosman/goprotoextra'
