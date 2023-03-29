@@ -30,8 +30,8 @@ github.com/bhbosman/goUi v0.0.0-20230328220052-834528d68f6d h1:JAR1+3neNITY8RJqS
 github.com/bhbosman/goUi v0.0.0-20230328220052-834528d68f6d/go.mod h1:XhQXLFv48huODQt8EfJyKQ2uMtig668L4nQ9PKzplxo=
 github.com/bhbosman/gocommon v0.0.0-20230329101749-40db0f52d859 h1:NCx+ApHbdXn9tlhzywGejvmPSDj7v8FlDwxlU84G4sc=
 github.com/bhbosman/gocommon v0.0.0-20230329101749-40db0f52d859/go.mod h1:Om88rcHnwFIos6FEr5346bZM8/7ex5gFZ4/VeX+XoJs=
-github.com/bhbosman/gocomms v0.0.0-20230329081153-c8a2da884df3 h1:rcyh+75TZ1q3y5bda78CpBMpfSqqRrMm4fASdbZv1JU=
-github.com/bhbosman/gocomms v0.0.0-20230329081153-c8a2da884df3/go.mod h1:XJ+PshUemRQzgLyJa5JHDg8/pFDSuczkxwZwnm3qc/I=
+github.com/bhbosman/gocomms v0.0.0-20230329110556-946ebc6ff5f4 h1:hCK2lurExRGYieivqdwvgJWIsK5P2wLyYCKkIfyBD+I=
+github.com/bhbosman/gocomms v0.0.0-20230329110556-946ebc6ff5f4/go.mod h1:9Cy/AZro6cu8PvmCfnG4Hz/gGfJJW6WrYy0ZLbnXOO8=
 github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf h1:uI7bP2Ue0pjjB8j2zWY+nRbjQgeTfmOW6VR7WvVGK1I=
 github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf/go.mod h1:2aeMPIIYjD7+5AmN1yaV/oAqCaExRDcl7SN+/zFLpew=
 github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c h1:UQCbM3rXlsDsSpo6iJr0DeYRiEA7UT8+9UJkXwzI3kA=
