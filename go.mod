@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/bhbosman/goCommonMarketData v0.0.0-20230329102141-a91b266b20e3
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20230329100608-a6a24c060ad8
-	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328221032-9d1230ea9384
+	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230329122920-e6c932f8e98f
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20230329104213-5493957faab0
 	github.com/bhbosman/goCommsNetListener v0.0.0-20230329104212-9f1b0eafaa6b
 	github.com/bhbosman/goCommsStacks v0.0.0-20230328221032-cd6c6063e9ef
@@ -26,7 +26,6 @@ require (
 )
 
 require (
-	github.com/bhbosman/goConn v0.0.0-20230328145648-e6bab0984275 // indirect
 	github.com/bhbosman/goConnectionManager v0.0.0-20230328221032-2e48eb2721d0 // indirect
 	github.com/bhbosman/goUi v0.0.0-20230328220052-834528d68f6d // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
