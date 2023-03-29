@@ -7,9 +7,9 @@ import (
 	"github.com/bhbosman/goCommonMarketData/fullMarketDataManagerService"
 	"github.com/bhbosman/goCommonMarketData/instrumentReference"
 	"github.com/bhbosman/goCommsMultiDialer"
-	"github.com/bhbosman/goConn"
 	fxAppManager "github.com/bhbosman/goFxAppManager/service"
 	"github.com/bhbosman/goLuno/internal/reactorWS"
+	"github.com/bhbosman/gocommon"
 	"github.com/bhbosman/gocommon/GoFunctionCounter"
 	"github.com/bhbosman/gocommon/services/interfaces"
 	"github.com/cskr/pubsub"
@@ -94,13 +94,13 @@ func Provide() fx.Option {
 							}
 							f := func(
 								name string,
-								referenceData instrumentReference.LunoReferenceData) func() (goConn.IApp, goConn.ICancellationContext, error) {
+								referenceData instrumentReference.LunoReferenceData) func() (gocommon.IApp, gocommon.ICancellationContext, error) {
 
-								return func() (goConn.IApp, goConn.ICancellationContext, error) {
+								return func() (gocommon.IApp, gocommon.ICancellationContext, error) {
 
 									namedLogger := params.Logger.Named(name)
 									ctx, cancelFunc := context.WithCancel(params.ApplicationContext)
-									cancellationContext, err := goConn.NewCancellationContextNoCloser(
+									cancellationContext, err := gocommon.NewCancellationContextNoCloser(
 										name,
 										cancelFunc,
 										ctx,

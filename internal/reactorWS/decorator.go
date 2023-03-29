@@ -11,7 +11,7 @@ import (
 	"github.com/bhbosman/goCommsStacks/bottom"
 	"github.com/bhbosman/goCommsStacks/topStack"
 	"github.com/bhbosman/goCommsStacks/websocket"
-	"github.com/bhbosman/goConn"
+	"github.com/bhbosman/gocommon"
 	"github.com/bhbosman/gocommon/fx/PubSub"
 	"github.com/cskr/pubsub"
 	"go.uber.org/fx"
@@ -29,8 +29,8 @@ type decorator struct {
 	fullMarketDataHelper          fullMarketDataHelper.IFullMarketDataHelper
 	fmdService                    fullMarketDataManagerService.IFmdManagerService
 	referenceData                 instrumentReference.LunoReferenceData
-	decoratorCancellationContext  goConn.ICancellationContext
-	connectionCancellationContext goConn.ICancellationContext
+	decoratorCancellationContext  gocommon.ICancellationContext
+	connectionCancellationContext gocommon.ICancellationContext
 	connectionUrl                 *url.URL
 }
 
@@ -90,12 +90,12 @@ func (self *decorator) internalStart() error {
 	}
 	self.connectionCancellationContext = dialAppCancelFunc
 
-	return goConn.RegisterConnectionShutdown(
+	return gocommon.RegisterConnectionShutdown(
 		connectionId,
 		func(
-			connectionApp goConn.IApp,
+			connectionApp gocommon.IApp,
 			logger *zap.Logger,
-			connectionCancellationContext goConn.ICancellationContext,
+			connectionCancellationContext gocommon.ICancellationContext,
 		) func() {
 			return func() {
 				errInGoRoutine := connectionApp.Stop(context.Background())
@@ -145,8 +145,8 @@ func NewDecorator(
 	LunoAPIKeySecret string,
 	FullMarketDataHelper fullMarketDataHelper.IFullMarketDataHelper,
 	FmdService fullMarketDataManagerService.IFmdManagerService,
-	decoratorCancellationContext goConn.ICancellationContext,
-) (goConn.IApp, error) {
+	decoratorCancellationContext gocommon.ICancellationContext,
+) (gocommon.IApp, error) {
 	return &decorator{
 		connectionUrl:                connectionUrl,
 		logger:                       Logger,
