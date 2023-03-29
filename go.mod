@@ -9,12 +9,12 @@ require (
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20230328152946-289563dfdcd2
 	github.com/bhbosman/goCommsNetListener v0.0.0-20230328152946-bae51c4dfa4c
 	github.com/bhbosman/goCommsStacks v0.0.0-20230328152947-93095a31b055
-	github.com/bhbosman/goConn v0.0.0-20230327111455-7a39299fb0aa
+	github.com/bhbosman/goConn v0.0.0-20230328145648-e6bab0984275
 	github.com/bhbosman/goFxApp v0.0.0-20230328220051-e297c2bf33db
 	github.com/bhbosman/goFxAppManager v0.0.0-20230328220050-a5b50e43977e
 	github.com/bhbosman/goMessages v0.0.0-20230328145403-abd9357e258c
-	github.com/bhbosman/gocommon v0.0.0-20230328220050-dafaab862dd2
-	github.com/bhbosman/gocomms v0.0.0-20230328145403-30d1cbb347ef
+	github.com/bhbosman/gocommon v0.0.0-20230328230250-805500c476ac
+	github.com/bhbosman/gocomms v0.0.0-20230328221033-4231cc0340d0
 	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
 	github.com/cskr/pubsub v1.0.2
 	github.com/golang/protobuf v1.5.2
@@ -27,8 +27,8 @@ require (
 )
 
 require (
-	github.com/bhbosman/goConnectionManager v0.0.0-20230328152946-8854ec40e34b // indirect
-	github.com/bhbosman/goUi v0.0.0-20230328181044-49e31970d158 // indirect
+	github.com/bhbosman/goConnectionManager v0.0.0-20230328221032-2e48eb2721d0 // indirect
+	github.com/bhbosman/goUi v0.0.0-20230328220052-834528d68f6d // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
 	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
@@ -71,3 +71,29 @@ replace github.com/golang/mock => github.com/bhbosman/gomock v1.6.1-0.2023030206
 replace github.com/cskr/pubsub => github.com/bhbosman/pubsub v1.0.3-0.20220802200819-029949e8a8af
 
 replace github.com/rivo/tview => github.com/bhbosman/tview v0.0.0-20230310100135-f8b257a85d36
+
+replace github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
+
+replace github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
+
+replace github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
+
+replace github.com/bhbosman/goCommsNetDialer => ../goCommsNetDialer
+
+replace github.com/bhbosman/goCommsNetListener => ../goCommsNetListener
+
+replace github.com/bhbosman/goCommsStacks => ../goCommsStacks
+
+replace github.com/bhbosman/goConn => ../goConn
+
+replace github.com/bhbosman/goFxApp => ../goFxApp
+
+replace github.com/bhbosman/goFxAppManager => ../goFxAppManager
+
+replace github.com/bhbosman/goMessages => ../goMessages
+
+replace github.com/bhbosman/gocommon => ../gocommon
+
+replace github.com/bhbosman/gocomms => ../gocomms
+
+replace github.com/bhbosman/gomessageblock => ../gomessageblock
