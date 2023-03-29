@@ -3,9 +3,15 @@ module github.com/bhbosman/goLuno
 go 1.18
 
 require (
+	github.com/bhbosman/goCommonMarketData v0.0.0-20230329044927-5dadce964371
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328221032-9d1230ea9384
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20230328224225-97ee5ecb684c
+	github.com/bhbosman/goCommsNetListener v0.0.0-20230328221032-95cc426246fe
+	github.com/bhbosman/goCommsStacks v0.0.0-20230328221032-cd6c6063e9ef
+	github.com/bhbosman/goFxApp v0.0.0-20230328222821-d6fbe28ebdf1
+	github.com/bhbosman/goFxAppManager v0.0.0-20230328221825-d57a6eef05c0
+	github.com/bhbosman/goMessages v0.0.0-20230328221033-d00082868706
 	github.com/bhbosman/gocommon v0.0.0-20230328230250-805500c476ac
 	github.com/bhbosman/gocomms v0.0.0-20230329081153-c8a2da884df3
 	github.com/bhbosman/gomessageblock v0.0.0-20230308173223-e8144f25444c
@@ -20,9 +26,9 @@ require (
 )
 
 require (
+	github.com/bhbosman/goConn v0.0.0-20230328145648-e6bab0984275 // indirect
 	github.com/bhbosman/goConnectionManager v0.0.0-20230328221032-2e48eb2721d0 // indirect
-	github.com/bhbosman/goFxAppManager v0.0.0-20230328221825-d57a6eef05c0 // indirect
-	github.com/bhbosman/goMessages v0.0.0-20230328221033-d00082868706 // indirect
+	github.com/bhbosman/goUi v0.0.0-20230328220052-834528d68f6d // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
 	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
