@@ -2,12 +2,12 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/benbjohnson/clock v1.3.0 h1:ip6w0uFQkncKQ979AypyG0ER7mqUSBdKLOgAle/AT8A=
 github.com/benbjohnson/clock v1.3.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
-github.com/bhbosman/goCommonMarketData v0.0.0-20230329044927-5dadce964371 h1:KQAQOc5cITFOJJTPe+GCixVuhievYQgbpK2Yo9qH+Xw=
-github.com/bhbosman/goCommonMarketData v0.0.0-20230329044927-5dadce964371/go.mod h1:5RsOCQbZ0dPR9nmPfaQQgkyXA+Ay+7kgkhkyUpz8G3U=
+github.com/bhbosman/goCommonMarketData v0.0.0-20230329102141-a91b266b20e3 h1:z7gA4HhxTGcX0AmUpuojPw9YTjHGeVzqoHIU8nqY7Xw=
+github.com/bhbosman/goCommonMarketData v0.0.0-20230329102141-a91b266b20e3/go.mod h1:5RsOCQbZ0dPR9nmPfaQQgkyXA+Ay+7kgkhkyUpz8G3U=
 github.com/bhbosman/goCommsDefinitions v0.0.0-20220801175552-c5aa68065af3/go.mod h1:37dZwNUF+PlfFbSnYP4tGXIELeZom5mRWfTBr9mNOPE=
 github.com/bhbosman/goCommsDefinitions v0.0.0-20230308211643-24fe88b2378e/go.mod h1:tkd0ohtBBlomjgZrSj1K7YHT6zb0td0X6v6Tv/kn/wA=
-github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c h1:Ky8YIMW9ns/H0JnE/V1Xflib/texmWIoCSYNMSsf25Q=
-github.com/bhbosman/goCommsDefinitions v0.0.0-20230320101758-971a50fdbf8c/go.mod h1:vbCOElN9jFdYC0z8KZXGvrVWDRmcPZYwhDLoMfkvD9A=
+github.com/bhbosman/goCommsDefinitions v0.0.0-20230329100608-a6a24c060ad8 h1:kpQ2ILN8808B14jhqY20mdxcwfPD8XTxEib9TYNcR6c=
+github.com/bhbosman/goCommsDefinitions v0.0.0-20230329100608-a6a24c060ad8/go.mod h1:mSGhpRFOTMGWcnwcFEN+zSq/btILDqJrKeJED7yNkbE=
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328221032-9d1230ea9384 h1:VGmTT8jm3GQMLNMnm2ah7QXSLtq7cKXxRlKglPFc8fQ=
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20230328221032-9d1230ea9384/go.mod h1:OrfyoxgXlQXC6prp8LUq3wEgJ4x1Slf9PTuoeEhyPyM=
 github.com/bhbosman/goCommsNetDialer v0.0.0-20230328224225-97ee5ecb684c h1:Xuep+l/0fEN9Hb6DQ/w77+7vx6RoYq9FPbJJkMcpDzg=
