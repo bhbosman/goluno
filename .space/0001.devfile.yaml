@@ -12,4 +12,9 @@ attributes:
       version: '2022.1'
       # release state, e.g. Release or EAP
       updateChannel: Release
-
+projects:
+  - name: my-go-project
+    clonePath: go/src/github.com/bhbosman/goprotoextra
+    git:
+      remotes:
+        origin: 'https://github.com/bhbosman/goprotoextra'	
