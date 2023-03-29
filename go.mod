@@ -20,8 +20,9 @@ require (
 )
 
 require (
-	github.com/bhbosman/goConn v0.0.0-20230328145648-e6bab0984275 // indirect
 	github.com/bhbosman/goConnectionManager v0.0.0-20230328221032-2e48eb2721d0 // indirect
+	github.com/bhbosman/goFxAppManager v0.0.0-20230328221825-d57a6eef05c0 // indirect
+	github.com/bhbosman/goMessages v0.0.0-20230328221033-d00082868706 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20220623084908-4d7bbcd178cf // indirect
 	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
