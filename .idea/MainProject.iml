@@ -30,7 +30,6 @@
     <content url="file://$MODULE_DIR$/../gocomms" />
     <content url="file://$MODULE_DIR$/../goerrors" />
     <content url="file://$MODULE_DIR$/../gokraken" />
-    <content url="file://$MODULE_DIR$/../gologging" />
     <content url="file://$MODULE_DIR$/../gomessageblock" />
     <content url="file://$MODULE_DIR$/../gomock" />
     <content url="file://$MODULE_DIR$/../goprotoextra" />
