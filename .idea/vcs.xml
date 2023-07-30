@@ -9,7 +9,6 @@
     </option>
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/../goBoom" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommonMarketData" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommsDefinitions" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommsMultiDialer" vcs="Git" />

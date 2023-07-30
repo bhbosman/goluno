@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
-  <component name="Go" enabled="true">
-    <buildTags>
-      <option name="os" value="dragonfly" />
-      <option name="goVersion" value="1.19" />
-    </buildTags>
-  </component>
+  <component name="Go" enabled="true" />
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/../goBoom" />
     <content url="file://$MODULE_DIR$/../goCommonMarketData" />
     <content url="file://$MODULE_DIR$/../goCommsDefinitions" />
     <content url="file://$MODULE_DIR$/../goCommsMultiDialer" />
@@ -40,5 +34,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="module" module-name="Boom" />
   </component>
 </module>
