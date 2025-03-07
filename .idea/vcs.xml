@@ -37,6 +37,5 @@
     <mapping directory="$PROJECT_DIR$/../sshApplication" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../tcell" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../tview" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../../../google.golang.org/protobuf" vcs="Git" />
   </component>
 </project>
