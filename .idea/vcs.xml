@@ -16,6 +16,7 @@
     <mapping directory="$PROJECT_DIR$/../goCommsNetListener" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommsSshListener" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goCommsStacks" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../goConn" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goConnectionManager" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goFxApp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goFxAppManager" vcs="Git" />
@@ -30,6 +31,7 @@
     <mapping directory="$PROJECT_DIR$/../gocomms" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goerrors" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gokraken" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gomessageblock" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../gomock" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../goprotoextra" vcs="Git" />
