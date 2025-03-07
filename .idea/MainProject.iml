@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
-  <component name="Go" enabled="true">
-    <buildTags>
-      <option name="os" value="dragonfly" />
-      <option name="goVersion" value="1.19" />
-    </buildTags>
-  </component>
+  <component name="Go" enabled="true" />
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/../goBoom" />
     <content url="file://$MODULE_DIR$/../goCommonMarketData" />
     <content url="file://$MODULE_DIR$/../goCommsDefinitions" />
     <content url="file://$MODULE_DIR$/../goCommsMultiDialer" />
@@ -15,10 +9,10 @@
     <content url="file://$MODULE_DIR$/../goCommsNetListener" />
     <content url="file://$MODULE_DIR$/../goCommsSshListener" />
     <content url="file://$MODULE_DIR$/../goCommsStacks" />
+    <content url="file://$MODULE_DIR$/../goConn" />
     <content url="file://$MODULE_DIR$/../goConnectionManager" />
     <content url="file://$MODULE_DIR$/../goFxApp" />
     <content url="file://$MODULE_DIR$/../goFxAppManager" />
-    <content url="file://$MODULE_DIR$" />
     <content url="file://$MODULE_DIR$/../goMarketData" />
     <content url="file://$MODULE_DIR$/../goMessages" />
     <content url="file://$MODULE_DIR$/../goPolygon-io" />
@@ -29,6 +23,7 @@
     <content url="file://$MODULE_DIR$/../gocomms" />
     <content url="file://$MODULE_DIR$/../goerrors" />
     <content url="file://$MODULE_DIR$/../gokraken" />
+    <content url="file://$MODULE_DIR$" />
     <content url="file://$MODULE_DIR$/../gomessageblock" />
     <content url="file://$MODULE_DIR$/../gomock" />
     <content url="file://$MODULE_DIR$/../goprotoextra" />
@@ -40,5 +35,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="module" module-name="Boom" />
   </component>
 </module>

@@ -10,6 +10,8 @@ import (
 	"github.com/bhbosman/goLuno/internal/lunoConfiguration"
 	app2 "github.com/bhbosman/gocommon/Providers"
 	"go.uber.org/fx"
+
+	//"go.uber.org/fx"
 	"go.uber.org/multierr"
 )
 
