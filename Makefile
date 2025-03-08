@@ -44,32 +44,33 @@ update-go-mod:
 	git push
 
 ww:
-	make gocommon
-	make goCommonMarketData
-	make gocomms
-	make goCommsDefinitions
-	make goCommsMultiDialer
-	make goCommsNetDialer
-	make goCommsNetListener
-	make goCommsSshListener
-	make goCommsStacks
-	make goConn
-	make goConnectionManager
+
 	make goerrors
-	make goFxApp
-	make goFxAppManager
-	make gokraken
-	make goMarketData
-	make gomessageblock
-	make goMessages
-	make gomock
 	make goprotoextra
-	make goSocks5
-	make goUi
+	make gomessageblock
+	make goCommsDefinitions
+	make gocommon
+	make goConnectionManager
 	make pubsub
-	make sshApplication
 	make tcell
 	make tview
+	make goUi
+	make goCommonMarketData
+	make gocomms
+	make goCommsStacks
+	make goCommsNetDialer
+	make goCommsMultiDialer
+	make goCommsNetListener
+	make goCommsSshListener
+	make goConn
+	make goFxApp
+	make goFxAppManager
+	make goMessages
+	make gomock
+	make goSocks5
+	make goTrader
+	make sshApplication
+	make goMarketData
+	make gokraken
 	make goLuno
 	make goPolygon-io
-	#make goTrader
