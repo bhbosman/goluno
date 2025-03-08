@@ -3,10 +3,10 @@ module github.com/bhbosman/goLuno
 go 1.24.0
 
 require (
-	github.com/bhbosman/goCommonMarketData v0.0.0-20250308140011-3837d75d871c
-	github.com/bhbosman/goCommsDefinitions v0.0.0-20250308074916-3e7c0d32b971
-	github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308142322-0c3f634e3635
-	github.com/bhbosman/goCommsNetDialer v0.0.0-20250308133838-fcd6077403df
+	github.com/bhbosman/goCommonMarketData v0.0.0-20250308143707-c57da53e39fb
+	github.com/bhbosman/goCommsDefinitions v0.0.0-20250308144130-64993b60920c
+	github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308145530-f9feda5f9bba
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20250308144130-d5d7af07e829
 	github.com/bhbosman/goCommsNetListener v0.0.0-20250308122653-28d9e53d4343
 	github.com/bhbosman/goCommsStacks v0.0.0-20250308140058-bc4682f34818
 	github.com/bhbosman/goFxApp v0.0.0-20250308140120-240d765e819d
@@ -26,8 +26,8 @@ require (
 )
 
 require (
-	github.com/bhbosman/goConnectionManager v0.0.0-20250308133907-06eddcd798f6 // indirect
-	github.com/bhbosman/goUi v0.0.0-20250308132651-2a5e82ef72b0 // indirect
+	github.com/bhbosman/goConnectionManager v0.0.0-20250308145438-ea83361668a5 // indirect
+	github.com/bhbosman/goUi v0.0.0-20250308145459-134c11444111 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20250307194237-312d070c8e38 // indirect
 	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
