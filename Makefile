@@ -53,8 +53,8 @@ ww:
 	make pubsub
 	make tcell
 	make tview
-	make goUi
 	make goCommonMarketData
+	make goUi
 	make gocomms
 	make goCommsStacks
 	make goCommsNetDialer
