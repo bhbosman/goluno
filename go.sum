@@ -45,6 +45,8 @@ github.com/bhbosman/goCommsStacks v0.0.0-20250308122653-67040ed90c18 h1:fCsaTjUj
 github.com/bhbosman/goCommsStacks v0.0.0-20250308122653-67040ed90c18/go.mod h1:8CYkY8G+BZASAdGkNzSUev3FAV62Tol7dOK7LccGRrE=
 github.com/bhbosman/goCommsStacks v0.0.0-20250308140058-bc4682f34818 h1:i35NxIJj+3/trmv4Qyj2TSWCWYp+LvX+zgxMgU61sXo=
 github.com/bhbosman/goCommsStacks v0.0.0-20250308140058-bc4682f34818/go.mod h1:uqoiVPJ5iW1OG0tVDNEzXRZFm3TzlqUq+l9lLlFJcoU=
+github.com/bhbosman/goCommsStacks v0.0.0-20250308150310-d89697671b2a h1:ch1HP4J4JbFM4Y3zNLLR3UZz92fseCnzPWEPf0deIe4=
+github.com/bhbosman/goCommsStacks v0.0.0-20250308150310-d89697671b2a/go.mod h1:KJjOIpgKY3tjOhq7NAZhBanJjpydnsrHBUy0K1OKhBU=
 github.com/bhbosman/goConnectionManager v0.0.0-20250308072343-5ecf88215e38 h1:82LWGEM9SPvd/mp6T/v/lYm07IypmGtfX8fP5i0cYd4=
 github.com/bhbosman/goConnectionManager v0.0.0-20250308072343-5ecf88215e38/go.mod h1:lD80UgopARIvGKA6vdCE4d2csy/AoOlFxnpx+EoOXtc=
 github.com/bhbosman/goConnectionManager v0.0.0-20250308122653-53a96fe357f2 h1:g2CUTrG6dGqVw7888o7ZQhYTZlUMEN9h1rEzMf6zqA8=
@@ -79,6 +81,8 @@ github.com/bhbosman/gocommon v0.0.0-20250308071735-43b385b00819 h1:B+7lAu+nnm9PI
 github.com/bhbosman/gocommon v0.0.0-20250308071735-43b385b00819/go.mod h1:6PneFIBNKkWgXncFgaqsSIeKFl1So5J5/QM2S2xule8=
 github.com/bhbosman/gocommon v0.0.0-20250308131803-28622f55deb1 h1:H6xBDuvTUHP3HWOcY6VdO4GBW5bqk0jM1dn8f2SYwD0=
 github.com/bhbosman/gocommon v0.0.0-20250308131803-28622f55deb1/go.mod h1:7lml5lQFGVyrvj3awVTQ0SdaqW3WdcKEC8hhcmNGOHE=
+github.com/bhbosman/gocommon v0.0.0-20250308150148-56b7e6e14bff h1:lDqy+h+pbnVXRxXnYyTDLhUA1qWsbFiUTox+30EHfwU=
+github.com/bhbosman/gocommon v0.0.0-20250308150148-56b7e6e14bff/go.mod h1:X1Vckq6MxT7Ozn4fMsUKXkgEgggnsBGs+HX9SWzl+Tk=
 github.com/bhbosman/gocomms v0.0.0-20250308073453-53d6befb6d1a h1:G624DLsYNSEz7tc4pN49Ii+KHjNHlAty1oi0D2LgFIo=
 github.com/bhbosman/gocomms v0.0.0-20250308073453-53d6befb6d1a/go.mod h1:jkDgfw9i8Jt/Ym5pxnPSxiGFifB6/LlVrAB9nMi6rXA=
 github.com/bhbosman/gocomms v0.0.0-20250308122654-329e339db0e0 h1:umKod1Go+wqmTyPQvgq8tKqazoveIH8bjvp+6niTXWc=

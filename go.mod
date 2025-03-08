@@ -8,11 +8,11 @@ require (
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308145530-f9feda5f9bba
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20250308144130-d5d7af07e829
 	github.com/bhbosman/goCommsNetListener v0.0.0-20250308122653-28d9e53d4343
-	github.com/bhbosman/goCommsStacks v0.0.0-20250308140058-bc4682f34818
+	github.com/bhbosman/goCommsStacks v0.0.0-20250308150310-d89697671b2a
 	github.com/bhbosman/goFxApp v0.0.0-20250308140120-240d765e819d
 	github.com/bhbosman/goFxAppManager v0.0.0-20250308140124-9230c32fe2ee
 	github.com/bhbosman/goMessages v0.0.0-20250308134004-88a683243000
-	github.com/bhbosman/gocommon v0.0.0-20250308131803-28622f55deb1
+	github.com/bhbosman/gocommon v0.0.0-20250308150148-56b7e6e14bff
 	github.com/bhbosman/gocomms v0.0.0-20250308133812-cb1afb4044ed
 	github.com/bhbosman/gomessageblock v0.0.0-20250308073733-0b3daca12e3a
 	github.com/cskr/pubsub v1.0.2
