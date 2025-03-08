@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/bhbosman/goCommonMarketData v0.0.0-20250308073453-ae7aa85d59d4
-	github.com/bhbosman/goCommsDefinitions v0.0.0-20250308000247-4306925b3dfd
+	github.com/bhbosman/goCommsDefinitions v0.0.0-20250308074916-3e7c0d32b971
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308072116-24c1e60ae346
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20250308072116-e542f85eddcc
 	github.com/bhbosman/goCommsNetListener v0.0.0-20250308072116-bc3af6251376
