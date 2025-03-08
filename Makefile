@@ -32,47 +32,37 @@ folders = \
 $(folders):
 	make -f ${CURDIR}/Makefile -C ${CURDIR}/../$@ qqq
 
-
-#	@set GOROOT=/opt/homebrew/opt/go/libexec
-#	@set GOPATH=/Users/ronelspijkerman
-#	@echo ${CURDIR}
-#	@echo GOPATH: ${GOROOT}
-#	@echo GOPATH: ${GOPATH}
-#	@echo PWD: ${DIR}
-#	@cd ${DIR}/../$@
-#	/opt/homebrew/opt/go/libexec/bin/go get -d -v -u all
-
 qqq:
 	@set GOROOT=/opt/homebrew/opt/go/libexec
 	@set GOPATH=/Users/ronelspijkerman
 	/opt/homebrew/opt/go/libexec/bin/go get -d -v -u all
 
 ww:
-#	make $< gocommon
-#	make $< goCommonMarketData
-#	make $< gocomms
-#	make $< goCommsDefinitions
-#	make $< goCommsMultiDialer
-#	make $< goCommsNetDialer
-#	make $< goCommsNetListener
-#	make $< goCommsSshListener
-#	make $< goCommsStacks
-#	make $< goConn
-#	make $< goConnectionManager
-#	make $< goerrors
+	make gocommon
+	make goCommonMarketData
+	make gocomms
+	make goCommsDefinitions
+	make goCommsMultiDialer
+	make goCommsNetDialer
+	make goCommsNetListener
+	make goCommsSshListener
+	make goCommsStacks
+	make goConn
+	make goConnectionManager
+	make goerrors
 	make goFxApp
 	make goFxAppManager
 	make gokraken
-#	make $< goMarketData
-#	make $< gomessageblock
-#	make $< goMessages
-#	make $< gomock
-#	make $< goprotoextra
-#	make $< goSocks5
-#	make $< goTrader
-#	make $< goUi
-#	make $< pubsub
-#	make $< sshApplication
-#	make $< tcell
-#	make $< tview
+	make goMarketData
+	make gomessageblock
+	make goMessages
+	make gomock
+	make goprotoextra
+	make goSocks5
+	make goTrader
+	make goUi
+	make pubsub
+	make sshApplication
+	make tcell
+	make tview
 
