@@ -28,10 +28,11 @@ folders = \
     tview
 
 $(folders):
+	GOROOT=/opt/homebrew/opt/go/libexec #gosetup
+	GOPATH=/Users/ronelspijkerman #gosetup
 	echo $@
 	cd ../$@
-	go mod tidy
-	go get -u all
+	/opt/homebrew/opt/go/libexec/bin/go get -d -v -u all
 
 
 
