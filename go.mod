@@ -6,16 +6,16 @@ toolchain go1.24.0
 
 require (
 	github.com/bhbosman/goCommonMarketData v0.0.0-20250307193010-964d289b4f10
-	github.com/bhbosman/goCommsDefinitions v0.0.0-20250307125227-bfc368fdddf9
+	github.com/bhbosman/goCommsDefinitions v0.0.0-20250308000247-4306925b3dfd
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20250307144406-ae5dea5deb4a
-	github.com/bhbosman/goCommsNetDialer v0.0.0-20250307150712-206b023d3816
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20250307233555-6c2dfa80f01b
 	github.com/bhbosman/goCommsNetListener v0.0.0-20250307153216-6206fd2748ea
 	github.com/bhbosman/goCommsStacks v0.0.0-20250307144406-cf8fac452083
 	github.com/bhbosman/goFxApp v0.0.0-20250307153150-937959817ddb
 	github.com/bhbosman/goFxAppManager v0.0.0-20250307145515-bda0fa4d9959
-	github.com/bhbosman/goMessages v0.0.0-20230329104216-4906969c1e61
-	github.com/bhbosman/gocommon v0.0.0-20250307145810-dee67af89371
-	github.com/bhbosman/gocomms v0.0.0-20250307194459-78d729fdb027
+	github.com/bhbosman/goMessages v0.0.0-20250307224348-83ddb4c19467
+	github.com/bhbosman/gocommon v0.0.0-20250308052839-0ebeb121f996
+	github.com/bhbosman/gocomms v0.0.0-20250308000247-0dafbc2926a9
 	github.com/bhbosman/gomessageblock v0.0.0-20250307141417-ab783e8e2eba
 	github.com/cskr/pubsub v1.0.2
 	github.com/golang/protobuf v1.5.4
@@ -28,8 +28,8 @@ require (
 )
 
 require (
-	github.com/bhbosman/goConnectionManager v0.0.0-20250307195323-c97481f7bf87 // indirect
-	github.com/bhbosman/goUi v0.0.0-20250307150712-d06325af4877 // indirect
+	github.com/bhbosman/goConnectionManager v0.0.0-20250307224538-a79ceb218fd0 // indirect
+	github.com/bhbosman/goUi v0.0.0-20250308052840-a0e5fd7e5f88 // indirect
 	github.com/bhbosman/goerrors v0.0.0-20250307194237-312d070c8e38 // indirect
 	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
@@ -70,17 +70,17 @@ replace (
 	github.com/rivo/tview => github.com/bhbosman/tview v0.0.0-20230310100135-f8b257a85d36
 )
 
-//replace (
-//	github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
-//	github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
-//	github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
-//	github.com/bhbosman/goCommsNetDialer => ../goCommsNetDialer
-//	github.com/bhbosman/goCommsNetListener => ../goCommsNetListener
-//	github.com/bhbosman/goCommsStacks => ../goCommsStacks
-//	github.com/bhbosman/goFxApp => ../goFxApp
-//	github.com/bhbosman/goFxAppManager => ../goFxAppManager
-//	github.com/bhbosman/goMessages => ../goMessages
-//	github.com/bhbosman/gocommon => ../gocommon
-//	github.com/bhbosman/gocomms => ../gocomms
-//	github.com/bhbosman/gomessageblock => ../gomessageblock
-//)
+replace (
+	github.com/bhbosman/goCommonMarketData => ../goCommonMarketData
+	github.com/bhbosman/goCommsDefinitions => ../goCommsDefinitions
+	github.com/bhbosman/goCommsMultiDialer => ../goCommsMultiDialer
+	github.com/bhbosman/goCommsNetDialer => ../goCommsNetDialer
+	github.com/bhbosman/goCommsNetListener => ../goCommsNetListener
+	github.com/bhbosman/goCommsStacks => ../goCommsStacks
+	github.com/bhbosman/goFxApp => ../goFxApp
+	github.com/bhbosman/goFxAppManager => ../goFxAppManager
+	github.com/bhbosman/goMessages => ../goMessages
+	github.com/bhbosman/gocommon => ../gocommon
+	github.com/bhbosman/gocomms => ../gocomms
+	github.com/bhbosman/gomessageblock => ../gomessageblock
+)
