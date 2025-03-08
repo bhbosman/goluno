@@ -49,6 +49,7 @@ github.com/bhbosman/gomessageblock v0.0.0-20250307141417-ab783e8e2eba h1:BcXupDm
 github.com/bhbosman/gomessageblock v0.0.0-20250307141417-ab783e8e2eba/go.mod h1:hk2R7Luioz1RAAEXAFk+tjaGc9oPz0nh0uAI2HUVGgY=
 github.com/bhbosman/gomock v1.6.1-0.20230302060806-d02c40b7514e h1:9ZZLTcBpRq0gCtFml4/M9EQ3E5sQoHIBRk0yLpuVFVQ=
 github.com/bhbosman/gomock v1.6.1-0.20230302060806-d02c40b7514e/go.mod h1:YKHw244p9LQrfV48xfFMiAVbFE2qjBuU1OHTNjXwboE=
+github.com/bhbosman/gomock v1.6.1-0.20250308071159-4cf72f668c72 h1:r5CkchfDmndKsk4ujkGVUX7WcZcJVVbhGyiT7Tt3zO0=
 github.com/bhbosman/gomock v1.6.1-0.20250308071159-4cf72f668c72/go.mod h1:QvQoHRNh6hbY5chl6UwMoWO7rhBOWN1NQmGPYuR06CY=
 github.com/bhbosman/goprotoextra v0.0.2 h1:LEEUuDa7X7ojAP56dw5SDoiYnTrErpjI7Bp25Q9Nw2I=
 github.com/bhbosman/goprotoextra v0.0.2/go.mod h1:Jt+JnplitvFQLYeUKIuBnc+5aHBtRtvze8Hce0gMXiM=
