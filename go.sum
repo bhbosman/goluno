@@ -7,6 +7,8 @@ github.com/bhbosman/goCommonMarketData v0.0.0-20250308122653-86c15e96c02b h1:fxN
 github.com/bhbosman/goCommonMarketData v0.0.0-20250308122653-86c15e96c02b/go.mod h1:foNu3eUi+6kfjwYPNJ+TgBXd5LmpAzuLT+oGgWAqHJw=
 github.com/bhbosman/goCommonMarketData v0.0.0-20250308133807-dfa6df88bdb4 h1:AgSVMH9Y1w/YcSxtxXi4IRdN0BhFUJpC14nbwfB4zXY=
 github.com/bhbosman/goCommonMarketData v0.0.0-20250308133807-dfa6df88bdb4/go.mod h1:5xnU19BDp333jaI67knc4VgzIrKUO7/YQWokGf7iSTM=
+github.com/bhbosman/goCommonMarketData v0.0.0-20250308140011-3837d75d871c h1:qFIkYI5Fej045+VLThtdmgPo74nkcHGdNA9kUXMzDkk=
+github.com/bhbosman/goCommonMarketData v0.0.0-20250308140011-3837d75d871c/go.mod h1:62/S8pIhZs27E6UCQgGjybtN/QjYS2zo1D28MQYOxPs=
 github.com/bhbosman/goCommsDefinitions v0.0.0-20220801175552-c5aa68065af3/go.mod h1:37dZwNUF+PlfFbSnYP4tGXIELeZom5mRWfTBr9mNOPE=
 github.com/bhbosman/goCommsDefinitions v0.0.0-20230308211643-24fe88b2378e/go.mod h1:tkd0ohtBBlomjgZrSj1K7YHT6zb0td0X6v6Tv/kn/wA=
 github.com/bhbosman/goCommsDefinitions v0.0.0-20250308000247-4306925b3dfd h1:1z7B4HNVpYRZllTfjAtuvSI/Joh7+MlABhc2rfjDYmg=
@@ -19,6 +21,8 @@ github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308131912-3e5bf2685d36 h1:H0c
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308131912-3e5bf2685d36/go.mod h1:q0GFLzioCghn1m4cg4PgOjRc73BpBO3rRvQPSnEQUP8=
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308133821-ae4b28fea9be h1:FFcEMkJUMbFawYAWaQINdz0zfIWXOBLXDozlbuCi+Pk=
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308133821-ae4b28fea9be/go.mod h1:3Evt7/vdWx/5GggPWiUMX9/j6LhnTnI1bmb8Xh2wbQg=
+github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308142322-0c3f634e3635 h1:6Anx4Mm3RjSavCooteEOLuLHdbMQm0jgM80V6jsz9kU=
+github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308142322-0c3f634e3635/go.mod h1:xnHsKo9gUAn/lk7jMbAiSa9A3hNA8QKX2UqSVYttNJ8=
 github.com/bhbosman/goCommsNetDialer v0.0.0-20250308072116-e542f85eddcc h1:1EaGhUkQ3uXdOIIc3smaZOM+o1jLgmUh4eQQzG9DT5Y=
 github.com/bhbosman/goCommsNetDialer v0.0.0-20250308072116-e542f85eddcc/go.mod h1:izCaBxAUKQjijpSPRjyS8jmeiYIMw8T3HVHhiWv0W1A=
 github.com/bhbosman/goCommsNetDialer v0.0.0-20250308133838-fcd6077403df h1:dlJGajQZqzwgecnykOwsahhRNNME7ny25nFg3U1NAwo=
@@ -37,10 +41,16 @@ github.com/bhbosman/goConnectionManager v0.0.0-20250308072343-5ecf88215e38 h1:82
 github.com/bhbosman/goConnectionManager v0.0.0-20250308072343-5ecf88215e38/go.mod h1:lD80UgopARIvGKA6vdCE4d2csy/AoOlFxnpx+EoOXtc=
 github.com/bhbosman/goConnectionManager v0.0.0-20250308122653-53a96fe357f2 h1:g2CUTrG6dGqVw7888o7ZQhYTZlUMEN9h1rEzMf6zqA8=
 github.com/bhbosman/goConnectionManager v0.0.0-20250308122653-53a96fe357f2/go.mod h1:3vN5ENCKucbzUATz5ecAUqwF/M7L9lZ5We4Ypevt2c8=
+github.com/bhbosman/goConnectionManager v0.0.0-20250308133907-06eddcd798f6 h1:F/3tByXZDuHMgxKckwNaYZCfiTPKA38M1AHMD7a9I7E=
+github.com/bhbosman/goConnectionManager v0.0.0-20250308133907-06eddcd798f6/go.mod h1:dy73KjrQewhG9PsdJcPJ2d5Jz9BLcyfQAi7kjwKhhqI=
 github.com/bhbosman/goFxApp v0.0.0-20250308072343-1987095b450b h1:iUqdqkg5g9o6G5FWU77K0j7WFKb6H5oxtCAJ3ofR3eU=
 github.com/bhbosman/goFxApp v0.0.0-20250308072343-1987095b450b/go.mod h1:e2P6W2NVJsu+/CNxFAGDUHD9Ss1KV0w/dGlfcZ3NjRk=
+github.com/bhbosman/goFxApp v0.0.0-20250308140120-240d765e819d h1:rMOER4TqSEs3gdLnvLDd+uGffAjVFuhNYDj+iu0IXRE=
+github.com/bhbosman/goFxApp v0.0.0-20250308140120-240d765e819d/go.mod h1:psLk6yiX0KoVJl/mYGwbc8kh25MZ7V2114lCEKlRgw4=
 github.com/bhbosman/goFxAppManager v0.0.0-20250308072827-0bc0f03a9d29 h1:MT4nSVHj+QHqwfeNrLG++Ju/jlt6g/KNaMXW1iBOvKo=
 github.com/bhbosman/goFxAppManager v0.0.0-20250308072827-0bc0f03a9d29/go.mod h1:Jg58N4bm+7BbNQsFZEkgniHFCzONN1jAh2P68MgQFfY=
+github.com/bhbosman/goFxAppManager v0.0.0-20250308140124-9230c32fe2ee h1:lC94YW0tDwIQt6pRBPoZXB399qXPEcmf0ko3ctwpj48=
+github.com/bhbosman/goFxAppManager v0.0.0-20250308140124-9230c32fe2ee/go.mod h1:7co1qgnBKfZJnD/rlSmHM3mw9ESnBSvdsAtLQFGQdFI=
 github.com/bhbosman/goMessages v0.0.0-20250308073939-6ddcbe007f00 h1:atF5Fi1k1DL3QlZlfZzYTvMUUNtoeCbFOJx29Cn71+E=
 github.com/bhbosman/goMessages v0.0.0-20250308073939-6ddcbe007f00/go.mod h1:nnA/nGfLfAgOa2dg59slhWLFJhDBJMBl5/UzxT7agk8=
 github.com/bhbosman/goMessages v0.0.0-20250308122654-32a88d6d1169 h1:sL7gvyo2egE1FI+8WRCh5g4Wo6pmsooHBTg7Uq/btkg=
