@@ -3,15 +3,15 @@ module github.com/bhbosman/goLuno
 go 1.24.0
 
 require (
-	github.com/bhbosman/goCommonMarketData v0.0.0-20250308192059-0d9dd67dc2fb
+	github.com/bhbosman/goCommonMarketData v0.0.0-20250308201059-06af23865f1c
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20250308144130-64993b60920c
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308162156-9033e2a7cbfa
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20250308194845-d79c1c88c66f
-	github.com/bhbosman/goCommsNetListener v0.0.0-20250308162159-3110c7d726b2
-	github.com/bhbosman/goCommsStacks v0.0.0-20250308192125-9f32e0135afc
+	github.com/bhbosman/goCommsNetListener v0.0.0-20250308195846-03f74299dec9
+	github.com/bhbosman/goCommsStacks v0.0.0-20250308195825-d8c70d3767da
 	github.com/bhbosman/goFxApp v0.0.0-20250308162224-38e18cab1c9b
 	github.com/bhbosman/goFxAppManager v0.0.0-20250308192215-e35e337e2f4e
-	github.com/bhbosman/goMessages v0.0.0-20250308162234-471970cb97be
+	github.com/bhbosman/goMessages v0.0.0-20250308195913-e5a0f4425dd4
 	github.com/bhbosman/gocommon v0.0.0-20250308194442-9c45d7859806
 	github.com/bhbosman/gocomms v0.0.0-20250308192115-8af5b0178806
 	github.com/bhbosman/gomessageblock v0.0.0-20250308073733-0b3daca12e3a
