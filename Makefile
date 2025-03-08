@@ -27,7 +27,8 @@ folders = \
     pubsub \
     sshApplication \
     tcell \
-    tview
+    tview \
+    goLuno
 
 $(folders):
 	make -f ${CURDIR}/Makefile -C ${CURDIR}/../$@ update-go-mod
@@ -36,33 +37,36 @@ update-go-mod:
 	@set GOROOT=/opt/homebrew/opt/go/libexec
 	@set GOPATH=/Users/ronelspijkerman
 	/opt/homebrew/opt/go/libexec/bin/go get -d -v -u all
+	git add go.mod go.sum
+	git commit -m "fix go mod issues"
 
 ww:
-#	make gocommon
-#	make goCommonMarketData
-#	make gocomms
-#	make goCommsDefinitions
-#	make goCommsMultiDialer
-#	make goCommsNetDialer
-#	make goCommsNetListener
-#	make goCommsSshListener
-#	make goCommsStacks
-#	make goConn
-#	make goConnectionManager
-#	make goerrors
-#	make goFxApp
-#	make goFxAppManager
-#	make gokraken
-#	make goMarketData
-#	make gomessageblock
-#	make goMessages
-#	make gomock
-#	make goprotoextra
-#	make goSocks5
+	make gocommon
+	make goCommonMarketData
+	make gocomms
+	make goCommsDefinitions
+	make goCommsMultiDialer
+	make goCommsNetDialer
+	make goCommsNetListener
+	make goCommsSshListener
+	make goCommsStacks
+	make goConn
+	make goConnectionManager
+	make goerrors
+	make goFxApp
+	make goFxAppManager
+	make gokraken
+	make goMarketData
+	make gomessageblock
+	make goMessages
+	make gomock
+	make goprotoextra
+	make goSocks5
 	make goTrader
-#	make goUi
-#	make pubsub
-#	make sshApplication
-#	make tcell
-#	make tview
+	make goUi
+	make pubsub
+	make sshApplication
+	make tcell
+	make tview
+	make goLuno
 
