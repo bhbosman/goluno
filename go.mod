@@ -12,7 +12,7 @@ require (
 	github.com/bhbosman/goFxApp v0.0.0-20250308162224-38e18cab1c9b
 	github.com/bhbosman/goFxAppManager v0.0.0-20250308192215-e35e337e2f4e
 	github.com/bhbosman/goMessages v0.0.0-20250308162234-471970cb97be
-	github.com/bhbosman/gocommon v0.0.0-20250308155359-4baa9bec452e
+	github.com/bhbosman/gocommon v0.0.0-20250308194442-9c45d7859806
 	github.com/bhbosman/gocomms v0.0.0-20250308192115-8af5b0178806
 	github.com/bhbosman/gomessageblock v0.0.0-20250308073733-0b3daca12e3a
 	github.com/cskr/pubsub v1.0.2
