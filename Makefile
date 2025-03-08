@@ -30,14 +30,17 @@ folders = \
     tview
 
 $(folders):
-	@set GOROOT=/opt/homebrew/opt/go/libexec
-	@set GOPATH=/Users/ronelspijkerman
+	make -f ${CURDIR}/Makefile -C ${CURDIR}/../$@ qqq
+
+
+#	@set GOROOT=/opt/homebrew/opt/go/libexec
+#	@set GOPATH=/Users/ronelspijkerman
 #	@echo ${CURDIR}
 #	@echo GOPATH: ${GOROOT}
 #	@echo GOPATH: ${GOPATH}
 #	@echo PWD: ${DIR}
 #	@cd ${DIR}/../$@
-	/opt/homebrew/opt/go/libexec/bin/go get -d -v -u all
+#	/opt/homebrew/opt/go/libexec/bin/go get -d -v -u all
 
 qqq:
 	@set GOROOT=/opt/homebrew/opt/go/libexec
@@ -57,9 +60,9 @@ ww:
 #	make $< goConn
 #	make $< goConnectionManager
 #	make $< goerrors
-	make -f ${CURDIR}/Makefile -C ${CURDIR}/../goFxApp qqq
-#	make $< goFxAppManager
-#	make $< gokraken
+	make goFxApp
+	make goFxAppManager
+	make gokraken
 #	make $< goMarketData
 #	make $< gomessageblock
 #	make $< goMessages
