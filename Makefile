@@ -53,8 +53,8 @@ ww:
 	make goConnectionManager
 	make tcell
 	make tview
-	make goCommonMarketData
 	make goUi
+	make goCommonMarketData
 	make gocomms
 	make goCommsStacks
 	make goCommsNetDialer
