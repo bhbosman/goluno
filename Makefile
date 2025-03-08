@@ -64,7 +64,6 @@ ww:
 	make gomock
 	make goprotoextra
 	make goSocks5
-	make goTrader
 	make goUi
 	make pubsub
 	make sshApplication
