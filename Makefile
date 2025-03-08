@@ -18,7 +18,6 @@ folders = \
     gomessageblock \
     goMessages \
     gomock \
-    goPolygon-io \
     goprotoextra \
     goSocks5 \
     goTrader \
@@ -55,7 +54,6 @@ ww:
 	make $< gomessageblock
 	make $< goMessages
 	make $< gomock
-	make $< goPolygon
 	make $< goprotoextra
 	make $< goSocks5
 	make $< goTrader
