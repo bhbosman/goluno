@@ -9,6 +9,8 @@ github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308162156-9033e2a7cbfa h1:bvF
 github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308162156-9033e2a7cbfa/go.mod h1:EwOshGj9j2rg7ezQY/k3K8jEPGTAhU3iPNfCEbuFJYw=
 github.com/bhbosman/goCommsNetDialer v0.0.0-20250308162151-924d8e82e3d4 h1:bJm21tJWL1w80ZNmf8Vnv/tVwQwYC9a1N2UTxxceF0w=
 github.com/bhbosman/goCommsNetDialer v0.0.0-20250308162151-924d8e82e3d4/go.mod h1:2wxH8QHsjkAvJqEWAxb/HjY7HIiNDnWO/ZjPnk8if54=
+github.com/bhbosman/goCommsNetDialer v0.0.0-20250308194845-d79c1c88c66f h1:HzMFcIZepIDhaq79U1jftGCZCO3AdgWAjyP/uLcRKdY=
+github.com/bhbosman/goCommsNetDialer v0.0.0-20250308194845-d79c1c88c66f/go.mod h1:nyjtetPFi/qsd7I6Wowhl6iFmeE0cUNTOKr7BSm65b0=
 github.com/bhbosman/goCommsNetListener v0.0.0-20250308162159-3110c7d726b2 h1:oho1at5wy6zJb+aIRN08BDVWI6Bo8jc+n63XhhFJW+s=
 github.com/bhbosman/goCommsNetListener v0.0.0-20250308162159-3110c7d726b2/go.mod h1:QZeX1IK0U9CLSfuXr+ZuJo8NC4EkbrNPxMtIMK7anCg=
 github.com/bhbosman/goCommsStacks v0.0.0-20250308162142-6d1805d62606 h1:wXSGTPCygrev4XBYrvZYGcGvwjRt7it0/ZnXwLao/ik=
@@ -31,6 +33,8 @@ github.com/bhbosman/goUi v0.0.0-20250308162123-529b89b32854 h1:lNt1+Ut6mSvGSi7Sk
 github.com/bhbosman/goUi v0.0.0-20250308162123-529b89b32854/go.mod h1:qktfyS0nt1q5nOQMb/9/2KwHPXWWNXu9M1YNzmGYUfg=
 github.com/bhbosman/goUi v0.0.0-20250308192106-f0dba2b1ada7 h1:TjaFwfhgJrIlkULWH71Aj+J9LKE34Z2rgJpeEY6YHTQ=
 github.com/bhbosman/goUi v0.0.0-20250308192106-f0dba2b1ada7/go.mod h1:4npkyOdvPaIf3JZHD1C8VntmWlUXRh6sMgAu+l8uUyU=
+github.com/bhbosman/goUi v0.0.0-20250308194827-3465482d7c6b h1:KKdeMYlRS0d9agTti3R066pPJgMIyRiLjyNzEmDO35A=
+github.com/bhbosman/goUi v0.0.0-20250308194827-3465482d7c6b/go.mod h1:fahvqvNfQKJKbhKjy+m8igIGeadfyCT2JlR44+d/RN4=
 github.com/bhbosman/gocommon v0.0.0-20250308155359-4baa9bec452e h1:92bvDBFSfI/1z0wJf1xgNFwRTAtQ/uPzU6SBtCwDsmo=
 github.com/bhbosman/gocommon v0.0.0-20250308155359-4baa9bec452e/go.mod h1:MgvoWc5dg34pZhFPxwkiw8QBQjYRG8Vg8SQ87+pmYXo=
 github.com/bhbosman/gocomms v0.0.0-20250308162131-934dbda8372b h1:owNt0vfsZi+xnT0rvmh2V2+HdXwnnms5UcRZbVvm32g=

@@ -6,7 +6,7 @@ require (
 	github.com/bhbosman/goCommonMarketData v0.0.0-20250308192059-0d9dd67dc2fb
 	github.com/bhbosman/goCommsDefinitions v0.0.0-20250308144130-64993b60920c
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308162156-9033e2a7cbfa
-	github.com/bhbosman/goCommsNetDialer v0.0.0-20250308162151-924d8e82e3d4
+	github.com/bhbosman/goCommsNetDialer v0.0.0-20250308194845-d79c1c88c66f
 	github.com/bhbosman/goCommsNetListener v0.0.0-20250308162159-3110c7d726b2
 	github.com/bhbosman/goCommsStacks v0.0.0-20250308192125-9f32e0135afc
 	github.com/bhbosman/goFxApp v0.0.0-20250308162224-38e18cab1c9b
@@ -27,7 +27,7 @@ require (
 
 require (
 	github.com/bhbosman/goConnectionManager v0.0.0-20250308194756-b3c21d488492 // indirect
-	github.com/bhbosman/goUi v0.0.0-20250308192106-f0dba2b1ada7 // indirect
+	github.com/bhbosman/goUi v0.0.0-20250308194827-3465482d7c6b // indirect
 	github.com/bhbosman/goerrors v0.0.0-20250307194237-312d070c8e38 // indirect
 	github.com/bhbosman/goprotoextra v0.0.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
