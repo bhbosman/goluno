@@ -31,7 +31,7 @@ folders = \
     goLuno
 
 $(folders):
-	make -f ${CURDIR}/Makefile -C ${CURDIR}/../$@ update-go-mod
+	make --ignore-errors -f ${CURDIR}/Makefile -C ${CURDIR}/../$@ update-go-mod
 
 update-go-mod:
 	@set GOROOT=/opt/homebrew/opt/go/libexec
@@ -45,30 +45,30 @@ update-go-mod:
 ww:
 	make gocommon
 	make goCommonMarketData
-#	make gocomms
-#	make goCommsDefinitions
-#	make goCommsMultiDialer
-#	make goCommsNetDialer
-#	make goCommsNetListener
-#	make goCommsSshListener
-#	make goCommsStacks
-#	make goConn
-#	make goConnectionManager
-#	make goerrors
-#	make goFxApp
-#	make goFxAppManager
-#	make gokraken
-#	make goMarketData
-#	make gomessageblock
-#	make goMessages
-#	make gomock
-#	make goprotoextra
-#	make goSocks5
-#	make goTrader
-#	make goUi
-#	make pubsub
-#	make sshApplication
-#	make tcell
-#	make tview
-#	make goLuno
+	make gocomms
+	make goCommsDefinitions
+	make goCommsMultiDialer
+	make goCommsNetDialer
+	make goCommsNetListener
+	make goCommsSshListener
+	make goCommsStacks
+	make goConn
+	make goConnectionManager
+	make goerrors
+	make goFxApp
+	make goFxAppManager
+	make gokraken
+	make goMarketData
+	make gomessageblock
+	make goMessages
+	make gomock
+	make goprotoextra
+	make goSocks5
+	make goTrader
+	make goUi
+	make pubsub
+	make sshApplication
+	make tcell
+	make tview
+	make goLuno
 
