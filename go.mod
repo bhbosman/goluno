@@ -8,7 +8,7 @@ require (
 	github.com/bhbosman/goCommsMultiDialer v0.0.0-20250308072116-24c1e60ae346
 	github.com/bhbosman/goCommsNetDialer v0.0.0-20250308072116-e542f85eddcc
 	github.com/bhbosman/goCommsNetListener v0.0.0-20250308072116-bc3af6251376
-	github.com/bhbosman/goCommsStacks v0.0.0-20250308073453-2a34f22d9bb1
+	github.com/bhbosman/goCommsStacks v0.0.0-20250308122653-67040ed90c18
 	github.com/bhbosman/goFxApp v0.0.0-20250308072343-1987095b450b
 	github.com/bhbosman/goFxAppManager v0.0.0-20250308072827-0bc0f03a9d29
 	github.com/bhbosman/goMessages v0.0.0-20250308073939-6ddcbe007f00
