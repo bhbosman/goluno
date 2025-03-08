@@ -33,10 +33,14 @@ github.com/bhbosman/goFxAppManager v0.0.0-20250308052839-63033ea503a7 h1:26wgm1o
 github.com/bhbosman/goFxAppManager v0.0.0-20250308052839-63033ea503a7/go.mod h1:o+bgVaS4CNXBGvqHXMhttoXO9K4tNT9dvB6t94opHE4=
 github.com/bhbosman/goMessages v0.0.0-20250308052839-b11fc966f96a h1:CCO8BZMefGsDiKpea73NCawZPThyGTZ5ZE5HaQuIjTM=
 github.com/bhbosman/goMessages v0.0.0-20250308052839-b11fc966f96a/go.mod h1:pn/6+wdjopbF4wcmUTemYyrRKJowPAeKu9Wu5dxQHPI=
+github.com/bhbosman/goMessages v0.0.0-20250308063841-56e83c4ed9eb h1:54MZddGsUrScp6oxfj0kjbny0L1ZmRIzhMC87dFu7Zw=
+github.com/bhbosman/goMessages v0.0.0-20250308063841-56e83c4ed9eb/go.mod h1:OaQ+F4sEImShxRnYPefGKLsc3pZexhM/6Bfod066qQU=
 github.com/bhbosman/goUi v0.0.0-20250308052840-a0e5fd7e5f88 h1:Dyqc31wVVUcDJd0LMXj7l4sNt98wCPmrV7n3rWuYOJc=
 github.com/bhbosman/goUi v0.0.0-20250308052840-a0e5fd7e5f88/go.mod h1:3FskHyMUG9BmfVvg+rAOKsJbjVrJqrlBnC3Cr6uER3E=
 github.com/bhbosman/goUi v0.0.0-20250308064519-26f29e163722 h1:dZCnL1PLX8x2WBzGirFUPhzSPi3ndOxHggfuXwbKOWk=
 github.com/bhbosman/goUi v0.0.0-20250308064519-26f29e163722/go.mod h1:qAkQMWCAaAGlsB62pbPBtKEEWT1oa38bMMvZw+PI0tA=
+github.com/bhbosman/goUi v0.0.0-20250308071736-0cc76a4d2dbf h1:rsvb1FlEPNwJk32hXoLGltUb+6NVbVHjLn6E2BvE3TI=
+github.com/bhbosman/goUi v0.0.0-20250308071736-0cc76a4d2dbf/go.mod h1:l8l8U6QbtjsZzp8q5/o/WLDcYcdvZDUW5T/tX2lhNvk=
 github.com/bhbosman/gocommon v0.0.0-20250308052839-0ebeb121f996 h1:J4LPhDOOJ/tIJscYU6vNy2V1CzVflIHTJMYdN9gtGqg=
 github.com/bhbosman/gocommon v0.0.0-20250308052839-0ebeb121f996/go.mod h1:PcUe1UZjlmyuDrh2cEzNAgi+BQEV10LWktEL2C9BRS0=
 github.com/bhbosman/gocomms v0.0.0-20250308000247-0dafbc2926a9 h1:/BmfEj0hapFf8jDW1yZ0ePcHjVNysBmxwcWQVE/zPBY=
