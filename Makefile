@@ -1,6 +1,9 @@
 DIR := ${CURDIR}
 
 folders = \
+    goerrors \
+    goprotoextra \
+    gomessageblock \
     goCommsDefinitions \
     gocommon \
     goConnectionManager \
@@ -13,15 +16,12 @@ folders = \
     goCommsSshListener \
     goCommsStacks \
     goConn \
-    goerrors \
     goFxApp \
     goFxAppManager \
     gokraken \
     goMarketData \
-    gomessageblock \
     goMessages \
     gomock \
-    goprotoextra \
     goSocks5 \
     goTrader \
     pubsub \
