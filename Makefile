@@ -41,7 +41,7 @@ update-go-mod:
 	git add go.mod
 	git add go.sum
 	git commit -m "fix go mod issues"
-	git push
+	git push --set-upstream origin master
 
 ww:
 	make goerrors
