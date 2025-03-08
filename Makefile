@@ -7,27 +7,27 @@ folders = \
     goCommsDefinitions \
     gocommon \
     goConnectionManager \
+    pubsub \
+    tcell \
+    tview \
 	goUi \
     goCommonMarketData \
     gocomms \
-    goCommsMultiDialer \
+    goCommsStacks \
     goCommsNetDialer \
+    goCommsMultiDialer \
     goCommsNetListener \
     goCommsSshListener \
-    goCommsStacks \
     goConn \
     goFxApp \
     goFxAppManager \
-    gokraken \
-    goMarketData \
     goMessages \
     gomock \
     goSocks5 \
     goTrader \
-    pubsub \
     sshApplication \
-    tcell \
-    tview \
+    goMarketData \
+    gokraken \
     goLuno
 
 $(folders):
