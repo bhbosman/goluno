@@ -1,3 +1,5 @@
+DIR := ${CURDIR}
+
 folders = \
     gocommon \
     goCommonMarketData \
@@ -28,15 +30,14 @@ folders = \
     tview
 
 $(folders):
+
 	set GOROOT=/opt/homebrew/opt/go/libexec #gosetup
 	set GOPATH=/Users/ronelspijkerman #gosetup
 	echo GOPATH: ${GOROOT}
 	echo GOPATH: ${GOPATH}
-
-	cd ../$@
+	echo PWD: ${DIR}
+	cd ${DIR}/../$@
 	/opt/homebrew/opt/go/libexec/bin/go get -d -v -u all
-
-
 
 ww:
 	make $< gocommon
