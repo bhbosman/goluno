@@ -30,7 +30,8 @@ folders = \
 $(folders):
 	echo $@
 	cd ../$@
-	go get -v -u all
+	go mod tidy
+	go get -u all
 
 
 
