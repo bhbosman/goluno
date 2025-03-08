@@ -44,7 +44,6 @@ update-go-mod:
 	git push
 
 ww:
-
 	make goerrors
 	make goprotoextra
 	make gomessageblock
