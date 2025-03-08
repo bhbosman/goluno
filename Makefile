@@ -41,35 +41,36 @@ update-go-mod:
 	git add go.mod
 	git add go.sum
 	git commit -m "fix go mod issues"
+	git rev-parse --verify HEAD
 	git push --set-upstream origin master
 
 ww:
 	make goerrors
-	make goprotoextra
-	make gomessageblock
-	make goCommsDefinitions
-	make pubsub
-	make gocommon
-	make goConnectionManager
-	make tcell
-	make tview
-	make goUi
-	make goCommonMarketData
-	make gocomms
-	make goCommsStacks
-	make goCommsNetDialer
-	make goCommsMultiDialer
-	make goCommsNetListener
-	make goCommsSshListener
-	make goConn
-	make goFxApp
-	make goFxAppManager
-	make goMessages
-	make gomock
-	make goSocks5
-	make sshApplication
-	make goMarketData
-	make gokraken
-	make goLuno
-	make goPolygon-io
-	make goTrader
+#	make goprotoextra
+#	make gomessageblock
+#	make goCommsDefinitions
+#	make pubsub
+#	make gocommon
+#	make goConnectionManager
+#	make tcell
+#	make tview
+#	make goUi
+#	make goCommonMarketData
+#	make gocomms
+#	make goCommsStacks
+#	make goCommsNetDialer
+#	make goCommsMultiDialer
+#	make goCommsNetListener
+#	make goCommsSshListener
+#	make goConn
+#	make goFxApp
+#	make goFxAppManager
+#	make goMessages
+#	make gomock
+#	make goSocks5
+#	make sshApplication
+#	make goMarketData
+#	make gokraken
+#	make goLuno
+#	make goPolygon-io
+#	make goTrader
