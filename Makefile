@@ -46,7 +46,7 @@ update-go-mod:
 
 ww:
 	make goerrors
-#	make goprotoextra
+	make goprotoextra
 #	make gomessageblock
 #	make goCommsDefinitions
 #	make pubsub
