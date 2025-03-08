@@ -30,9 +30,9 @@ folders = \
     tview
 
 $(folders):
-	make -f ${CURDIR}/Makefile -C ${CURDIR}/../$@ qqq
+	make -f ${CURDIR}/Makefile -C ${CURDIR}/../$@ update-go-mod
 
-qqq:
+update-go-mod:
 	@set GOROOT=/opt/homebrew/opt/go/libexec
 	@set GOPATH=/Users/ronelspijkerman
 	/opt/homebrew/opt/go/libexec/bin/go get -d -v -u all
