@@ -48,9 +48,9 @@ ww:
 	make goprotoextra
 	make gomessageblock
 	make goCommsDefinitions
+	make pubsub
 	make gocommon
 	make goConnectionManager
-	make pubsub
 	make tcell
 	make tview
 	make goCommonMarketData
